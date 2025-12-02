@@ -98,6 +98,12 @@ export const LESSONS: LessonInfo[] = [
     title: '第16課：て形的应用',
     description: '连接多个动作、形容词的连接',
     topics: ['动词て形+动词て形', '动词て形+から', 'い形容词→くて', 'な形容词/名词+で']
+  },
+  {
+    id: 'L17',
+    title: '第17課：ない形 (Nai-Form)',
+    description: '动词否定形式、禁止、必须与不必要',
+    topics: ['ない形变形', '～ないでください', '～なければなりません', '～なくてもいいです']
   }
 ];
 
@@ -749,6 +755,39 @@ export const VOCABULARY_LIST: Vocabulary[] = [
   { lessonId: 'L16', word: 'まず', reading: 'まず', meaning: '首先', type: 'adverb' },
   { lessonId: 'L16', word: '次に', reading: 'つぎに', meaning: '接下来/然后', type: 'adverb' },
   { lessonId: 'L16', word: 'まだまだです', reading: 'まだまだです', meaning: '还差得远呢', type: 'phrase' },
+
+  // --- Lesson 17 ---
+  { lessonId: 'L17', word: '覚えます', reading: 'おぼえます', meaning: '记住/学会', type: 'verb' },
+  { lessonId: 'L17', word: '忘れます', reading: 'わすれます', meaning: '忘记', type: 'verb' },
+  { lessonId: 'L17', word: 'なくします', reading: 'なくします', meaning: '丢失', type: 'verb' },
+  { lessonId: 'L17', word: '払います', reading: 'はらいます', meaning: '支付', type: 'verb' },
+  { lessonId: 'L17', word: '返します', reading: 'かえします', meaning: '归还', type: 'verb' },
+  { lessonId: 'L17', word: '出かけます', reading: 'でかけます', meaning: '出门', type: 'verb' },
+  { lessonId: 'L17', word: '脱ぎます', reading: 'ぬぎます', meaning: '脱(衣服/鞋)', type: 'verb' },
+  { lessonId: 'L17', word: '持って行きます', reading: 'もっていきます', meaning: '带(某物)去', type: 'verb' },
+  { lessonId: 'L17', word: '持って来ます', reading: 'もってきます', meaning: '带(某物)来', type: 'verb' },
+  { lessonId: 'L17', word: '心配します', reading: 'しんぱいします', meaning: '担心', type: 'verb' },
+  { lessonId: 'L17', word: '残業します', reading: 'ざんぎょうします', meaning: '加班', type: 'verb' },
+  { lessonId: 'L17', word: '出張します', reading: 'しゅっちょうします', meaning: '出差', type: 'verb' },
+  { lessonId: 'L17', word: '飲みます[薬を]', reading: 'のみます', meaning: '吃[药]', type: 'verb' },
+  { lessonId: 'L17', word: '入ります[お風呂に]', reading: 'はいります', meaning: '洗[澡]', type: 'verb' },
+  { lessonId: 'L17', word: '大切', reading: 'たいせつ', meaning: '重要/珍贵', type: 'na-adj' },
+  { lessonId: 'L17', word: '大丈夫', reading: 'だいじょうぶ', meaning: '没关系', type: 'na-adj' },
+  { lessonId: 'L17', word: '危ない', reading: 'あぶない', meaning: '危险', type: 'i-adj' },
+  { lessonId: 'L17', word: '問題', reading: 'もんだい', meaning: '问题', type: 'noun' },
+  { lessonId: 'L17', word: '答え', reading: 'こたえ', meaning: '回答/答案', type: 'noun' },
+  { lessonId: 'L17', word: '禁煙', reading: 'きんえん', meaning: '禁止吸烟', type: 'noun' },
+  { lessonId: 'L17', word: '健康保険証', reading: 'けんこうほけんしょう', meaning: '健康保险证', type: 'noun' },
+  { lessonId: 'L17', word: '風邪', reading: 'かぜ', meaning: '感冒', type: 'noun' },
+  { lessonId: 'L17', word: '熱', reading: 'ねつ', meaning: '发烧', type: 'noun' },
+  { lessonId: 'L17', word: '病気', reading: 'びょうき', meaning: '病', type: 'noun' },
+  { lessonId: 'L17', word: '薬', reading: 'くすり', meaning: '药', type: 'noun' },
+  { lessonId: 'L17', word: 'おふろ', reading: 'おふろ', meaning: '澡堂/浴缸', type: 'noun' },
+  { lessonId: 'L17', word: '上着', reading: 'うわぎ', meaning: '上衣/外套', type: 'noun' },
+  { lessonId: 'L17', word: '下着', reading: 'したぎ', meaning: '内衣', type: 'noun' },
+  { lessonId: 'L17', word: '痛い', reading: 'いたい', meaning: '疼', type: 'i-adj' },
+  { lessonId: 'L17', word: 'お大事に', reading: 'おだいじに', meaning: '请多保重', type: 'phrase' },
+  { lessonId: 'L17', word: 'どうしましたか', reading: 'どうしましたか', meaning: '怎么了/哪里不舒服', type: 'phrase' },
 ];
 
 export const GRAMMAR_RULES: GrammarRule[] = [
@@ -1155,6 +1194,35 @@ export const GRAMMAR_RULES: GrammarRule[] = [
     description: '描述某人的具体特征（如身体部位）。',
     pattern: '主题 は 部位 が 形容词',
     example: 'マリアさんは髪が長いです。(玛利亚头发很长)'
+  },
+  // --- Lesson 17 ---
+  {
+    lessonId: 'L17',
+    title: '1. ない形变形规则 (Nai-Form)',
+    description: 'I类: i→a+ない (特例: i→wa); II类: 去ます+ない; III类: しない, こない。',
+    pattern: '書かない, 食べない, しない, 来ない',
+    example: '書きます→書かない, 食べます→食べない'
+  },
+  {
+    lessonId: 'L17',
+    title: '2. 禁止/请不要 (～ないでください)',
+    description: '请求或指示对方不要做某事。',
+    pattern: 'V-ない形 + で ください',
+    example: 'ここで写真を撮らないでください。(请不要在这里拍照)'
+  },
+  {
+    lessonId: 'L17',
+    title: '3. 必须/义务 (～なければなりません)',
+    description: '表示必须做某事。',
+    pattern: 'V-ない形(去い) + ければ なりません',
+    example: '薬を飲まなければなりません。(必须吃药)'
+  },
+  {
+    lessonId: 'L17',
+    title: '4. 不必要 (～なくてもいいです)',
+    description: '表示没有必要做某事。',
+    pattern: 'V-ない形(去い) + くても いいです',
+    example: '明日来なくてもいいです。(明天不来也可以)'
   }
 ];
 
@@ -1266,4 +1334,19 @@ export const EXERCISES: Exercise[] = [
   { id: '16-3-1', lessonId: 'L16', section: 3, prompt: 'マリアさんは 髪 (  ) 長いです。', answer: 'マリアさんは髪が長いです。', hint: '玛利亚头发很长 (特征描述)' },
   { id: '16-3-2', lessonId: 'L16', section: 3, prompt: '太郎ちゃんは 背 (  ) 高いです。', answer: '太郎ちゃんは背が高いです。', hint: '太郎个子很高 (特征描述)' },
   { id: '16-3-3', lessonId: 'L16', section: 3, prompt: '大阪は 食べ物 (  ) おいしいです。', answer: '大阪は食べ物がおいしいです。', hint: '大阪食物很好吃 (特征描述)' },
+
+  // --- Lesson 17 ---
+  { id: '17-1-1', lessonId: 'L17', section: 1, prompt: '書きます -> (  )', answer: '書かない', hint: '写 (ki -> ka + nai)' },
+  { id: '17-1-2', lessonId: 'L17', section: 1, prompt: '食べます -> (  )', answer: '食べない', hint: '吃 (II类: 去masu + nai)' },
+  { id: '17-1-3', lessonId: 'L17', section: 1, prompt: '来ます -> (  )', answer: 'こない', hint: '来 (kimasu -> konai)' },
+  { id: '17-1-4', lessonId: 'L17', section: 1, prompt: 'あります -> (  )', answer: 'ない', hint: '有 (特殊: nai)' },
+
+  { id: '17-2-1', lessonId: 'L17', section: 2, prompt: 'ここで 写真を (  ) でください。(撮ります)', answer: 'ここで写真を撮らないでください。', hint: '请不要在这里拍照 (禁止)' },
+  { id: '17-2-2', lessonId: 'L17', section: 2, prompt: 'そこで タバコを (  ) でください。(吸います)', answer: 'そこでタバコを吸わないでください。', hint: '请不要在那里吸烟 (禁止)' },
+
+  { id: '17-3-1', lessonId: 'L17', section: 3, prompt: '薬を (  ) ければなりません。(飲みます)', answer: '薬を飲まなければなりません。', hint: '必须吃药 (义务)' },
+  { id: '17-3-2', lessonId: 'L17', section: 3, prompt: '明日までに レポートを (  ) ければなりません。(出します)', answer: '明日までにレポートを出さなければなりません。', hint: '必须在明天前交报告 (义务)' },
+
+  { id: '17-4-1', lessonId: 'L17', section: 4, prompt: '明日は (  ) くてもいいです。(来ます)', answer: '明日は来なくてもいいです。', hint: '明天不来也可以 (不必要)' },
+  { id: '17-4-2', lessonId: 'L17', section: 4, prompt: '靴を (  ) くてもいいです。(脱ぎます)', answer: '靴を脱がなくてもいいです。', hint: '不脱鞋也可以 (不必要)' },
 ];
