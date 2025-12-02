@@ -4,7 +4,7 @@ import { GrammarRule } from '../types';
 import { Lightbulb, PlayCircle, CheckCircle2, XCircle, ArrowRight, RefreshCw, Zap } from 'lucide-react';
 
 interface GrammarGuideProps {
-    rules: GrammarRule[];
+  rules: GrammarRule[];
 }
 
 // --- Interactive Components ---
@@ -37,11 +37,10 @@ const TeFormLab = () => {
           <button
             key={g}
             onClick={() => setGroup(g as any)}
-            className={`flex-1 py-2 rounded-lg font-bold text-sm transition-all ${
-              group === g 
-              ? 'bg-indigo-600 text-white shadow-md' 
-              : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
-            }`}
+            className={`flex-1 py-2 rounded-xl font-bold text-sm transition-all border-2 border-b-4 border-r-4 active:translate-y-[2px] active:translate-x-[2px] active:border-b-2 active:border-r-2 ${group === g
+                ? 'bg-indigo-600 border-indigo-700 border-b-indigo-800 border-r-indigo-800 text-white'
+                : 'bg-slate-100 border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-500 hover:bg-slate-200'
+              }`}
           >
             Group {g} {g === 1 ? '(五段)' : g === 2 ? '(一段)' : '(变格)'}
           </button>
@@ -57,19 +56,18 @@ const TeFormLab = () => {
                 <button
                   key={k}
                   onClick={() => setEnding(k)}
-                  className={`px-3 py-1 rounded border text-sm font-mono ${
-                    ending === k 
-                    ? 'bg-teal-500 text-white border-teal-500' 
-                    : 'bg-white text-slate-600 border-slate-200 hover:border-teal-300'
-                  }`}
+                  className={`px-3 py-1 rounded-xl border-2 border-b-4 border-r-4 text-sm font-mono transition-all active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${ending === k
+                      ? 'bg-teal-500 text-white border-teal-600 border-b-teal-700 border-r-teal-700'
+                      : 'bg-white text-slate-600 border-slate-200 border-b-slate-300 border-r-slate-300 hover:border-teal-300'
+                    }`}
                 >
                   {k === 'iki' ? 'iki (去)' : k}
                 </button>
               ))}
             </div>
             <div className="animate-fade-in">
-               <div className="text-3xl font-bold text-slate-800 mb-2">{G1_RULES[ending].rule}</div>
-               <div className="text-sm text-slate-500">{G1_RULES[ending].ex}</div>
+              <div className="text-3xl font-bold text-slate-800 mb-2">{G1_RULES[ending].rule}</div>
+              <div className="text-sm text-slate-500">{G1_RULES[ending].ex}</div>
             </div>
           </div>
         )}
@@ -129,48 +127,48 @@ const AdjectiveConjugator = () => {
       <h4 className="font-bold text-indigo-800 mb-4 flex items-center gap-2">
         <RefreshCw size={18} /> 形容词变形模拟器 (Lesson 8/12)
       </h4>
-      
+
       <div className="flex flex-wrap gap-4 mb-6">
         <div className="flex bg-slate-100 rounded-lg p-1">
-          <button 
+          <button
             onClick={() => setAdjType('i')}
-            className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${adjType === 'i' ? 'bg-white text-indigo-600 shadow' : 'text-slate-500'}`}
+            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all border-2 border-b-4 border-r-4 active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${adjType === 'i' ? 'bg-white border-indigo-200 border-b-indigo-300 border-r-indigo-300 text-indigo-600' : 'text-slate-500 border-transparent hover:bg-slate-200'}`}
           >
             い形容词 (暑い)
           </button>
-          <button 
-             onClick={() => setAdjType('na')}
-             className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${adjType === 'na' ? 'bg-white text-indigo-600 shadow' : 'text-slate-500'}`}
+          <button
+            onClick={() => setAdjType('na')}
+            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all border-2 border-b-4 border-r-4 active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${adjType === 'na' ? 'bg-white border-indigo-200 border-b-indigo-300 border-r-indigo-300 text-indigo-600' : 'text-slate-500 border-transparent hover:bg-slate-200'}`}
           >
             な形容词 (暇)
           </button>
         </div>
 
         <div className="flex bg-slate-100 rounded-lg p-1">
-          <button 
+          <button
             onClick={() => setTense('non-past')}
-            className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${tense === 'non-past' ? 'bg-white text-teal-600 shadow' : 'text-slate-500'}`}
+            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all border-2 border-b-4 border-r-4 active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${tense === 'non-past' ? 'bg-white border-teal-200 border-b-teal-300 border-r-teal-300 text-teal-600' : 'text-slate-500 border-transparent hover:bg-slate-200'}`}
           >
             现在/将来
           </button>
-          <button 
-             onClick={() => setTense('past')}
-             className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${tense === 'past' ? 'bg-white text-teal-600 shadow' : 'text-slate-500'}`}
+          <button
+            onClick={() => setTense('past')}
+            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all border-2 border-b-4 border-r-4 active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${tense === 'past' ? 'bg-white border-teal-200 border-b-teal-300 border-r-teal-300 text-teal-600' : 'text-slate-500 border-transparent hover:bg-slate-200'}`}
           >
             过去
           </button>
         </div>
 
         <div className="flex bg-slate-100 rounded-lg p-1">
-          <button 
+          <button
             onClick={() => setPolarity('positive')}
-            className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${polarity === 'positive' ? 'bg-white text-green-600 shadow' : 'text-slate-500'}`}
+            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all border-2 border-b-4 border-r-4 active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${polarity === 'positive' ? 'bg-white border-green-200 border-b-green-300 border-r-green-300 text-green-600' : 'text-slate-500 border-transparent hover:bg-slate-200'}`}
           >
             肯定 (是)
           </button>
-          <button 
-             onClick={() => setPolarity('negative')}
-             className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${polarity === 'negative' ? 'bg-white text-rose-600 shadow' : 'text-slate-500'}`}
+          <button
+            onClick={() => setPolarity('negative')}
+            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all border-2 border-b-4 border-r-4 active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${polarity === 'negative' ? 'bg-white border-rose-200 border-b-rose-300 border-r-rose-300 text-rose-600' : 'text-slate-500 border-transparent hover:bg-slate-200'}`}
           >
             否定 (不)
           </button>
@@ -178,12 +176,12 @@ const AdjectiveConjugator = () => {
       </div>
 
       <div className="text-center py-8 bg-indigo-50 rounded-lg border border-indigo-100">
-         <p className="text-3xl font-bold text-slate-800">{getConjugation()}</p>
-         <p className="text-slate-400 text-sm mt-2">
-           {adjType === 'i' ? '热' : '空闲'} 
-           {tense === 'past' ? ' (过去)' : ''} 
-           {polarity === 'negative' ? ' (否定)' : ''}
-         </p>
+        <p className="text-3xl font-bold text-slate-800">{getConjugation()}</p>
+        <p className="text-slate-400 text-sm mt-2">
+          {adjType === 'i' ? '热' : '空闲'}
+          {tense === 'past' ? ' (过去)' : ''}
+          {polarity === 'negative' ? ' (否定)' : ''}
+        </p>
       </div>
     </div>
   );
@@ -196,7 +194,7 @@ const ParticleQuiz = () => {
     { q: '箸__食べます。', options: ['で', 'に', 'から'], ans: 'で' },
   ];
   const [currentQ, setCurrentQ] = useState(0);
-  const [status, setStatus] = useState<'idle'|'correct'|'wrong'>('idle');
+  const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle');
 
   const handleAnswer = (opt: string) => {
     if (opt === questions[currentQ].ans) {
@@ -215,18 +213,18 @@ const ParticleQuiz = () => {
       <h4 className="font-bold text-amber-800 mb-4 flex items-center gap-2">
         <PlayCircle size={18} /> 助词大挑战 (Particles)
       </h4>
-      
+
       <div className="text-center space-y-6">
         <div className="text-xl font-bold text-slate-700 bg-amber-50 p-4 rounded-lg">
           {questions[currentQ].q}
         </div>
-        
+
         <div className="flex justify-center gap-3">
           {questions[currentQ].options.map(opt => (
             <button
               key={opt}
               onClick={() => handleAnswer(opt)}
-              className="w-16 h-16 rounded-full bg-slate-100 hover:bg-amber-200 font-bold text-xl text-slate-700 transition-colors border-2 border-slate-200 hover:border-amber-400"
+              className="w-16 h-16 rounded-full bg-slate-100 hover:bg-amber-200 font-bold text-xl text-slate-700 transition-all border-2 border-slate-200 border-b-4 border-r-4 hover:border-amber-400 active:translate-y-[2px] active:translate-x-[2px] active:border-b-2 active:border-r-2"
             >
               {opt}
             </button>
@@ -234,8 +232,8 @@ const ParticleQuiz = () => {
         </div>
 
         <div className="h-6 text-sm font-bold">
-          {status === 'correct' && <span className="text-green-600 flex items-center justify-center gap-1"><CheckCircle2 size={16}/> 正确！</span>}
-          {status === 'wrong' && <span className="text-red-500 flex items-center justify-center gap-1"><XCircle size={16}/> 再试试...</span>}
+          {status === 'correct' && <span className="text-green-600 flex items-center justify-center gap-1"><CheckCircle2 size={16} /> 正确！</span>}
+          {status === 'wrong' && <span className="text-red-500 flex items-center justify-center gap-1"><XCircle size={16} /> 再试试...</span>}
         </div>
       </div>
     </div>
@@ -269,11 +267,11 @@ const CounterVisualizer = () => {
           <p className="text-slate-500 text-sm">{counters[count - 1].split(' ')[1]}</p>
         </div>
 
-        <input 
-          type="range" 
-          min="1" 
-          max="10" 
-          value={count} 
+        <input
+          type="range"
+          min="1"
+          max="10"
+          value={count}
           onChange={(e) => setCount(Number(e.target.value))}
           className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
         />
@@ -285,7 +283,7 @@ const CounterVisualizer = () => {
 export const GrammarGuide: React.FC<GrammarGuideProps> = ({ rules }) => {
   // Determine if we should show specific labs based on the lesson content
   const lessonId = rules[0]?.lessonId;
-  
+
   const showConjugator = ['L8', 'L12'].includes(lessonId);
   const showParticles = ['L1', 'L5', 'L6', 'L7'].includes(lessonId);
   const showCounters = ['L11'].includes(lessonId);
@@ -298,23 +296,23 @@ export const GrammarGuide: React.FC<GrammarGuideProps> = ({ rules }) => {
         {rules.map((rule, index) => (
           <div key={index} className="bg-teal-50 p-5 rounded-xl border border-teal-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-teal-100 rounded-full -mr-10 -mt-10 opacity-50"></div>
-            
+
             <div className="relative z-10">
               <div className="flex items-center gap-2 mb-3">
                 <Lightbulb className="text-amber-500 fill-amber-500" size={20} />
                 <h3 className="font-bold text-teal-900 text-lg">{rule.title}</h3>
               </div>
-              
+
               <p className="text-slate-700 mb-4 leading-relaxed text-sm md:text-base">
                 {rule.description}
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white/80 p-3 rounded-lg border border-teal-200/50">
                   <p className="text-xs text-teal-600 font-bold mb-1 uppercase tracking-wider">句型 Pattern</p>
                   <p className="font-mono text-slate-800 font-medium text-sm">{rule.pattern}</p>
                 </div>
-                
+
                 <div className="bg-white/80 p-3 rounded-lg border border-teal-200/50">
                   <p className="text-xs text-teal-600 font-bold mb-1 uppercase tracking-wider">例句 Example</p>
                   <div className="flex items-start gap-2">
@@ -333,7 +331,7 @@ export const GrammarGuide: React.FC<GrammarGuideProps> = ({ rules }) => {
         <div className="border-t-2 border-dashed border-slate-200 pt-8">
           <h3 className="text-xl font-bold text-slate-800 mb-2 text-center">🎮 语法实验室</h3>
           <p className="text-center text-slate-400 text-sm mb-6">通过互动练习加深理解</p>
-          
+
           {showTeForm && <TeFormLab />}
           {showConjugator && <AdjectiveConjugator />}
           {showParticles && <ParticleQuiz />}

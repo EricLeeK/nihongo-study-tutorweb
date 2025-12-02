@@ -181,9 +181,9 @@ const App: React.FC = () => {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
-                    className={`group flex items-center gap-2 px-5 py-3 font-bold transition-all border-b-2 whitespace-nowrap ${activeTab === tab.id
-                      ? 'border-teal-500 text-teal-700 bg-teal-50/50'
-                      : 'border-transparent text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+                    className={`group flex items-center gap-2 px-5 py-3 font-bold transition-all rounded-xl border-2 border-b-4 border-r-4 mx-1 ${activeTab === tab.id
+                      ? 'bg-teal-50 border-teal-500 border-b-teal-600 border-r-teal-600 text-teal-700 translate-y-[2px] translate-x-[2px]'
+                      : 'bg-white/40 border-sage/10 border-b-sage/20 border-r-sage/20 text-slate-500 shadow-[4px_4px_0px_0px_rgba(141,163,153,0.15)] hover:bg-white/60 hover:shadow-[2px_2px_0px_0px_rgba(141,163,153,0.15)] hover:translate-y-[2px] hover:translate-x-[2px] active:shadow-none active:translate-y-[4px] active:translate-x-[4px]'
                       }`}
                   >
                     <tab.icon size={18} className={activeTab === tab.id ? 'stroke-[2.5px]' : ''} />
@@ -218,20 +218,20 @@ const App: React.FC = () => {
       {/* Mobile Navigation (Sticky Bottom) - Only in Lesson Mode */}
       {!isGlobalReviewMode && !isSpeakingPrepMode && !isKanaChartMode && currentLessonId && (
         <div className="md:hidden fixed bottom-0 left-0 right-0 bg-paper/95 backdrop-blur-md border-t border-sage/20 flex justify-around p-1 z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pb-safe">
-          <button onClick={() => setActiveTab('vocab')} className={`flex flex-col items-center p-2 rounded-lg w-16 ${activeTab === 'vocab' ? 'text-sage-dark' : 'text-slate-400'}`}>
+          <button onClick={() => setActiveTab('vocab')} className={`flex flex-col items-center p-2 rounded-lg w-16 transition-transform active:scale-95 ${activeTab === 'vocab' ? 'text-sage-dark' : 'text-slate-400'}`}>
             <Book size={20} strokeWidth={activeTab === 'vocab' ? 2.5 : 2} />
             <span className="text-[10px] font-medium mt-1">单词</span>
           </button>
-          <button onClick={() => setActiveTab('grammar')} className={`flex flex-col items-center p-2 rounded-lg w-16 ${activeTab === 'grammar' ? 'text-sage-dark' : 'text-slate-400'}`}>
+          <button onClick={() => setActiveTab('grammar')} className={`flex flex-col items-center p-2 rounded-lg w-16 transition-transform active:scale-95 ${activeTab === 'grammar' ? 'text-sage-dark' : 'text-slate-400'}`}>
             <Layers size={20} strokeWidth={activeTab === 'grammar' ? 2.5 : 2} />
             <span className="text-[10px] font-medium mt-1">语法</span>
           </button>
           <div className="relative -top-5">
-            <button onClick={() => setActiveTab('practice')} className={`flex flex-col items-center justify-center w-14 h-14 rounded-full shadow-lg shadow-sage/30 ${activeTab === 'practice' ? 'bg-sage-dark text-white' : 'bg-paper border border-sage/20 text-slate-400'}`}>
+            <button onClick={() => setActiveTab('practice')} className={`flex flex-col items-center justify-center w-14 h-14 rounded-full shadow-[4px_4px_0px_0px_rgba(107,140,122,0.4)] active:shadow-none active:translate-y-[4px] active:translate-x-[4px] transition-all ${activeTab === 'practice' ? 'bg-sage-dark text-white border-2 border-[#8da399]' : 'bg-paper border-2 border-sage/20 text-slate-400'}`}>
               <PenTool size={24} fill={activeTab === 'practice' ? "currentColor" : "none"} />
             </button>
           </div>
-          <button onClick={() => setActiveTab('shadowing')} className={`flex flex-col items-center p-2 rounded-lg w-16 ${activeTab === 'shadowing' ? 'text-sage-dark' : 'text-slate-400'}`}>
+          <button onClick={() => setActiveTab('shadowing')} className={`flex flex-col items-center p-2 rounded-lg w-16 transition-transform active:scale-95 ${activeTab === 'shadowing' ? 'text-sage-dark' : 'text-slate-400'}`}>
             <Mic size={20} strokeWidth={activeTab === 'shadowing' ? 2.5 : 2} />
             <span className="text-[10px] font-medium mt-1">跟读</span>
           </button>
@@ -241,7 +241,7 @@ const App: React.FC = () => {
       {/* Global AI FAB */}
       <button
         onClick={() => handleOpenAI('')}
-        className="fixed bottom-24 md:bottom-8 right-6 bg-sage-dark text-white p-4 rounded-full shadow-xl shadow-sage/40 hover:bg-sage transition-all hover:scale-105 hover:-translate-y-1 z-50 flex items-center gap-2"
+        className="fixed bottom-24 md:bottom-8 right-6 bg-sage-dark text-white p-4 rounded-full shadow-[4px_4px_0px_0px_rgba(107,140,122,0.4)] hover:shadow-[2px_2px_0px_0px_rgba(107,140,122,0.4)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all z-50 flex items-center gap-2 border-2 border-[#9db3a9]"
       >
         <img src="https://api.iconify.design/fluent-emoji:teacher-light.svg" className="w-6 h-6" alt="Sensei" />
         <span className="font-bold hidden md:inline">AI 老师</span>

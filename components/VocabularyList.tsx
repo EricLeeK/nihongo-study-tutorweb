@@ -4,7 +4,7 @@ import { Volume2, Sparkles, Loader2, ChevronDown, ChevronUp } from 'lucide-react
 import { generateWordExamples } from '../services/geminiService';
 
 interface VocabularyListProps {
-    vocabList: Vocabulary[];
+  vocabList: Vocabulary[];
 }
 
 export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => {
@@ -25,7 +25,7 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => 
   const handleGenerate = async (vocab: Vocabulary, e: React.MouseEvent) => {
     e.stopPropagation();
     const key = vocab.id || `${vocab.lessonId}-${vocab.word}`;
-    
+
     // If already generated, just toggle visibility
     if (examples[key]) {
       setExpanded(prev => ({ ...prev, [key]: !prev[key] }));
@@ -51,8 +51,8 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => 
         const hasExample = !!examples[key];
 
         return (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="bg-white rounded-lg shadow-sm border border-slate-100 hover:border-teal-300 transition-all cursor-pointer group relative overflow-hidden"
             onClick={() => handleSpeak(vocab.word)}
           >
@@ -60,27 +60,26 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => 
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                     <p className="text-lg font-bold text-slate-800 group-hover:text-teal-700 transition-colors">
-                        {vocab.word}
-                     </p>
-                     <Volume2 size={16} className="text-slate-300 group-hover:text-teal-500 transition-colors" />
+                    <p className="text-lg font-bold text-slate-800 group-hover:text-teal-700 transition-colors">
+                      {vocab.word}
+                    </p>
+                    <Volume2 size={16} className="text-slate-300 group-hover:text-teal-500 transition-colors" />
                   </div>
                   <p className="text-sm text-slate-500">{vocab.reading}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-slate-700 font-medium">{vocab.meaning}</p>
-                  <span className={`text-xs px-2 py-1 rounded-full inline-block mt-1 ${
-                    vocab.type === 'i-adj' ? 'bg-blue-100 text-blue-700' :
-                    vocab.type === 'na-adj' ? 'bg-orange-100 text-orange-700' :
-                    vocab.type === 'verb' ? 'bg-red-100 text-red-700' :
-                    vocab.type === 'counter' ? 'bg-purple-100 text-purple-700' :
-                    'bg-slate-100 text-slate-600'
-                  }`}>
-                    {vocab.type === 'i-adj' ? 'い形容词' : 
-                     vocab.type === 'na-adj' ? 'な形容词' : 
-                     vocab.type === 'verb' ? '动词' :
-                     vocab.type === 'counter' ? '量词' :
-                     vocab.type === 'noun' ? '名词' : '短语'}
+                  <span className={`text-xs px-2 py-1 rounded-full inline-block mt-1 ${vocab.type === 'i-adj' ? 'bg-blue-100 text-blue-700' :
+                      vocab.type === 'na-adj' ? 'bg-orange-100 text-orange-700' :
+                        vocab.type === 'verb' ? 'bg-red-100 text-red-700' :
+                          vocab.type === 'counter' ? 'bg-purple-100 text-purple-700' :
+                            'bg-slate-100 text-slate-600'
+                    }`}>
+                    {vocab.type === 'i-adj' ? 'い形容词' :
+                      vocab.type === 'na-adj' ? 'な形容词' :
+                        vocab.type === 'verb' ? '动词' :
+                          vocab.type === 'counter' ? '量词' :
+                            vocab.type === 'noun' ? '名词' : '短语'}
                   </span>
                 </div>
               </div>
@@ -88,19 +87,18 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => 
               {/* Action Bar */}
               <div className="mt-3 flex items-center justify-between border-t border-slate-50 pt-2">
                 <button
-                    onClick={(e) => handleGenerate(vocab, e)}
-                    className={`text-xs flex items-center gap-1 px-2 py-1 rounded transition-colors ${
-                        hasExample && isExpanded 
-                        ? 'bg-teal-50 text-teal-700' 
-                        : 'text-slate-400 hover:bg-indigo-50 hover:text-indigo-600'
+                  onClick={(e) => handleGenerate(vocab, e)}
+                  className={`text-xs flex items-center gap-1 px-2 py-1 rounded-lg border-2 border-b-4 border-r-4 transition-all active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${hasExample && isExpanded
+                      ? 'bg-teal-50 border-teal-200 border-b-teal-300 border-r-teal-300 text-teal-700'
+                      : 'bg-white border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-400 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200'
                     }`}
                 >
-                    {isLoading ? (
-                        <Loader2 size={14} className="animate-spin" />
-                    ) : (
-                        <Sparkles size={14} />
-                    )}
-                    <span>{hasExample ? (isExpanded ? '收起例句' : '查看例句') : '生成例句'}</span>
+                  {isLoading ? (
+                    <Loader2 size={14} className="animate-spin" />
+                  ) : (
+                    <Sparkles size={14} />
+                  )}
+                  <span>{hasExample ? (isExpanded ? '收起例句' : '查看例句') : '生成例句'}</span>
                 </button>
               </div>
             </div>

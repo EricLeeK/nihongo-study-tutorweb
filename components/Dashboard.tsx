@@ -58,7 +58,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartRev
         {/* Smart Review Call to Action */}
         <button
           onClick={onStartReview}
-          className="w-full bg-sand/40 p-6 rounded-[2rem] border border-sage/20 shadow-sm hover:shadow-md hover:border-sage/40 transition-all group relative overflow-hidden text-left h-full"
+          className="w-full bg-sand/40 p-6 rounded-[2rem] border-2 border-sage/10 border-b-sage/30 border-r-sage/30 shadow-[6px_6px_0px_0px_rgba(141,163,153,0.2)] hover:shadow-[2px_2px_0px_0px_rgba(141,163,153,0.2)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-200 group relative overflow-hidden text-left h-full"
         >
           <div className="absolute top-0 right-0 w-24 h-24 bg-white/40 rounded-full -mr-8 -mt-8 z-0 group-hover:scale-110 transition-transform"></div>
           <div className="relative z-10 flex flex-col justify-between h-full min-h-[140px]">
@@ -82,7 +82,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartRev
         {/* Hokudai Speaking Prep Card */}
         <button
           onClick={onStartSpeakingPrep}
-          className="w-full bg-[#8da399] p-6 rounded-[2rem] shadow-md text-white relative overflow-hidden group text-left h-full"
+          className="w-full bg-[#8da399] p-6 rounded-[2rem] shadow-[6px_6px_0px_0px_rgba(107,140,122,0.4)] hover:shadow-[2px_2px_0px_0px_rgba(107,140,122,0.4)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-200 text-white relative overflow-hidden group text-left h-full border-2 border-[#9db3a9] border-b-[#6b8c7a] border-r-[#6b8c7a]"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-8 -mt-8 z-0 group-hover:scale-110 transition-transform"></div>
           <div className="relative z-10 flex flex-col justify-between h-full min-h-[140px]">
@@ -108,7 +108,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartRev
         {/* Kana Chart Card (New) */}
         <button
           onClick={onOpenKanaChart}
-          className="w-full bg-sand/40 p-6 rounded-[2rem] border border-terracotta/20 shadow-sm hover:shadow-md hover:border-terracotta/40 transition-all group relative overflow-hidden text-left h-full"
+          className="w-full bg-sand/40 p-6 rounded-[2rem] border-2 border-terracotta/10 border-b-terracotta/30 border-r-terracotta/30 shadow-[6px_6px_0px_0px_rgba(224,122,95,0.15)] hover:shadow-[2px_2px_0px_0px_rgba(224,122,95,0.15)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-200 group relative overflow-hidden text-left h-full"
         >
           <div className="absolute top-0 right-0 w-24 h-24 bg-terracotta/5 rounded-full -mr-8 -mt-8 z-0 group-hover:scale-110 transition-transform"></div>
           <div className="relative z-10 flex flex-col justify-between h-full min-h-[140px]">
@@ -170,9 +170,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartRev
                 key={lesson.id}
                 onClick={() => onSelectLesson(lesson.id)}
                 disabled={isLocked}
-                className={`group relative p-6 rounded-[2rem] border-2 text-left transition-all hover:-translate-y-1 ${isLocked
+                className={`group relative p-6 rounded-[2rem] border-2 text-left transition-all duration-200 ${isLocked
                   ? 'bg-sand/20 border-transparent opacity-60 cursor-not-allowed'
-                  : 'bg-white/60 border-transparent hover:border-sage/30 hover:shadow-md hover:bg-white/80'
+                  : 'bg-white/60 border-sage/10 border-b-sage/20 border-r-sage/20 shadow-[4px_4px_0px_0px_rgba(141,163,153,0.15)] hover:shadow-[2px_2px_0px_0px_rgba(141,163,153,0.15)] hover:translate-x-[1px] hover:translate-y-[1px] active:shadow-none active:translate-x-[3px] active:translate-y-[3px] hover:bg-white/80'
                   }`}
               >
                 {/* Progress Bar Top */}

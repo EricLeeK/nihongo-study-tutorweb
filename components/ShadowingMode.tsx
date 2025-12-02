@@ -8,30 +8,30 @@ interface ShadowingModeProps {
 }
 
 export const ShadowingMode: React.FC<ShadowingModeProps> = ({ vocabList, exerciseList }) => {
-  const [items, setItems] = useState<{text: string, sub: string, type: 'word' | 'sentence'}[]>([]);
+  const [items, setItems] = useState<{ text: string, sub: string, type: 'word' | 'sentence' }[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [autoPlay, setAutoPlay] = useState(false);
 
   useEffect(() => {
     // Combine vocab and sentences into a linear playlist
-    const playlist: {text: string, sub: string, type: 'word' | 'sentence'}[] = [];
-    
+    const playlist: { text: string, sub: string, type: 'word' | 'sentence' }[] = [];
+
     vocabList.forEach(v => playlist.push({ text: v.word, sub: `${v.reading} - ${v.meaning}`, type: 'word' }));
     exerciseList.forEach(e => playlist.push({ text: e.answer, sub: e.hint, type: 'sentence' }));
-    
+
     setItems(playlist);
     setCurrentIndex(0);
   }, [vocabList, exerciseList]);
 
   const speak = (text: string) => {
     if (!window.speechSynthesis) return;
-    
+
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'ja-JP';
     utterance.rate = 0.9; // Slightly slower for learning
-    
+
     utterance.onend = () => {
       setIsPlaying(false);
       if (autoPlay && currentIndex < items.length - 1) {
@@ -50,7 +50,7 @@ export const ShadowingMode: React.FC<ShadowingModeProps> = ({ vocabList, exercis
 
   useEffect(() => {
     if (autoPlay && items.length > 0) {
-        speak(items[currentIndex].text);
+      speak(items[currentIndex].text);
     }
   }, [currentIndex, autoPlay]);
 
@@ -84,12 +84,12 @@ export const ShadowingMode: React.FC<ShadowingModeProps> = ({ vocabList, exercis
 
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border-2 border-teal-50 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-2 bg-slate-100">
-          <div 
+          <div
             className="h-full bg-teal-500 transition-all duration-300"
             style={{ width: `${((currentIndex + 1) / items.length) * 100}%` }}
           />
         </div>
-        
+
         <div className="flex justify-between text-xs text-slate-400 mb-8">
           <span>{currentIndex + 1} / {items.length}</span>
           <span className="uppercase tracking-wider">{currentItem.type === 'word' ? '单词' : '句子'}</span>
@@ -107,33 +107,32 @@ export const ShadowingMode: React.FC<ShadowingModeProps> = ({ vocabList, exercis
         </div>
 
         <div className="flex items-center justify-center gap-6">
-          <button 
+          <button
             onClick={handlePrev}
             disabled={currentIndex === 0}
-            className="p-3 rounded-full hover:bg-slate-100 text-slate-400 disabled:opacity-30 transition-colors"
+            className="p-3 rounded-full hover:bg-slate-100 text-slate-400 disabled:opacity-30 border-2 border-transparent hover:border-slate-200 hover:border-b-4 hover:border-r-4 transition-all active:translate-y-[2px] active:translate-x-[2px] active:border-b-2 active:border-r-2"
           >
             <SkipBack size={28} />
           </button>
 
-          <button 
+          <button
             onClick={handlePlayCurrent}
             disabled={isPlaying && autoPlay}
-            className={`p-6 rounded-full shadow-lg transform transition-all hover:scale-105 active:scale-95 ${
-              isPlaying ? 'bg-indigo-100 text-indigo-600' : 'bg-teal-600 text-white'
-            }`}
+            className={`p-6 rounded-full shadow-lg transform transition-all active:scale-95 border-2 border-b-4 border-r-4 active:border-b-2 active:border-r-2 active:translate-y-[2px] active:translate-x-[2px] ${isPlaying ? 'bg-indigo-100 border-indigo-200 border-b-indigo-300 border-r-indigo-300 text-indigo-600' : 'bg-teal-600 border-teal-700 border-b-teal-800 border-r-teal-800 text-white'
+              }`}
           >
             {isPlaying && !autoPlay ? <Volume2 size={32} className="animate-pulse" /> : <Play size={32} fill="currentColor" />}
           </button>
 
-          <button 
-             onClick={handleNext}
-             disabled={currentIndex === items.length - 1}
-             className="p-3 rounded-full hover:bg-slate-100 text-slate-400 disabled:opacity-30 transition-colors"
+          <button
+            onClick={handleNext}
+            disabled={currentIndex === items.length - 1}
+            className="p-3 rounded-full hover:bg-slate-100 text-slate-400 disabled:opacity-30 border-2 border-transparent hover:border-slate-200 hover:border-b-4 hover:border-r-4 transition-all active:translate-y-[2px] active:translate-x-[2px] active:border-b-2 active:border-r-2"
           >
             <SkipForward size={28} />
           </button>
         </div>
-        
+
         <div className="mt-8 flex justify-center">
           <button
             onClick={() => {
@@ -141,9 +140,8 @@ export const ShadowingMode: React.FC<ShadowingModeProps> = ({ vocabList, exercis
               if (!autoPlay) speak(items[currentIndex].text);
               else window.speechSynthesis.cancel();
             }}
-            className={`text-sm font-medium px-4 py-2 rounded-lg border transition-colors ${
-              autoPlay ? 'bg-teal-50 border-teal-200 text-teal-700' : 'border-slate-200 text-slate-500 hover:bg-slate-50'
-            }`}
+            className={`text-sm font-medium px-4 py-2 rounded-xl border-2 border-b-4 border-r-4 transition-all active:translate-y-[2px] active:translate-x-[2px] active:border-b-2 active:border-r-2 ${autoPlay ? 'bg-teal-50 border-teal-200 border-b-teal-300 border-r-teal-300 text-teal-700' : 'bg-white border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-500 hover:bg-slate-50'
+              }`}
           >
             {autoPlay ? '自动播放中 (暂停)' : '开启自动连播'}
           </button>

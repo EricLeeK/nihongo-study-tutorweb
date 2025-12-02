@@ -23,7 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSearch }) 
         <div className="flex items-center gap-2 md:gap-4 mr-16">
           <button
             onClick={onOpenSearch}
-            className="flex items-center gap-2 bg-white/50 hover:bg-white/80 text-sage-dark px-4 py-2 rounded-full transition-all text-sm border border-sage/20 shadow-sm"
+            className="flex items-center gap-2 bg-white/50 hover:bg-white/80 text-sage-dark px-4 py-2 rounded-full transition-all text-sm border-2 border-sage/10 border-b-sage/20 border-r-sage/20 shadow-[4px_4px_0px_0px_rgba(141,163,153,0.2)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]"
           >
             <Search size={16} />
             <span className="hidden md:inline opacity-80 font-medium">搜索...</span>
@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSettings, onOpenSearch }) 
 
           <button
             onClick={onOpenSettings}
-            className="p-2 rounded-full hover:bg-sage/10 text-sage transition-colors"
+            className="p-2 rounded-full hover:bg-sage/10 text-sage transition-all border-2 border-transparent hover:border-sage/10 hover:border-b-sage/20 hover:border-r-sage/20 hover:shadow-[3px_3px_0px_0px_rgba(141,163,153,0.2)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]"
             title="设置 API Key"
           >
             <Settings size={20} />

@@ -10,7 +10,7 @@ interface PracticeModeProps {
 export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }) => {
   // Get unique sections from the passed exercises
   const sections = Array.from(new Set(exercises.map(e => e.section))).sort((a, b) => Number(a) - Number(b));
-  
+
   const [activeSection, setActiveSection] = useState<number>(sections[0] || 1);
   const [inputs, setInputs] = useState<Record<string, string>>({});
   const [results, setResults] = useState<Record<string, 'correct' | 'incorrect' | null>>({});
@@ -19,7 +19,7 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }
   // Reset section if exercises change (lesson switch)
   useEffect(() => {
     if (sections.length > 0 && !sections.includes(activeSection)) {
-        setActiveSection(sections[0]);
+      setActiveSection(sections[0]);
     }
   }, [exercises]);
 
@@ -28,7 +28,7 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }
   const handleCheck = (exercise: Exercise) => {
     const userInput = (inputs[exercise.id] || '').trim().replace(/\s+/g, '');
     const correctAnswer = exercise.answer.replace(/\s+/g, '');
-    
+
     // Simple exact match check for this demo
     const isCorrect = userInput === correctAnswer;
     setResults({ ...results, [exercise.id]: isCorrect ? 'correct' : 'incorrect' });
@@ -43,11 +43,10 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }
             <button
               key={num}
               onClick={() => setActiveSection(num)}
-              className={`px-4 py-2 rounded-full whitespace-nowrap font-medium transition-colors ${
-                activeSection === num
-                  ? 'bg-teal-600 text-white'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
+              className={`px-4 py-2 rounded-xl border-2 border-b-4 border-r-4 mx-1 whitespace-nowrap font-medium transition-all active:translate-y-[2px] active:translate-x-[2px] active:shadow-none ${activeSection === num
+                  ? 'bg-teal-600 border-teal-700 border-b-teal-800 border-r-teal-800 text-white'
+                  : 'bg-slate-100 border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-600 hover:bg-slate-200'
+                }`}
             >
               第 {num} 题
             </button>
@@ -80,19 +79,19 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }
               <div className="flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => handleCheck(exercise)}
-                  className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors font-medium flex items-center gap-2"
+                  className="bg-teal-600 text-white px-4 py-2 rounded-xl border-2 border-teal-700 border-b-teal-800 border-r-teal-800 hover:bg-teal-700 transition-all active:translate-y-[2px] active:translate-x-[2px] active:shadow-none active:border-b-2 active:border-r-2 font-medium flex items-center gap-2"
                 >
                   检查
                 </button>
                 <button
-                  onClick={() => setShowAnswer(prev => ({...prev, [exercise.id]: !prev[exercise.id]}))}
-                  className="bg-amber-100 text-amber-800 px-4 py-2 rounded-lg hover:bg-amber-200 transition-colors font-medium flex items-center gap-2"
+                  onClick={() => setShowAnswer(prev => ({ ...prev, [exercise.id]: !prev[exercise.id] }))}
+                  className="bg-amber-100 text-amber-800 px-4 py-2 rounded-xl border-2 border-amber-200 border-b-amber-300 border-r-amber-300 hover:bg-amber-200 transition-all active:translate-y-[2px] active:translate-x-[2px] active:shadow-none active:border-b-2 active:border-r-2 font-medium flex items-center gap-2"
                 >
                   {showAnswer[exercise.id] ? '隐藏答案' : '显示答案'}
                 </button>
                 <button
                   onClick={() => onAskAI(`关于题目 "${exercise.prompt}" 的答案 "${exercise.answer}"，请解释一下语法。`)}
-                  className="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-200 transition-colors font-medium flex items-center gap-2 ml-auto"
+                  className="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-xl border-2 border-indigo-200 border-b-indigo-300 border-r-indigo-300 hover:bg-indigo-200 transition-all active:translate-y-[2px] active:translate-x-[2px] active:shadow-none active:border-b-2 active:border-r-2 font-medium flex items-center gap-2 ml-auto"
                 >
                   <MessageCircle size={18} />
                   <span className="hidden sm:inline">问 AI</span>
@@ -106,7 +105,7 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }
                   <span>正解！太棒了！</span>
                 </div>
               )}
-              
+
               {results[exercise.id] === 'incorrect' && (
                 <div className="flex items-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg mt-2">
                   <XCircle size={20} />
