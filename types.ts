@@ -6,6 +6,7 @@ export interface Vocabulary {
   reading: string;
   meaning: string;
   type: 'noun' | 'na-adj' | 'i-adj' | 'phrase' | 'verb' | 'adverb' | 'counter';
+  group?: 1 | 2 | 3; // Verb group for conjugation
 }
 
 export interface GrammarRule {
@@ -20,7 +21,7 @@ export interface Exercise {
   id: string;
   lessonId: string;
   section: number;
-  prompt: string; 
+  prompt: string;
   answer: string;
   hint: string;
 }

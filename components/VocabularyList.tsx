@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Vocabulary } from '../types';
 import { Volume2, Sparkles, Loader2, ChevronDown, ChevronUp } from 'lucide-react';
 import { generateWordExamples } from '../services/geminiService';
+import { getTeForm } from '../utils/conjugation';
 
 interface VocabularyListProps {
   vocabList: Vocabulary[];
@@ -12,6 +13,14 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAsk
   const [examples, setExamples] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState<Record<string, boolean>>({});
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [showTeForm, setShowTeForm] = useState<Record<string, boolean>>({});
+
+  const toggleTeForm = (word: string) => {
+    setShowTeForm(prev => ({
+      ...prev,
+      [word]: !prev[word]
+    }));
+  };
 
   const handleSpeak = (text: string, e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -54,7 +63,7 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAsk
         return (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-sm border border-slate-100 hover:border-teal-300 transition-all cursor-pointer group relative overflow-hidden"
+            className="bg-white rounded-lg shadow-sm border border-slate-100 hover:border-teal-300 transition-all cursor-pointer group relative"
             onClick={() => handleSpeak(vocab.word)}
           >
             <div className="p-4">
@@ -114,6 +123,30 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAsk
                 >
                   <Sparkles size={14} /> 问 AI
                 </button>
+
+                {vocab.type === 'verb' && vocab.group && (
+                  <div className="relative ml-2">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleTeForm(vocab.word);
+                      }}
+                      className={`w-8 h-8 flex items-center justify-center rounded-lg border-2 border-b-4 border-r-4 transition-all active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 text-xs font-bold ${showTeForm[vocab.word]
+                        ? 'bg-emerald-100 text-emerald-700 border-emerald-200 border-b-emerald-300 border-r-emerald-300'
+                        : 'bg-white border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-400 hover:bg-slate-50'
+                        }`}
+                      title="显示て形 (Te-form)"
+                    >
+                      て
+                    </button>
+                    {showTeForm[vocab.word] && (
+                      <div className="absolute right-0 bottom-full mb-2 bg-emerald-600 text-white text-xs px-3 py-2 rounded-xl shadow-xl whitespace-nowrap z-10 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 duration-200 border-2 border-emerald-700">
+                        <span className="opacity-75 text-[10px] uppercase tracking-wider border-r border-emerald-500 pr-2 mr-1">G{vocab.group}</span>
+                        <span className="font-bold text-sm">{getTeForm(vocab.word, vocab.group)}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 
