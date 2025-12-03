@@ -5,9 +5,10 @@ import { generateWordExamples } from '../services/geminiService';
 
 interface VocabularyListProps {
   vocabList: Vocabulary[];
+  onAskAI: (question: string, context: string) => void;
 }
 
-export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => {
+export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAskAI }) => {
   const [examples, setExamples] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState<Record<string, boolean>>({});
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
@@ -70,10 +71,10 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => 
                 <div className="text-right">
                   <p className="text-slate-700 font-medium">{vocab.meaning}</p>
                   <span className={`text-xs px-2 py-1 rounded-full inline-block mt-1 ${vocab.type === 'i-adj' ? 'bg-blue-100 text-blue-700' :
-                      vocab.type === 'na-adj' ? 'bg-orange-100 text-orange-700' :
-                        vocab.type === 'verb' ? 'bg-red-100 text-red-700' :
-                          vocab.type === 'counter' ? 'bg-purple-100 text-purple-700' :
-                            'bg-slate-100 text-slate-600'
+                    vocab.type === 'na-adj' ? 'bg-orange-100 text-orange-700' :
+                      vocab.type === 'verb' ? 'bg-red-100 text-red-700' :
+                        vocab.type === 'counter' ? 'bg-purple-100 text-purple-700' :
+                          'bg-slate-100 text-slate-600'
                     }`}>
                     {vocab.type === 'i-adj' ? 'い形容词' :
                       vocab.type === 'na-adj' ? 'な形容词' :
@@ -89,8 +90,8 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => 
                 <button
                   onClick={(e) => handleGenerate(vocab, e)}
                   className={`text-xs flex items-center gap-1 px-2 py-1 rounded-lg border-2 border-b-4 border-r-4 transition-all active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${hasExample && isExpanded
-                      ? 'bg-teal-50 border-teal-200 border-b-teal-300 border-r-teal-300 text-teal-700'
-                      : 'bg-white border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-400 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200'
+                    ? 'bg-teal-50 border-teal-200 border-b-teal-300 border-r-teal-300 text-teal-700'
+                    : 'bg-white border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-400 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200'
                     }`}
                 >
                   {isLoading ? (
@@ -99,6 +100,19 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList }) => 
                     <Sparkles size={14} />
                   )}
                   <span>{hasExample ? (isExpanded ? '收起例句' : '查看例句') : '生成例句'}</span>
+                </button>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onAskAI(
+                      `单词 "${vocab.word}" (${vocab.meaning}) 有什么特殊的用法或注意事项吗？`,
+                      `Word: ${vocab.word}\nReading: ${vocab.reading}\nMeaning: ${vocab.meaning}\nType: ${vocab.type}`
+                    );
+                  }}
+                  className="text-xs flex items-center gap-1 px-2 py-1 rounded-lg border-2 border-b-4 border-r-4 border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-400 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200 transition-all active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2"
+                >
+                  <Sparkles size={14} /> 问 AI
                 </button>
               </div>
             </div>

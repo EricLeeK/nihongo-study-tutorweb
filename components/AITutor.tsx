@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Sparkles } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { askGeminiTutor } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
@@ -12,7 +14,7 @@ interface AITutorProps {
 export const AITutor: React.FC<AITutorProps> = ({ isOpen, onClose, initialQuestion }) => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: '你好！我是你的日语 AI 助教。关于今天的过去式练习，有什么不懂的都可以问我哦！' }
+    { role: 'model', text: '你好！我是你的日语 AI 助教。关于今天的练习，有什么不懂的都可以问我哦！' }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -36,7 +38,7 @@ export const AITutor: React.FC<AITutorProps> = ({ isOpen, onClose, initialQuesti
     setIsLoading(true);
 
     const aiResponseText = await askGeminiTutor(userMsg.text);
-    
+
     const aiMsg: ChatMessage = { role: 'model', text: aiResponseText };
     setMessages(prev => [...prev, aiMsg]);
     setIsLoading(false);
@@ -66,12 +68,35 @@ export const AITutor: React.FC<AITutorProps> = ({ isOpen, onClose, initialQuesti
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === 'user' ? 'bg-indigo-100 text-indigo-600' : 'bg-teal-100 text-teal-600'}`}>
                   {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                 </div>
-                <div className={`p-3 rounded-xl text-sm leading-relaxed whitespace-pre-wrap ${
-                  msg.role === 'user' 
-                    ? 'bg-indigo-600 text-white rounded-tr-none' 
-                    : 'bg-white text-slate-700 shadow-sm border border-slate-100 rounded-tl-none'
-                }`}>
-                  {msg.text}
+                <div className={`p-3 rounded-xl text-sm leading-relaxed ${msg.role === 'user'
+                  ? 'bg-indigo-600 text-white rounded-tr-none'
+                  : 'bg-white text-slate-700 shadow-sm border border-slate-100 rounded-tl-none'
+                  }`}>
+                  {msg.role === 'user' ? (
+                    <div className="whitespace-pre-wrap">{msg.text}</div>
+                  ) : (
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                        ul: ({ node, ...props }) => <ul className="list-disc list-inside mb-2 space-y-1" {...props} />,
+                        ol: ({ node, ...props }) => <ol className="list-decimal list-inside mb-2 space-y-1" {...props} />,
+                        li: ({ node, ...props }) => <li className="ml-1" {...props} />,
+                        strong: ({ node, ...props }) => <span className="font-bold text-indigo-700" {...props} />,
+                        code: ({ node, ...props }) => {
+                          const { className, children } = props as any;
+                          const match = /language-(\w+)/.exec(className || '');
+                          const isInline = !match && !String(children).includes('\n');
+                          return isInline
+                            ? <code className="bg-slate-100 text-pink-600 px-1 py-0.5 rounded font-mono text-xs border border-slate-200" {...props} />
+                            : <code className="block bg-slate-800 text-slate-100 p-2 rounded-lg font-mono text-xs overflow-x-auto my-2" {...props} />;
+                        },
+                        blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-indigo-200 pl-3 italic text-slate-500 my-2" {...props} />,
+                      }}
+                    >
+                      {msg.text}
+                    </ReactMarkdown>
+                  )}
                 </div>
               </div>
             </div>

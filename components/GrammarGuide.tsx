@@ -5,6 +5,7 @@ import { Lightbulb, PlayCircle, CheckCircle2, XCircle, ArrowRight, RefreshCw, Za
 
 interface GrammarGuideProps {
   rules: GrammarRule[];
+  onAskAI: (question: string, context: string) => void;
 }
 
 // --- Interactive Components ---
@@ -38,8 +39,8 @@ const TeFormLab = () => {
             key={g}
             onClick={() => setGroup(g as any)}
             className={`flex-1 py-2 rounded-xl font-bold text-sm transition-all border-2 border-b-4 border-r-4 active:translate-y-[2px] active:translate-x-[2px] active:border-b-2 active:border-r-2 ${group === g
-                ? 'bg-indigo-600 border-indigo-700 border-b-indigo-800 border-r-indigo-800 text-white'
-                : 'bg-slate-100 border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-500 hover:bg-slate-200'
+              ? 'bg-indigo-600 border-indigo-700 border-b-indigo-800 border-r-indigo-800 text-white'
+              : 'bg-slate-100 border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-500 hover:bg-slate-200'
               }`}
           >
             Group {g} {g === 1 ? '(五段)' : g === 2 ? '(一段)' : '(变格)'}
@@ -57,8 +58,8 @@ const TeFormLab = () => {
                   key={k}
                   onClick={() => setEnding(k)}
                   className={`px-3 py-1 rounded-xl border-2 border-b-4 border-r-4 text-sm font-mono transition-all active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 ${ending === k
-                      ? 'bg-teal-500 text-white border-teal-600 border-b-teal-700 border-r-teal-700'
-                      : 'bg-white text-slate-600 border-slate-200 border-b-slate-300 border-r-slate-300 hover:border-teal-300'
+                    ? 'bg-teal-500 text-white border-teal-600 border-b-teal-700 border-r-teal-700'
+                    : 'bg-white text-slate-600 border-slate-200 border-b-slate-300 border-r-slate-300 hover:border-teal-300'
                     }`}
                 >
                   {k === 'iki' ? 'iki (去)' : k}
@@ -280,7 +281,7 @@ const CounterVisualizer = () => {
   );
 };
 
-export const GrammarGuide: React.FC<GrammarGuideProps> = ({ rules }) => {
+export const GrammarGuide: React.FC<GrammarGuideProps> = ({ rules, onAskAI }) => {
   // Determine if we should show specific labs based on the lesson content
   const lessonId = rules[0]?.lessonId;
 
@@ -298,9 +299,20 @@ export const GrammarGuide: React.FC<GrammarGuideProps> = ({ rules }) => {
             <div className="absolute top-0 right-0 w-24 h-24 bg-teal-100 rounded-full -mr-10 -mt-10 opacity-50"></div>
 
             <div className="relative z-10">
-              <div className="flex items-center gap-2 mb-3">
-                <Lightbulb className="text-amber-500 fill-amber-500" size={20} />
-                <h3 className="font-bold text-teal-900 text-lg">{rule.title}</h3>
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Lightbulb className="text-amber-500 fill-amber-500" size={20} />
+                  <h3 className="font-bold text-teal-900 text-lg">{rule.title}</h3>
+                </div>
+                <button
+                  onClick={() => onAskAI(
+                    `请详细解释一下语法点 "${rule.title}" 的用法。`,
+                    `Grammar Rule: ${rule.title}\nDescription: ${rule.description}\nPattern: ${rule.pattern}\nExample: ${rule.example}`
+                  )}
+                  className="text-xs bg-indigo-50 text-indigo-600 px-2 py-1 rounded-lg border border-indigo-100 hover:bg-indigo-100 transition-colors flex items-center gap-1"
+                >
+                  <Zap size={12} /> 问 AI
+                </button>
               </div>
 
               <p className="text-slate-700 mb-4 leading-relaxed text-sm md:text-base">

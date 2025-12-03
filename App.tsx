@@ -27,6 +27,7 @@ const App: React.FC = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [aiQuestion, setAiQuestion] = useState('');
+  const [aiContext, setAiContext] = useState('');
 
   // Scroll to top when lesson changes
   useEffect(() => {
@@ -48,8 +49,9 @@ const App: React.FC = () => {
     EXERCISES.filter(e => e.lessonId === currentLessonId),
     [currentLessonId]);
 
-  const handleOpenAI = (question: string = '') => {
+  const handleOpenAI = (question: string = '', context: string = '') => {
     setAiQuestion(question);
+    setAiContext(context);
     setIsAIModalOpen(true);
   };
 
@@ -194,8 +196,8 @@ const App: React.FC = () => {
 
               {/* Content Area */}
               <div className="min-h-[60vh]">
-                {activeTab === 'vocab' && <VocabularyList vocabList={filteredVocab} />}
-                {activeTab === 'grammar' && <GrammarGuide rules={filteredGrammar} />}
+                {activeTab === 'vocab' && <VocabularyList vocabList={filteredVocab} onAskAI={handleOpenAI} />}
+                {activeTab === 'grammar' && <GrammarGuide rules={filteredGrammar} onAskAI={handleOpenAI} />}
                 {activeTab === 'practice' && <PracticeMode exercises={filteredExercises} onAskAI={handleOpenAI} />}
                 {activeTab === 'shadowing' && <ShadowingMode vocabList={filteredVocab} exerciseList={filteredExercises} />}
               </div>
@@ -251,6 +253,7 @@ const App: React.FC = () => {
         isOpen={isAIModalOpen}
         onClose={() => setIsAIModalOpen(false)}
         initialQuestion={aiQuestion}
+        context={aiContext}
       />
 
       <ApiKeyModal

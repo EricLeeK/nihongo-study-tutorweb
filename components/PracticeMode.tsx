@@ -4,7 +4,7 @@ import { CheckCircle, XCircle, HelpCircle, MessageCircle } from 'lucide-react';
 
 interface PracticeModeProps {
   exercises: Exercise[];
-  onAskAI: (context: string) => void;
+  onAskAI: (question: string, context: string) => void;
 }
 
 export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }) => {
@@ -44,8 +44,8 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }
               key={num}
               onClick={() => setActiveSection(num)}
               className={`px-4 py-2 rounded-xl border-2 border-b-4 border-r-4 mx-1 whitespace-nowrap font-medium transition-all active:translate-y-[2px] active:translate-x-[2px] active:shadow-none ${activeSection === num
-                  ? 'bg-teal-600 border-teal-700 border-b-teal-800 border-r-teal-800 text-white'
-                  : 'bg-slate-100 border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-600 hover:bg-slate-200'
+                ? 'bg-teal-600 border-teal-700 border-b-teal-800 border-r-teal-800 text-white'
+                : 'bg-slate-100 border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-600 hover:bg-slate-200'
                 }`}
             >
               第 {num} 题
@@ -90,7 +90,10 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({ exercises, onAskAI }
                   {showAnswer[exercise.id] ? '隐藏答案' : '显示答案'}
                 </button>
                 <button
-                  onClick={() => onAskAI(`关于题目 "${exercise.prompt}" 的答案 "${exercise.answer}"，请解释一下语法。`)}
+                  onClick={() => onAskAI(
+                    `关于题目 "${exercise.prompt}" 的答案 "${exercise.answer}"，请解释一下语法。`,
+                    `Exercise Prompt: ${exercise.prompt}\nCorrect Answer: ${exercise.answer}\nHint: ${exercise.hint}`
+                  )}
                   className="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-xl border-2 border-indigo-200 border-b-indigo-300 border-r-indigo-300 hover:bg-indigo-200 transition-all active:translate-y-[2px] active:translate-x-[2px] active:shadow-none active:border-b-2 active:border-r-2 font-medium flex items-center gap-2 ml-auto"
                 >
                   <MessageCircle size={18} />
