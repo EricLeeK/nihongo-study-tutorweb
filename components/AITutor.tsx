@@ -48,7 +48,7 @@ export const AITutor: React.FC<AITutorProps> = ({ isOpen, onClose, initialQuesti
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-white w-full max-w-lg h-[80vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+      <div className="bg-white w-full max-w-2xl h-[80vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
         {/* Header */}
         <div className="bg-indigo-600 text-white p-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
