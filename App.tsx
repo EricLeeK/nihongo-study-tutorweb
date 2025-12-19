@@ -12,12 +12,13 @@ import { ApiKeyModal } from './components/ApiKeyModal';
 import { GlobalSearch } from './components/GlobalSearch';
 import { SpeakingExamPrep } from './components/SpeakingExamPrep';
 import { KanaChart } from './components/KanaChart';
-import { Book, PenTool, Layers, RotateCw, Mic, ArrowLeft, Home } from 'lucide-react';
+import { Book, PenTool, Layers, RotateCw, Mic, ArrowLeft, Home, FlaskConical } from 'lucide-react';
 import { VOCABULARY_LIST, GRAMMAR_RULES, EXERCISES, LESSONS } from './constants';
+import { GrammarLab } from './components/GrammarLab';
 
 const App: React.FC = () => {
   const [currentLessonId, setCurrentLessonId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'vocab' | 'grammar' | 'practice' | 'shadowing' | 'review'>('practice');
+  const [activeTab, setActiveTab] = useState<'vocab' | 'grammar' | 'practice' | 'shadowing' | 'review' | 'lab'>('practice');
   const [isGlobalReviewMode, setIsGlobalReviewMode] = useState(false);
   const [isSpeakingPrepMode, setIsSpeakingPrepMode] = useState(false);
   const [isKanaChartMode, setIsKanaChartMode] = useState(false);
@@ -178,6 +179,7 @@ const App: React.FC = () => {
                   { id: 'practice', label: '做题练习', icon: PenTool },
                   { id: 'vocab', label: '单词表', icon: Book },
                   { id: 'grammar', label: '语法重点', icon: Layers },
+                  { id: 'lab', label: '趣味实验', icon: FlaskConical },
                   { id: 'shadowing', label: '跟读训练', icon: Mic },
                 ].map((tab) => (
                   <button
@@ -199,6 +201,7 @@ const App: React.FC = () => {
                 {activeTab === 'vocab' && <VocabularyList vocabList={filteredVocab} onAskAI={handleOpenAI} />}
                 {activeTab === 'grammar' && <GrammarGuide rules={filteredGrammar} onAskAI={handleOpenAI} />}
                 {activeTab === 'practice' && <PracticeMode exercises={filteredExercises} onAskAI={handleOpenAI} />}
+                {activeTab === 'lab' && <GrammarLab lessonId={currentLessonId} />}
                 {activeTab === 'shadowing' && <ShadowingMode vocabList={filteredVocab} exerciseList={filteredExercises} />}
               </div>
             </div>
@@ -236,6 +239,10 @@ const App: React.FC = () => {
           <button onClick={() => setActiveTab('shadowing')} className={`flex flex-col items-center p-2 rounded-lg w-16 transition-transform active:scale-95 ${activeTab === 'shadowing' ? 'text-sage-dark' : 'text-slate-400'}`}>
             <Mic size={20} strokeWidth={activeTab === 'shadowing' ? 2.5 : 2} />
             <span className="text-[10px] font-medium mt-1">跟读</span>
+          </button>
+          <button onClick={() => setActiveTab('lab')} className={`flex flex-col items-center p-2 rounded-lg w-16 transition-transform active:scale-95 ${activeTab === 'lab' ? 'text-sage-dark' : 'text-slate-400'}`}>
+            <FlaskConical size={20} strokeWidth={activeTab === 'lab' ? 2.5 : 2} />
+            <span className="text-[10px] font-medium mt-1">实验</span>
           </button>
         </div>
       )}

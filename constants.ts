@@ -104,6 +104,12 @@ export const LESSONS: LessonInfo[] = [
     title: '第17課：ない形 (Nai-Form)',
     description: '动词否定形式、禁止、必须与不必要',
     topics: ['ない形变形', '～ないでください', '～なければなりません', '～なくてもいいです']
+  },
+  {
+    id: 'L18',
+    title: '第18課：能力と趣味',
+    description: '基本能力表达、兴趣爱好、动作顺序',
+    topics: ['动词字典形', '名词+ができます', '字典形+ことができます', '趣味は～です', '～まえに']
   }
 ];
 
@@ -788,6 +794,42 @@ export const VOCABULARY_LIST: Vocabulary[] = [
   { lessonId: 'L17', word: '痛い', reading: 'いたい', meaning: '疼', type: 'i-adj' },
   { lessonId: 'L17', word: 'お大事に', reading: 'おだいじに', meaning: '请多保重', type: 'phrase' },
   { lessonId: 'L17', word: 'どうしましたか', reading: 'どうしましたか', meaning: '怎么了/哪里不舒服', type: 'phrase' },
+  { lessonId: 'L17', word: '顔', reading: 'かお', meaning: '脸', type: 'noun' },
+  { lessonId: 'L17', word: '首', reading: 'くび', meaning: '脖子', type: 'noun' },
+  { lessonId: 'L17', word: '背中', reading: 'せなか', meaning: '背', type: 'noun' },
+  { lessonId: 'L17', word: '足', reading: 'あし', meaning: '腿/脚', type: 'noun' },
+  { lessonId: 'L17', word: '手', reading: 'て', meaning: '手', type: 'noun' },
+  { lessonId: 'L17', word: '膝', reading: 'ひざ', meaning: '膝盖', type: 'noun' },
+
+  // --- Lesson 18 ---
+  { lessonId: 'L18', word: 'できます', reading: 'できます', meaning: '会/能/可以', type: 'verb', group: 2 },
+  { lessonId: 'L18', word: '洗います', reading: 'あらいます', meaning: '洗', type: 'verb', group: 1 },
+  { lessonId: 'L18', word: '弾きます', reading: 'ひきます', meaning: '弹(钢琴等)', type: 'verb', group: 1 },
+  { lessonId: 'L18', word: '歌います', reading: 'うたいます', meaning: '唱', type: 'verb', group: 1 },
+  { lessonId: 'L18', word: '集めます', reading: 'あつめます', meaning: '收集', type: 'verb', group: 2 },
+  { lessonId: 'L18', word: '捨てます', reading: 'すてます', meaning: '扔掉', type: 'verb', group: 2 },
+  { lessonId: 'L18', word: '換えます', reading: 'かえます', meaning: '变换/交换', type: 'verb', group: 2 },
+  { lessonId: 'L18', word: '運転します', reading: 'うんてんします', meaning: '驾驶', type: 'verb', group: 3 },
+  { lessonId: 'L18', word: '予約します', reading: 'よやくします', meaning: '预约', type: 'verb', group: 3 },
+  { lessonId: 'L18', word: '見学します', reading: 'けんがくします', meaning: '参观学习', type: 'verb', group: 3 },
+  { lessonId: 'L18', word: 'ピアノ', reading: 'ピアノ', meaning: '钢琴', type: 'noun' },
+  { lessonId: 'L18', word: '～メートル', reading: '～メートル', meaning: '～米', type: 'counter' },
+  { lessonId: 'L18', word: '国際～', reading: 'こくさい～', meaning: '国际～', type: 'noun' },
+  { lessonId: 'L18', word: '現金', reading: 'げんきん', meaning: '现金', type: 'noun' },
+  { lessonId: 'L18', word: '趣味', reading: 'しゅみ', meaning: '爱好', type: 'noun' },
+  { lessonId: 'L18', word: '日記', reading: 'にっき', meaning: '日记', type: 'noun' },
+  { lessonId: 'L18', word: 'お祈り', reading: 'おいのり', meaning: '祈祷', type: 'noun' },
+  { lessonId: 'L18', word: '課長', reading: 'かちょう', meaning: '科长', type: 'noun' },
+  { lessonId: 'L18', word: '部長', reading: 'ぶちょう', meaning: '部长', type: 'noun' },
+  { lessonId: 'L18', word: '社長', reading: 'しゃちょう', meaning: '社长', type: 'noun' },
+  { lessonId: 'L18', word: '動物', reading: 'どうぶつ', meaning: '动物', type: 'noun' },
+  { lessonId: 'L18', word: '馬', reading: 'うま', meaning: '马', type: 'noun' },
+  { lessonId: 'L18', word: '牧場', reading: 'ぼくじょう', meaning: '牧场', type: 'noun' },
+  { lessonId: 'L18', word: '本当ですか', reading: 'ほんとうですか', meaning: '真的吗', type: 'phrase' },
+  { lessonId: 'L18', word: 'ぜひ', reading: 'ぜひ', meaning: '务必/一定', type: 'adverb' },
+  { lessonId: 'L18', word: 'なかなか', reading: 'なかなか', meaning: '不简单/不容易(后接否定)', type: 'adverb' },
+  { lessonId: 'L18', word: 'へえ', reading: 'へえ', meaning: '哎(感叹)', type: 'phrase' },
+  { lessonId: 'L18', word: 'それはおもしろいですね', reading: 'それはおもしろいですね', meaning: '那很有趣呢', type: 'phrase' },
 ];
 
 export const GRAMMAR_RULES: GrammarRule[] = [
@@ -1223,6 +1265,49 @@ export const GRAMMAR_RULES: GrammarRule[] = [
     description: '表示没有必要做某事。',
     pattern: 'V-ない形(去い) + くても いいです',
     example: '明日来なくてもいいです。(明天不来也可以)'
+  },
+  // --- Lesson 18 ---
+  {
+    lessonId: 'L18',
+    title: '1. 动词字典形 (Dictionary Form)',
+    description: '动词的基本形式。I类: i段→u段; II类: 去ます+る; III类: する, くる。',
+    pattern: '書く, 食べる, する, 来る',
+    example: '書きます→書く, 食べます→食べる'
+  },
+  {
+    lessonId: 'L18',
+    title: '2. 能力/可能性 (名词)',
+    description: '表示会做某事或某事可行。',
+    pattern: 'N が できます',
+    example: 'スキーができます。(我会滑雪)'
+  },
+  {
+    lessonId: 'L18',
+    title: '3. 能力/可能性 (动作)',
+    description: '表示能做某个动作。动作要用字典形+こと名词化。',
+    pattern: 'V-字典形 + こと が できます',
+    example: '漢字を読むことができます。(我会读汉字)'
+  },
+  {
+    lessonId: 'L18',
+    title: '4. 询问能力 (在某地能做什么)',
+    description: '询问或说明在某个场所能做什么事情。',
+    pattern: '场所 で N が できます',
+    example: '図書館で本を借りることができます。(在图书馆能借书)'
+  },
+  {
+    lessonId: 'L18',
+    title: '5. 兴趣爱好 (趣味は～)',
+    description: '描述自己的爱好。',
+    pattern: '趣味 は N(动作性)/V-字典形こと です',
+    example: '趣味は映画を見ることです。(爱好是看电影)'
+  },
+  {
+    lessonId: 'L18',
+    title: '6. 动作顺序 (～まえに)',
+    description: '在做动作2之前先做动作1。',
+    pattern: 'V1-字典形/Nの/时间 + まえに、V2',
+    example: '寝るまえに、本を読みます。(睡觉前读书)'
   }
 ];
 
@@ -1349,4 +1434,19 @@ export const EXERCISES: Exercise[] = [
 
   { id: '17-4-1', lessonId: 'L17', section: 4, prompt: '明日は (  ) くてもいいです。(来ます)', answer: '明日は来なくてもいいです。', hint: '明天不来也可以 (不必要)' },
   { id: '17-4-2', lessonId: 'L17', section: 4, prompt: '靴を (  ) くてもいいです。(脱ぎます)', answer: '靴を脱がなくてもいいです。', hint: '不脱鞋也可以 (不必要)' },
+
+  // --- Lesson 18 ---
+  { id: '18-1-1', lessonId: 'L18', section: 1, prompt: '買います -> (  )', answer: '買う', hint: '买 (i-adj -> u) Dictionary Form' },
+  { id: '18-1-2', lessonId: 'L18', section: 1, prompt: '待ちます -> (  )', answer: '待つ', hint: '等 (chi -> tsu)' },
+  { id: '18-1-3', lessonId: 'L18', section: 1, prompt: '食べます -> (  )', answer: '食べる', hint: '吃 (II类: 去masu+ru)' },
+  { id: '18-1-4', lessonId: 'L18', section: 1, prompt: '来ます -> (  )', answer: 'くる', hint: '来 (kimasu -> kuru)' },
+
+  { id: '18-2-1', lessonId: 'L18', section: 2, prompt: 'ミラーさんは 日本語 (  ) できます。(助词)', answer: 'ミラーさんは日本語ができます。', hint: '米勒会日语 (对象用が)' },
+  { id: '18-2-2', lessonId: 'L18', section: 2, prompt: '雪 (  ) たくさん 降りましたから、スキー (  ) できます。', answer: '雪がたくさん降りましたから、スキーができます。', hint: '下了很多雪，所以能滑雪' },
+
+  { id: '18-3-1', lessonId: 'L18', section: 3, prompt: 'マリアさんは 自転車に 乗る (  ) ができます。', answer: 'マリアさんは自転車に乗ることができます。', hint: '玛利亚会骑自行车 (动词名词化)' },
+  { id: '18-3-2', lessonId: 'L18', section: 3, prompt: 'ここで お金を (  ) ことができます。(換えます)', answer: 'ここでお金を換えることができます。', hint: '在这里可以换钱' },
+
+  { id: '18-4-1', lessonId: 'L18', section: 4, prompt: '私の 趣味は 写真を (  ) ことです。(撮ります)', answer: '私の趣味は写真を撮ることです。', hint: '我的爱好是拍照' },
+  { id: '18-4-2', lessonId: 'L18', section: 4, prompt: '寝る (  ) 、日記を書きます。', answer: '寝るまえに、日記を書きます。', hint: '睡觉之前写日记 (辞書形+まえに)' },
 ];
