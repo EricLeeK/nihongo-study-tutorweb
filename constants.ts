@@ -110,6 +110,12 @@ export const LESSONS: LessonInfo[] = [
     title: '第18課：能力と趣味',
     description: '基本能力表达、兴趣爱好、动作顺序',
     topics: ['动词字典形', '名词+ができます', '字典形+ことができます', '趣味は～です', '～まえに']
+  },
+  {
+    id: 'L19',
+    title: '第19課：た形と経験',
+    description: '动词た形、过去经历、动作列举、状态变化',
+    topics: ['た形变形', '～たことがあります', '～たり～たりします', '～く/になります']
   }
 ];
 
@@ -830,6 +836,32 @@ export const VOCABULARY_LIST: Vocabulary[] = [
   { lessonId: 'L18', word: 'なかなか', reading: 'なかなか', meaning: '不简单/不容易(后接否定)', type: 'adverb' },
   { lessonId: 'L18', word: 'へえ', reading: 'へえ', meaning: '哎(感叹)', type: 'phrase' },
   { lessonId: 'L18', word: 'それはおもしろいですね', reading: 'それはおもしろいですね', meaning: '那很有趣呢', type: 'phrase' },
+
+  // --- Lesson 19 ---
+  { lessonId: 'L19', word: '登ります', reading: 'のぼります', meaning: '登/爬', type: 'verb', group: 1 },
+  { lessonId: 'L19', word: '泊まります', reading: 'とまります', meaning: '住/过夜', type: 'verb', group: 1 },
+  { lessonId: 'L19', word: '掃除します', reading: 'そうじします', meaning: '打扫', type: 'verb', group: 3 },
+  { lessonId: 'L19', word: '洗濯します', reading: 'せんたくします', meaning: '洗衣服', type: 'verb', group: 3 },
+  { lessonId: 'L19', word: '練習します', reading: 'れんしゅうします', meaning: '练习', type: 'verb', group: 3 },
+  { lessonId: 'L19', word: 'なります', reading: 'なります', meaning: '变成/成为', type: 'verb', group: 1 },
+  { lessonId: 'L19', word: '眠い', reading: 'ねむい', meaning: '困/想睡觉', type: 'i-adj' },
+  { lessonId: 'L19', word: '強い', reading: 'つよい', meaning: '强/强壮', type: 'i-adj' },
+  { lessonId: 'L19', word: '弱い', reading: 'よわい', meaning: '弱/脆弱', type: 'i-adj' },
+  { lessonId: 'L19', word: '調子', reading: 'ちょうし', meaning: '情况/状态', type: 'noun' },
+  { lessonId: 'L19', word: 'ゴルフ', reading: 'ゴルフ', meaning: '高尔夫', type: 'noun' },
+  { lessonId: 'L19', word: '相撲', reading: 'すもう', meaning: '相扑', type: 'noun' },
+  { lessonId: 'L19', word: 'パチンコ', reading: 'パチンコ', meaning: '柏青哥', type: 'noun' },
+  { lessonId: 'L19', word: 'お茶', reading: 'おちゃ', meaning: '茶道', type: 'noun' },
+  { lessonId: 'L19', word: '日', reading: 'ひ', meaning: '日子/日期', type: 'noun' },
+  { lessonId: 'L19', word: '一度', reading: 'いちど', meaning: '一次', type: 'noun' },
+  { lessonId: 'L19', word: '一度も', reading: 'いちども', meaning: '一次也(不)', type: 'phrase' },
+  { lessonId: 'L19', word: 'だんだん', reading: 'だんだん', meaning: '逐渐/渐渐', type: 'adverb' },
+  { lessonId: 'L19', word: 'もうすぐ', reading: 'もうすぐ', meaning: '马上/快要', type: 'adverb' },
+  { lessonId: 'L19', word: 'おかげさまで', reading: 'おかげさまで', meaning: '托您的福', type: 'phrase' },
+  { lessonId: 'L19', word: '乾杯', reading: 'かんぱい', meaning: '干杯', type: 'phrase' },
+  { lessonId: 'L19', word: '実は', reading: 'じつは', meaning: '其实/不瞒您说', type: 'phrase' },
+  { lessonId: 'L19', word: 'ダイエット', reading: 'ダイエット', meaning: '减肥', type: 'noun' },
+  { lessonId: 'L19', word: '何回も', reading: 'なんかいも', meaning: '好几次', type: 'phrase' },
 ];
 
 export const GRAMMAR_RULES: GrammarRule[] = [
@@ -1304,10 +1336,46 @@ export const GRAMMAR_RULES: GrammarRule[] = [
   },
   {
     lessonId: 'L18',
-    title: '6. 动作顺序 (～まえに)',
+    title: '6. 动作顺序 (~まえに)',
     description: '在做动作2之前先做动作1。',
     pattern: 'V1-字典形/Nの/时间 + まえに、V2',
     example: '寝るまえに、本を読みます。(睡觉前读书)'
+  },
+  // --- Lesson 19 ---
+  {
+    lessonId: 'L19',
+    title: '1. た形变形规则 (Ta-Form)',
+    description: '和て形变形完全一样！把"て"换成"た"，把"で"换成"だ"。',
+    pattern: '書いて→書いた, 飲んで→飲んだ, 買って→買った, 食べて→食べた, して→した, 来て→来た',
+    example: '食べます→食べた (吃了), します→した (做了)'
+  },
+  {
+    lessonId: 'L19',
+    title: '2. 过去经历 (~ことがあります)',
+    description: '表示"曾经做过某事"。否定用"一度もありません"(一次也没有)。',
+    pattern: 'V-た形 + ことが あります',
+    example: '北海道で馬に乗ったことがあります。(我在北海道骑过马)'
+  },
+  {
+    lessonId: 'L19',
+    title: '3. 动作列举 (~たり~たりします)',
+    description: '列举有代表性的动作，暗示除此之外还做了别的。时态由末尾的します/しました决定。',
+    pattern: 'V1-た形 + り、V2-た形 + り します/しました',
+    example: '日曜日はテニスをしたり、映画を見たりしました。(星期天打了网球、看了电影什么的)'
+  },
+  {
+    lessonId: 'L19',
+    title: '4. 状态变化/い形容词 (~くなります)',
+    description: 'い形容词表示变化时，去掉い加くなります。',
+    pattern: 'いAdj(去い) + く なります',
+    example: '寒くなりました。(变冷了)'
+  },
+  {
+    lessonId: 'L19',
+    title: '5. 状态变化/な形容词・名词 (~になります)',
+    description: 'な形容词或名词表示变化时，加になります。',
+    pattern: 'なAdj/N + に なります',
+    example: '日本語が上手になりました。(日语变好了)'
   }
 ];
 
@@ -1449,4 +1517,23 @@ export const EXERCISES: Exercise[] = [
 
   { id: '18-4-1', lessonId: 'L18', section: 4, prompt: '私の 趣味は 写真を (  ) ことです。(撮ります)', answer: '私の趣味は写真を撮ることです。', hint: '我的爱好是拍照' },
   { id: '18-4-2', lessonId: 'L18', section: 4, prompt: '寝る (  ) 、日記を書きます。', answer: '寝るまえに、日記を書きます。', hint: '睡觉之前写日记 (辞書形+まえに)' },
+
+  // --- Lesson 19 ---
+  { id: '19-1-1', lessonId: 'L19', section: 1, prompt: '書きます -> (  )', answer: '書いた', hint: '写 (ki -> ita) た形' },
+  { id: '19-1-2', lessonId: 'L19', section: 1, prompt: '飲みます -> (  )', answer: '飲んだ', hint: '喝 (mi -> nda)' },
+  { id: '19-1-3', lessonId: 'L19', section: 1, prompt: '買います -> (  )', answer: '買った', hint: '买 (i -> tta)' },
+  { id: '19-1-4', lessonId: 'L19', section: 1, prompt: '食べます -> (  )', answer: '食べた', hint: '吃 (II类: 去masu+ta)' },
+  { id: '19-1-5', lessonId: 'L19', section: 1, prompt: '来ます -> (  )', answer: '来た', hint: '来 (kimasu -> kita)' },
+
+  { id: '19-2-1', lessonId: 'L19', section: 2, prompt: '富士山に (  ) ことがありますか。(登ります)', answer: '富士山に登ったことがありますか。', hint: '爬过富士山吗？(经历)' },
+  { id: '19-2-2', lessonId: 'L19', section: 2, prompt: '日本のお酒を (  ) ことがありますか。(飲みます)', answer: '日本のお酒を飲んだことがありますか。', hint: '喝过日本酒吗？(经历)' },
+  { id: '19-2-3', lessonId: 'L19', section: 2, prompt: '北海道へ行ったことがありますか。(いいえ)', answer: 'いいえ、一度もありません。', hint: '没有，一次也没去过' },
+
+  { id: '19-3-1', lessonId: 'L19', section: 3, prompt: '週末は 本を (  ) り、音楽を (  ) り します。(読みます/聞きます)', answer: '週末は本を読んだり、音楽を聞いたりします。', hint: '周末看看书、听听音乐什么的' },
+  { id: '19-3-2', lessonId: 'L19', section: 3, prompt: '日曜日は テニスを (  ) り、映画を (  ) り しました。(します/見ます)', answer: '日曜日はテニスをしたり、映画を見たりしました。', hint: '星期天打了网球、看了电影什么的' },
+
+  { id: '19-4-1', lessonId: 'L19', section: 4, prompt: 'だんだん (  ) なりました。(寒い)', answer: 'だんだん寒くなりました。', hint: '渐渐变冷了 (い形容词)' },
+  { id: '19-4-2', lessonId: 'L19', section: 4, prompt: '日本語が (  ) なりました。(上手)', answer: '日本語が上手になりました。', hint: '日语变好了 (な形容词)' },
+  { id: '19-4-3', lessonId: 'L19', section: 4, prompt: '来年 20歳 (  ) なります。', answer: '来年20歳になります。', hint: '明年就20岁了 (名词)' },
+  { id: '19-4-4', lessonId: 'L19', section: 4, prompt: '眠く (  )。', answer: '眠くなりました。', hint: '困了/想睡了' },
 ];

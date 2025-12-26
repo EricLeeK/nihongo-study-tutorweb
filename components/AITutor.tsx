@@ -9,9 +9,10 @@ interface AITutorProps {
   isOpen: boolean;
   onClose: () => void;
   initialQuestion?: string;
+  context?: string;
 }
 
-export const AITutor: React.FC<AITutorProps> = ({ isOpen, onClose, initialQuestion }) => {
+export const AITutor: React.FC<AITutorProps> = ({ isOpen, onClose, initialQuestion, context }) => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
     { role: 'model', text: '你好！我是你的日语 AI 助教。关于今天的练习，有什么不懂的都可以问我哦！' }
@@ -37,7 +38,7 @@ export const AITutor: React.FC<AITutorProps> = ({ isOpen, onClose, initialQuesti
     setInput('');
     setIsLoading(true);
 
-    const aiResponseText = await askGeminiTutor(userMsg.text);
+    const aiResponseText = await askGeminiTutor(userMsg.text, context);
 
     const aiMsg: ChatMessage = { role: 'model', text: aiResponseText };
     setMessages(prev => [...prev, aiMsg]);
