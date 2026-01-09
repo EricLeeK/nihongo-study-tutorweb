@@ -963,6 +963,24 @@ export const VOCABULARY_LIST: Vocabulary[] = [
   { lessonId: 'L21', word: 'しばらくですね', reading: 'しばらくですね', meaning: '好久不见', type: 'phrase' },
   { lessonId: 'L21', word: '～でも飲みませんか', reading: '～でものみませんか', meaning: '要不要喝点～什么的', type: 'phrase' },
   { lessonId: 'L21', word: '見ないと', reading: 'みないと', meaning: '不看不行', type: 'phrase' },
+  // 补充词汇
+  { lessonId: 'L21', word: '地球', reading: 'ちきゅう', meaning: '地球', type: 'noun' },
+  { lessonId: 'L21', word: '月', reading: 'つき', meaning: '月亮', type: 'noun' },
+  { lessonId: 'L21', word: '本当', reading: 'ほんとう', meaning: '真实/真的', type: 'noun' },
+  { lessonId: 'L21', word: '物価', reading: 'ぶっか', meaning: '物价', type: 'noun' },
+  { lessonId: 'L21', word: '天才', reading: 'てんさい', meaning: '天才', type: 'noun' },
+  { lessonId: 'L21', word: 'アニメ', reading: 'アニメ', meaning: '动画', type: 'noun' },
+  { lessonId: 'L21', word: 'マンガ', reading: 'マンガ', meaning: '漫画', type: 'noun' },
+  { lessonId: 'L21', word: '久しぶりですね', reading: 'ひさしぶりですね', meaning: '好久不见', type: 'phrase' },
+  { lessonId: 'L21', word: 'もう帰らないと', reading: 'もうかえらないと', meaning: '我得回去了', type: 'phrase' },
+  // 人名・専門用語
+  { lessonId: 'L21', word: 'アインシュタイン', reading: 'アインシュタイン', meaning: '爱因斯坦(1879-1955)', type: 'noun' },
+  { lessonId: 'L21', word: 'ガガーリン', reading: 'ガガーリン', meaning: '加加林(1934-1968)', type: 'noun' },
+  { lessonId: 'L21', word: 'ガリレオ', reading: 'ガリレオ', meaning: '伽利略(1564-1642)', type: 'noun' },
+  { lessonId: 'L21', word: 'キング牧師', reading: 'キングぼくし', meaning: '马丁·路德·金(1929-1968)', type: 'noun' },
+  { lessonId: 'L21', word: 'フランクリン', reading: 'フランクリン', meaning: '本杰明·富兰克林(1706-1790)', type: 'noun' },
+  { lessonId: 'L21', word: 'かぐや姫', reading: 'かぐやひめ', meaning: '辉夜姬(竹取物语)', type: 'noun' },
+  { lessonId: 'L21', word: '天神祭', reading: 'てんじんまつり', meaning: '天神祭(大阪祭典)', type: 'noun' },
 ];
 
 export const GRAMMAR_RULES: GrammarRule[] = [
