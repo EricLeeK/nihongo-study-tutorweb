@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Vocabulary } from '../types';
-import { Volume2, Sparkles, Loader2, ChevronDown, ChevronUp } from 'lucide-react';
+import { Volume2, Sparkles, Loader2, Shuffle, X } from 'lucide-react';
 import { generateWordExamples } from '../services/geminiService';
-import { getTeForm } from '../utils/conjugation';
+import { getAllConjugations } from '../utils/conjugation';
 
 interface VocabularyListProps {
   vocabList: Vocabulary[];
@@ -13,10 +13,11 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAsk
   const [examples, setExamples] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState<Record<string, boolean>>({});
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
-  const [showTeForm, setShowTeForm] = useState<Record<string, boolean>>({});
+  const [showConjugation, setShowConjugation] = useState<Record<string, boolean>>({});
 
-  const toggleTeForm = (word: string) => {
-    setShowTeForm(prev => ({
+  const toggleConjugation = (word: string, e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setShowConjugation(prev => ({
       ...prev,
       [word]: !prev[word]
     }));
@@ -36,7 +37,6 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAsk
     e.stopPropagation();
     const key = vocab.id || `${vocab.lessonId}-${vocab.word}`;
 
-    // If already generated, just toggle visibility
     if (examples[key]) {
       setExpanded(prev => ({ ...prev, [key]: !prev[key] }));
       return;
@@ -59,6 +59,7 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAsk
         const isExpanded = expanded[key];
         const isLoading = loading[key];
         const hasExample = !!examples[key];
+        const conjugations = vocab.type === 'verb' && vocab.group ? getAllConjugations(vocab.word, vocab.group) : null;
 
         return (
           <div
@@ -87,7 +88,7 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAsk
                     }`}>
                     {vocab.type === 'i-adj' ? 'い形容词' :
                       vocab.type === 'na-adj' ? 'な形容词' :
-                        vocab.type === 'verb' ? '动词' :
+                        vocab.type === 'verb' ? `动词 G${vocab.group || '?'}` :
                           vocab.type === 'counter' ? '量词' :
                             vocab.type === 'noun' ? '名词' : '短语'}
                   </span>
@@ -124,31 +125,92 @@ export const VocabularyList: React.FC<VocabularyListProps> = ({ vocabList, onAsk
                   <Sparkles size={14} /> 问 AI
                 </button>
 
+                {/* Conjugation Button for Verbs */}
                 {vocab.type === 'verb' && vocab.group && (
-                  <div className="relative ml-2">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleTeForm(vocab.word);
-                      }}
-                      className={`w-8 h-8 flex items-center justify-center rounded-lg border-2 border-b-4 border-r-4 transition-all active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 text-xs font-bold ${showTeForm[vocab.word]
-                        ? 'bg-emerald-100 text-emerald-700 border-emerald-200 border-b-emerald-300 border-r-emerald-300'
-                        : 'bg-white border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-400 hover:bg-slate-50'
-                        }`}
-                      title="显示て形 (Te-form)"
-                    >
-                      て
-                    </button>
-                    {showTeForm[vocab.word] && (
-                      <div className="absolute right-0 bottom-full mb-2 bg-emerald-600 text-white text-xs px-3 py-2 rounded-xl shadow-xl whitespace-nowrap z-10 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 duration-200 border-2 border-emerald-700">
-                        <span className="opacity-75 text-[10px] uppercase tracking-wider border-r border-emerald-500 pr-2 mr-1">G{vocab.group}</span>
-                        <span className="font-bold text-sm">{getTeForm(vocab.word, vocab.group)}</span>
-                      </div>
-                    )}
-                  </div>
+                  <button
+                    onClick={(e) => toggleConjugation(vocab.word, e)}
+                    className={`text-xs flex items-center gap-1 px-3 py-1 rounded-lg border-2 border-b-4 border-r-4 transition-all active:translate-y-[1px] active:translate-x-[1px] active:border-b-2 active:border-r-2 font-bold ${showConjugation[vocab.word]
+                      ? 'bg-gradient-to-r from-violet-100 to-fuchsia-100 border-violet-300 border-b-violet-400 border-r-violet-400 text-violet-700'
+                      : 'bg-white border-slate-200 border-b-slate-300 border-r-slate-300 text-slate-400 hover:bg-violet-50 hover:text-violet-600 hover:border-violet-200'
+                      }`}
+                    title="显示动词变形"
+                  >
+                    <Shuffle size={14} />
+                    変形
+                  </button>
                 )}
               </div>
             </div>
+
+            {/* Conjugation Panel */}
+            {showConjugation[vocab.word] && conjugations && (
+              <div
+                className="bg-gradient-to-br from-violet-50 to-fuchsia-50 px-4 py-4 border-t border-violet-100 animate-in slide-in-from-top-2 duration-200"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-xs font-bold text-violet-600 uppercase tracking-wider flex items-center gap-2">
+                    <Shuffle size={12} /> 动词变形一览
+                  </h4>
+                  <button
+                    onClick={(e) => toggleConjugation(vocab.word, e)}
+                    className="text-violet-400 hover:text-violet-600 transition-colors"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {/* Dictionary Form */}
+                  <div
+                    className="bg-white rounded-lg p-2 border border-violet-100 cursor-pointer hover:bg-violet-100 transition-colors"
+                    onClick={() => handleSpeak(conjugations.dictionaryForm)}
+                  >
+                    <div className="text-[10px] text-violet-400 font-medium">辞書形</div>
+                    <div className="text-sm font-bold text-violet-800">{conjugations.dictionaryForm}</div>
+                  </div>
+                  {/* Masu Form */}
+                  <div
+                    className="bg-white rounded-lg p-2 border border-violet-100 cursor-pointer hover:bg-violet-100 transition-colors"
+                    onClick={() => handleSpeak(conjugations.masuForm)}
+                  >
+                    <div className="text-[10px] text-violet-400 font-medium">ます形</div>
+                    <div className="text-sm font-bold text-violet-800">{conjugations.masuForm}</div>
+                  </div>
+                  {/* Te Form */}
+                  <div
+                    className="bg-white rounded-lg p-2 border border-emerald-100 cursor-pointer hover:bg-emerald-100 transition-colors"
+                    onClick={() => handleSpeak(conjugations.teForm)}
+                  >
+                    <div className="text-[10px] text-emerald-500 font-medium">て形</div>
+                    <div className="text-sm font-bold text-emerald-700">{conjugations.teForm}</div>
+                  </div>
+                  {/* Ta Form */}
+                  <div
+                    className="bg-white rounded-lg p-2 border border-blue-100 cursor-pointer hover:bg-blue-100 transition-colors"
+                    onClick={() => handleSpeak(conjugations.taForm)}
+                  >
+                    <div className="text-[10px] text-blue-500 font-medium">た形</div>
+                    <div className="text-sm font-bold text-blue-700">{conjugations.taForm}</div>
+                  </div>
+                  {/* Nai Form */}
+                  <div
+                    className="bg-white rounded-lg p-2 border border-rose-100 cursor-pointer hover:bg-rose-100 transition-colors"
+                    onClick={() => handleSpeak(conjugations.naiForm)}
+                  >
+                    <div className="text-[10px] text-rose-500 font-medium">ない形</div>
+                    <div className="text-sm font-bold text-rose-700">{conjugations.naiForm}</div>
+                  </div>
+                  {/* Nakatta Form */}
+                  <div
+                    className="bg-white rounded-lg p-2 border border-orange-100 cursor-pointer hover:bg-orange-100 transition-colors"
+                    onClick={() => handleSpeak(conjugations.nakattaForm)}
+                  >
+                    <div className="text-[10px] text-orange-500 font-medium">なかった形</div>
+                    <div className="text-sm font-bold text-orange-700">{conjugations.nakattaForm}</div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Examples Panel */}
             {isExpanded && examples[key] && (

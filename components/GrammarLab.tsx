@@ -10,6 +10,10 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lessonId }) => {
         return <ClinicGame />;
     } else if (lessonId === 'L18') {
         return <GuildGame />;
+    } else if (lessonId === 'L20') {
+        return <ChameleonGame />;
+    } else if (lessonId === 'L21') {
+        return <GossipGame />;
     }
 
     return (
@@ -263,6 +267,414 @@ const GuildGame = () => {
 
                             <span className="pl-4 font-bold text-base">{opt}</span>
                             {feedback === 'correct' && opt === q.correct && <Sparkles className="absolute top-1/2 right-4 -translate-y-1/2 text-amber-500 animate-bounce" size={20} />}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// --- Lesson 20: Chameleon Game (Plain Form Conversion) ---
+const ChameleonGame = () => {
+    const [score, setScore] = useState(0);
+    const [streak, setStreak] = useState(0);
+    const [currentRound, setCurrentRound] = useState(0);
+    const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null);
+    const [timeLeft, setTimeLeft] = useState(15);
+    const [gameStarted, setGameStarted] = useState(false);
+
+    const scenarios = [
+        {
+            location: '🍻 居酒屋',
+            situation: '和老朋友喝酒',
+            formal: '明日、どこへ行きますか。',
+            formalMeaning: '明天去哪里？',
+            correct: '明日、どこ行く？',
+            options: ['明日、どこ行く？', '明日、どこへ行きますか。', '明日、どこ行きます？']
+        },
+        {
+            location: '🎮 部室',
+            situation: '大学社团活动',
+            formal: 'もう食べましたか。',
+            formalMeaning: '已经吃了吗？',
+            correct: 'もう食べた？',
+            options: ['もう食べた？', 'もう食べましたか？', 'もう食べるか？']
+        },
+        {
+            location: '🏠 友人の家',
+            situation: '在朋友家做客',
+            formal: 'この本はおもしろいですか。',
+            formalMeaning: '这本书有趣吗？',
+            correct: 'この本、おもしろい？',
+            options: ['この本、おもしろいですか？', 'この本、おもしろい？', 'この本がおもしろいか？']
+        },
+        {
+            location: '☕ カフェ',
+            situation: '和闺蜜聊天',
+            formal: '日本語は難しいですが、おもしろいです。',
+            formalMeaning: '日语虽然难，但很有趣。',
+            correct: '日本語は難しいけど、おもしろい。',
+            options: ['日本語は難しいけど、おもしろい。', '日本語は難しいですけど、おもしろい。', '日本語は難しいが、おもしろいです。']
+        },
+        {
+            location: '🎌 お祭り',
+            situation: '和朋友逛祭典',
+            formal: '明日は休みですから、一緒に行きませんか。',
+            formalMeaning: '明天休息，要不要一起去？',
+            correct: '明日、休みだから、一緒に行かない？',
+            options: ['明日は休みですから、一緒に行きませんか。', '明日、休みだから、一緒に行かない？', '明日は休みから、一緒に行かない？']
+        },
+    ];
+
+    useEffect(() => {
+        if (!gameStarted || feedback !== null) return;
+        if (timeLeft <= 0) {
+            setFeedback('wrong');
+            setStreak(0);
+            setTimeout(() => {
+                setFeedback(null);
+                setTimeLeft(15);
+                if (currentRound < scenarios.length - 1) {
+                    setCurrentRound(r => r + 1);
+                }
+            }, 1500);
+            return;
+        }
+        const timer = setTimeout(() => setTimeLeft(t => t - 1), 1000);
+        return () => clearTimeout(timer);
+    }, [timeLeft, gameStarted, feedback, currentRound, scenarios.length]);
+
+    const handleChoice = (choice: string) => {
+        if (choice === scenarios[currentRound].correct) {
+            const bonus = timeLeft > 10 ? 50 : timeLeft > 5 ? 25 : 0;
+            setScore(s => s + 100 + bonus + streak * 20);
+            setStreak(s => s + 1);
+            setFeedback('correct');
+        } else {
+            setStreak(0);
+            setFeedback('wrong');
+        }
+        setTimeout(() => {
+            setFeedback(null);
+            setTimeLeft(15);
+            if (currentRound < scenarios.length - 1) {
+                setCurrentRound(r => r + 1);
+            }
+        }, 1500);
+    };
+
+    if (!gameStarted) {
+        return (
+            <div className="bg-gradient-to-br from-violet-50 to-fuchsia-50 rounded-[2rem] border border-violet-100 shadow-xl p-12 text-center max-w-lg mx-auto min-h-[500px] flex flex-col items-center justify-center">
+                <div className="text-7xl mb-6 animate-bounce">🦎</div>
+                <h2 className="text-3xl font-black text-violet-800 mb-3">变色龙挑战</h2>
+                <p className="text-violet-600/80 mb-8 leading-relaxed">
+                    根据不同场合，把正式的日语转换成<strong className="text-violet-700">日常口语</strong>！<br />
+                    说对了才能融入环境，速度越快分数越高！
+                </p>
+                <div className="flex gap-4 text-sm text-violet-500 mb-8">
+                    <div className="bg-white px-4 py-2 rounded-full border border-violet-200">⏱️ 限时15秒</div>
+                    <div className="bg-white px-4 py-2 rounded-full border border-violet-200">🔥 连击加分</div>
+                </div>
+                <button
+                    onClick={() => setGameStarted(true)}
+                    className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all active:scale-95"
+                >
+                    开始变身！
+                </button>
+            </div>
+        );
+    }
+
+    if (currentRound >= scenarios.length) {
+        const rank = score >= 600 ? '🏆 变色龙大师' : score >= 400 ? '🥈 融入达人' : '🌱 初学者';
+        return (
+            <div className="bg-gradient-to-br from-violet-50 to-fuchsia-50 rounded-[2rem] border border-violet-100 shadow-xl p-12 text-center max-w-lg mx-auto">
+                <div className="text-6xl mb-4">🦎</div>
+                <h2 className="text-3xl font-black text-violet-800 mb-2">挑战完成！</h2>
+                <p className="text-violet-600 mb-6">{rank}</p>
+                <div className="bg-white rounded-2xl p-6 mb-8 border border-violet-100">
+                    <div className="text-sm text-violet-500 uppercase tracking-widest mb-1">Final Score</div>
+                    <div className="text-5xl font-black text-violet-700">{score}</div>
+                </div>
+                <button
+                    onClick={() => { setCurrentRound(0); setScore(0); setStreak(0); setTimeLeft(15); }}
+                    className="w-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg transition"
+                >
+                    再来一次
+                </button>
+            </div>
+        );
+    }
+
+    const s = scenarios[currentRound];
+
+    return (
+        <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl overflow-hidden min-h-[550px]">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-violet-500 to-fuchsia-500 p-4 flex justify-between items-center text-white">
+                <div className="flex items-center gap-3">
+                    <span className="text-2xl">🦎</span>
+                    <div>
+                        <div className="font-bold">变色龙挑战</div>
+                        <div className="text-xs text-white/70">Round {currentRound + 1}/{scenarios.length}</div>
+                    </div>
+                </div>
+                <div className="flex items-center gap-4">
+                    {streak > 1 && <div className="bg-white/20 px-3 py-1 rounded-full text-sm font-bold animate-pulse">🔥 x{streak}</div>}
+                    <div className="bg-white/20 px-4 py-1 rounded-full font-bold">{score} pts</div>
+                </div>
+            </div>
+
+            {/* Timer Bar */}
+            <div className="h-2 bg-slate-100">
+                <div
+                    className={`h-full transition-all duration-1000 ${timeLeft <= 5 ? 'bg-red-500' : timeLeft <= 10 ? 'bg-amber-500' : 'bg-violet-500'}`}
+                    style={{ width: `${(timeLeft / 15) * 100}%` }}
+                />
+            </div>
+
+            <div className="p-8">
+                {/* Location Card */}
+                <div className="text-center mb-8">
+                    <div className="inline-block bg-gradient-to-br from-violet-100 to-fuchsia-100 rounded-2xl px-6 py-4 mb-4">
+                        <div className="text-3xl mb-1">{s.location}</div>
+                        <div className="text-sm text-violet-600 font-medium">{s.situation}</div>
+                    </div>
+                </div>
+
+                {/* Formal Speech (to convert) */}
+                <div className="bg-slate-50 rounded-2xl p-6 mb-6 text-center border border-slate-200">
+                    <div className="text-xs text-slate-400 uppercase tracking-widest mb-2">🎩 正式说法</div>
+                    <div className="text-xl font-bold text-slate-700 mb-2">{s.formal}</div>
+                    <div className="text-sm text-slate-500">({s.formalMeaning})</div>
+                </div>
+
+                <div className="text-center text-sm text-slate-400 mb-4">👇 选择正确的<span className="text-violet-600 font-bold">口语表达</span></div>
+
+                {/* Options */}
+                <div className="space-y-3">
+                    {s.options.map((opt, i) => (
+                        <button
+                            key={i}
+                            onClick={() => handleChoice(opt)}
+                            disabled={feedback !== null}
+                            className={`w-full p-4 rounded-xl border-2 text-left font-medium transition-all ${feedback === 'correct' && opt === s.correct
+                                    ? 'bg-green-50 border-green-500 text-green-700 ring-4 ring-green-100'
+                                    : feedback === 'wrong' && opt !== s.correct
+                                        ? 'opacity-50 border-slate-200'
+                                        : feedback === 'wrong' && opt === s.correct
+                                            ? 'bg-green-50 border-green-500 text-green-700'
+                                            : 'bg-white border-slate-200 hover:border-violet-400 hover:bg-violet-50'
+                                }`}
+                        >
+                            <span className="text-slate-400 mr-2">{String.fromCharCode(65 + i)}.</span>
+                            {opt}
+                            {feedback === 'correct' && opt === s.correct && <CheckCircle2 className="inline ml-2 text-green-500" size={18} />}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// --- Lesson 21: Gossip Network Game (Quotation Clauses) ---
+const GossipGame = () => {
+    const [phase, setPhase] = useState<'intro' | 'playing' | 'result'>('intro');
+    const [currentRound, setCurrentRound] = useState(0);
+    const [score, setScore] = useState(0);
+    const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null);
+
+    const characters = ['👩‍🦰', '👨‍🦱', '👩‍🦳', '🧑‍🦲', '👨‍🦰'];
+
+    const scenarios = [
+        {
+            type: 'think',
+            speaker: '田中さん',
+            avatar: '👩‍🦰',
+            context: '看着窗外的乌云...',
+            thought: '明日は雨が降ります',
+            question: '田中さんはどう思っていますか？',
+            correct: '明日は雨が降ると思います',
+            options: ['明日は雨が降ると思います', '明日は雨が降りますと思います', '明日は雨が降ったと思います']
+        },
+        {
+            type: 'say',
+            speaker: '山田さん',
+            avatar: '👨‍🦱',
+            context: '昨天会议上说...',
+            thought: '来週、出張します',
+            question: '山田さんは何と言いましたか？',
+            correct: '来週、出張すると言いました',
+            options: ['来週、出張しますと言いました', '来週、出張すると言いました', '来週、出張したと言いました']
+        },
+        {
+            type: 'confirm',
+            speaker: '你',
+            avatar: '🙋',
+            context: '想确认明天的安排...',
+            thought: '明日は休みです',
+            question: '你想确认：明天休息，对吧？',
+            correct: '明日は休みでしょう？',
+            options: ['明日は休みですでしょう？', '明日は休みでしょう？', '明日は休みだでしょう？']
+        },
+        {
+            type: 'think',
+            speaker: '佐藤さん',
+            avatar: '👩‍🦳',
+            context: '看完这部电影后...',
+            thought: 'この映画はおもしろいです',
+            question: '佐藤さんの感想は？',
+            correct: 'この映画はおもしろいと思います',
+            options: ['この映画はおもしろいと思います', 'この映画はおもしろいですと思います', 'この映画がおもしろいと思います']
+        },
+        {
+            type: 'say',
+            speaker: '鈴木先生',
+            avatar: '🧑‍🦲',
+            context: '课堂上宣布...',
+            thought: '明日、テストがあります',
+            question: '鈴木先生は何と言いましたか？',
+            correct: '明日、テストがあると言いました',
+            options: ['明日、テストがありますと言いました', '明日、テストがあると言いました', '明日、テストだと言いました']
+        },
+    ];
+
+    const handleChoice = (choice: string) => {
+        if (choice === scenarios[currentRound].correct) {
+            setScore(s => s + 100);
+            setFeedback('correct');
+        } else {
+            setFeedback('wrong');
+        }
+        setTimeout(() => {
+            setFeedback(null);
+            if (currentRound < scenarios.length - 1) {
+                setCurrentRound(r => r + 1);
+            } else {
+                setPhase('result');
+            }
+        }, 1800);
+    };
+
+    if (phase === 'intro') {
+        return (
+            <div className="bg-gradient-to-br from-pink-50 to-orange-50 rounded-[2rem] border border-pink-100 shadow-xl p-12 text-center max-w-lg mx-auto min-h-[500px] flex flex-col items-center justify-center">
+                <div className="flex gap-1 mb-6 text-4xl">
+                    {characters.map((c, i) => (
+                        <span key={i} className="animate-bounce" style={{ animationDelay: `${i * 0.1}s` }}>{c}</span>
+                    ))}
+                </div>
+                <h2 className="text-3xl font-black text-pink-800 mb-3">八卦传声筒</h2>
+                <p className="text-pink-600/80 mb-8 leading-relaxed">
+                    听听大家都在说什么、想什么！<br />
+                    用正确的<strong className="text-pink-700">「と思います」「と言いました」</strong>传话！
+                </p>
+                <div className="flex gap-3 text-sm text-pink-500 mb-8 flex-wrap justify-center">
+                    <div className="bg-white px-4 py-2 rounded-full border border-pink-200">💭 推测想法</div>
+                    <div className="bg-white px-4 py-2 rounded-full border border-pink-200">💬 转述话语</div>
+                    <div className="bg-white px-4 py-2 rounded-full border border-pink-200">❓ 确认信息</div>
+                </div>
+                <button
+                    onClick={() => setPhase('playing')}
+                    className="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all active:scale-95"
+                >
+                    开始八卦！
+                </button>
+            </div>
+        );
+    }
+
+    if (phase === 'result') {
+        const rank = score >= 400 ? '🏆 八卦之王' : score >= 300 ? '🥈 消息灵通' : '🌱 新手记者';
+        return (
+            <div className="bg-gradient-to-br from-pink-50 to-orange-50 rounded-[2rem] border border-pink-100 shadow-xl p-12 text-center max-w-lg mx-auto">
+                <div className="flex gap-1 mb-4 text-3xl justify-center">
+                    {characters.map((c, i) => <span key={i}>{c}</span>)}
+                </div>
+                <h2 className="text-3xl font-black text-pink-800 mb-2">传话完毕！</h2>
+                <p className="text-pink-600 mb-6">{rank}</p>
+                <div className="bg-white rounded-2xl p-6 mb-8 border border-pink-100">
+                    <div className="text-sm text-pink-500 uppercase tracking-widest mb-1">Gossip Score</div>
+                    <div className="text-5xl font-black text-pink-700">{score}</div>
+                </div>
+                <button
+                    onClick={() => { setPhase('intro'); setCurrentRound(0); setScore(0); }}
+                    className="w-full bg-gradient-to-r from-pink-500 to-orange-500 text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg transition"
+                >
+                    再传一轮
+                </button>
+            </div>
+        );
+    }
+
+    const s = scenarios[currentRound];
+    const typeLabel = s.type === 'think' ? '💭 推测' : s.type === 'say' ? '💬 转述' : '❓ 确认';
+    const typeColor = s.type === 'think' ? 'violet' : s.type === 'say' ? 'blue' : 'amber';
+
+    return (
+        <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl overflow-hidden min-h-[550px]">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-pink-500 to-orange-500 p-4 flex justify-between items-center text-white">
+                <div className="flex items-center gap-3">
+                    <div className="flex -space-x-2">
+                        {characters.slice(0, 3).map((c, i) => (
+                            <span key={i} className="text-xl bg-white/20 p-1 rounded-full">{c}</span>
+                        ))}
+                    </div>
+                    <div>
+                        <div className="font-bold">八卦传声筒</div>
+                        <div className="text-xs text-white/70">Round {currentRound + 1}/{scenarios.length}</div>
+                    </div>
+                </div>
+                <div className="bg-white/20 px-4 py-1 rounded-full font-bold">{score} pts</div>
+            </div>
+
+            <div className="p-8">
+                {/* Type Badge */}
+                <div className="text-center mb-6">
+                    <span className={`inline-block px-4 py-2 rounded-full text-sm font-bold bg-${typeColor}-100 text-${typeColor}-700 border border-${typeColor}-200`}>
+                        {typeLabel}
+                    </span>
+                </div>
+
+                {/* Character Card */}
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl p-6 mb-6 text-center border border-slate-200">
+                    <div className="text-5xl mb-3">{s.avatar}</div>
+                    <div className="font-bold text-slate-700 text-lg">{s.speaker}</div>
+                    <div className="text-sm text-slate-500 mt-1">{s.context}</div>
+                    <div className="mt-4 bg-white rounded-xl p-4 border border-slate-200">
+                        <div className="text-xs text-slate-400 mb-1">原话/想法</div>
+                        <div className="font-bold text-slate-700">「{s.thought}」</div>
+                    </div>
+                </div>
+
+                {/* Question */}
+                <div className="text-center mb-6">
+                    <p className="text-slate-600 font-medium">{s.question}</p>
+                </div>
+
+                {/* Options */}
+                <div className="space-y-3">
+                    {s.options.map((opt, i) => (
+                        <button
+                            key={i}
+                            onClick={() => handleChoice(opt)}
+                            disabled={feedback !== null}
+                            className={`w-full p-4 rounded-xl border-2 text-left font-medium transition-all ${feedback === 'correct' && opt === s.correct
+                                    ? 'bg-green-50 border-green-500 text-green-700 ring-4 ring-green-100'
+                                    : feedback === 'wrong' && opt !== s.correct
+                                        ? 'opacity-50 border-slate-200'
+                                        : feedback === 'wrong' && opt === s.correct
+                                            ? 'bg-green-50 border-green-500 text-green-700'
+                                            : 'bg-white border-slate-200 hover:border-pink-400 hover:bg-pink-50'
+                                }`}
+                        >
+                            <span className="text-slate-400 mr-2">{String.fromCharCode(65 + i)}.</span>
+                            {opt}
+                            {feedback === 'correct' && opt === s.correct && <CheckCircle2 className="inline ml-2 text-green-500" size={18} />}
                         </button>
                     ))}
                 </div>

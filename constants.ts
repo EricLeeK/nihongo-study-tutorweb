@@ -116,6 +116,18 @@ export const LESSONS: LessonInfo[] = [
     title: '第19課：た形と経験',
     description: '动词た形、过去经历、动作列举、状态变化',
     topics: ['た形变形', '～たことがあります', '～たり～たりします', '～く/になります']
+  },
+  {
+    id: 'L20',
+    title: '第20課：普通形と会話',
+    description: '普通形变形规则，普通体会话用法',
+    topics: ['动词普通形', 'い/な形容词普通形', '名词普通形', '疑问句省略か', '助词省略', 'けど']
+  },
+  {
+    id: 'L21',
+    title: '第21課：引用と意見',
+    description: '引用节、表达意见和推测、转述他人的话',
+    topics: ['~と思います(推测)', '~と思います(意见)', '~と言いました', '~でしょう？', '~について', '~でも']
   }
 ];
 
@@ -862,6 +874,95 @@ export const VOCABULARY_LIST: Vocabulary[] = [
   { lessonId: 'L19', word: '実は', reading: 'じつは', meaning: '其实/不瞒您说', type: 'phrase' },
   { lessonId: 'L19', word: 'ダイエット', reading: 'ダイエット', meaning: '减肥', type: 'noun' },
   { lessonId: 'L19', word: '何回も', reading: 'なんかいも', meaning: '好几次', type: 'phrase' },
+
+  // --- Lesson 20 ---
+  // 动词
+  { lessonId: 'L20', word: '要ります', reading: 'いります', meaning: '需要(签证等)', type: 'verb', group: 1 },
+  { lessonId: 'L20', word: '調べます', reading: 'しらべます', meaning: '调查/查找', type: 'verb', group: 2 },
+  { lessonId: 'L20', word: '直します', reading: 'なおします', meaning: '修理/改正', type: 'verb', group: 1 },
+  { lessonId: 'L20', word: '修理します', reading: 'しゅうりします', meaning: '修理', type: 'verb', group: 3 },
+  { lessonId: 'L20', word: '電話します', reading: 'でんわします', meaning: '打电话', type: 'verb', group: 3 },
+  // 代词与称呼
+  { lessonId: 'L20', word: '僕', reading: 'ぼく', meaning: '我(男性非正式)', type: 'noun' },
+  { lessonId: 'L20', word: '君', reading: 'きみ', meaning: '你(男性非正式)', type: 'noun' },
+  { lessonId: 'L20', word: '～君', reading: '～くん', meaning: '~君(男性称呼)', type: 'noun' },
+  // 应答词
+  { lessonId: 'L20', word: 'うん', reading: 'うん', meaning: '嗯/是(非正式)', type: 'phrase' },
+  { lessonId: 'L20', word: 'ううん', reading: 'ううん', meaning: '不是(非正式)', type: 'phrase' },
+  // 名词
+  { lessonId: 'L20', word: 'サラリーマン', reading: 'サラリーマン', meaning: '上班族/公司职员', type: 'noun' },
+  { lessonId: 'L20', word: '言葉', reading: 'ことば', meaning: '语言/词语', type: 'noun' },
+  { lessonId: 'L20', word: '物価', reading: 'ぶっか', meaning: '物价', type: 'noun' },
+  { lessonId: 'L20', word: '着物', reading: 'きもの', meaning: '和服', type: 'noun' },
+  { lessonId: 'L20', word: 'ビザ', reading: 'ビザ', meaning: '签证', type: 'noun' },
+  { lessonId: 'L20', word: '始め', reading: 'はじめ', meaning: '开始', type: 'noun' },
+  { lessonId: 'L20', word: '終わり', reading: 'おわり', meaning: '结束', type: 'noun' },
+  // 指示词（非正式）
+  { lessonId: 'L20', word: 'こっち', reading: 'こっち', meaning: '这边(非正式)', type: 'noun' },
+  { lessonId: 'L20', word: 'そっち', reading: 'そっち', meaning: '那边(非正式)', type: 'noun' },
+  { lessonId: 'L20', word: 'あっち', reading: 'あっち', meaning: '那边(远处/非正式)', type: 'noun' },
+  { lessonId: 'L20', word: 'どっち', reading: 'どっち', meaning: '哪边(非正式)', type: 'noun' },
+  // 其他词汇与表达
+  { lessonId: 'L20', word: 'この間', reading: 'このあいだ', meaning: '前几天', type: 'noun' },
+  { lessonId: 'L20', word: 'みんなで', reading: 'みんなで', meaning: '大家一起', type: 'adverb' },
+  { lessonId: 'L20', word: '～けど', reading: '～けど', meaning: '但是(非正式转折)', type: 'phrase' },
+  { lessonId: 'L20', word: '国へ帰るの', reading: 'くにへかえるの', meaning: '要回国吗？', type: 'phrase' },
+  { lessonId: 'L20', word: 'どうするの', reading: 'どうするの', meaning: '怎么办？做什么？', type: 'phrase' },
+  { lessonId: 'L20', word: 'どうしようかな', reading: 'どうしようかな', meaning: '怎么办呢(思考)', type: 'phrase' },
+  { lessonId: 'L20', word: '良かったら', reading: 'よかったら', meaning: '如果可以的话', type: 'phrase' },
+  { lessonId: 'L20', word: '色々', reading: 'いろいろ', meaning: '各种各样', type: 'adverb' },
+
+  // --- Lesson 21 ---
+  // 动词
+  { lessonId: 'L21', word: '思います', reading: 'おもいます', meaning: '认为/想', type: 'verb', group: 1 },
+  { lessonId: 'L21', word: '言います', reading: 'いいます', meaning: '说', type: 'verb', group: 1 },
+  { lessonId: 'L21', word: '勝ちます', reading: 'かちます', meaning: '赢/获胜', type: 'verb', group: 1 },
+  { lessonId: 'L21', word: '負けます', reading: 'まけます', meaning: '输/被打败', type: 'verb', group: 2 },
+  { lessonId: 'L21', word: '足ります', reading: 'たります', meaning: '足够/够用', type: 'verb', group: 1 },
+  { lessonId: 'L21', word: '役に立ちます', reading: 'やくにたちます', meaning: '有用/有帮助', type: 'verb', group: 1 },
+  { lessonId: 'L21', word: '動きます', reading: 'うごきます', meaning: '移动/运转', type: 'verb', group: 1 },
+  { lessonId: 'L21', word: '辞めます', reading: 'やめます', meaning: '辞职/戒掉', type: 'verb', group: 2 },
+  { lessonId: 'L21', word: '気をつけます', reading: 'きをつけます', meaning: '注意/小心', type: 'verb', group: 2 },
+  { lessonId: 'L21', word: '留学します', reading: 'りゅうがくします', meaning: '留学', type: 'verb', group: 3 },
+  // な形容词
+  { lessonId: 'L21', word: '無駄', reading: 'むだ', meaning: '浪费的/无用的', type: 'na-adj' },
+  { lessonId: 'L21', word: '不便', reading: 'ふべん', meaning: '不方便的', type: 'na-adj' },
+  // い形容词
+  { lessonId: 'L21', word: '凄い', reading: 'すごい', meaning: '厉害/很棒', type: 'i-adj' },
+  // 连体词
+  { lessonId: 'L21', word: '同じ', reading: 'おなじ', meaning: '相同的', type: 'noun' },
+  // 名词
+  { lessonId: 'L21', word: '首相', reading: 'しゅしょう', meaning: '首相', type: 'noun' },
+  { lessonId: 'L21', word: '大統領', reading: 'だいとうりょう', meaning: '总统', type: 'noun' },
+  { lessonId: 'L21', word: '政治', reading: 'せいじ', meaning: '政治', type: 'noun' },
+  { lessonId: 'L21', word: 'ニュース', reading: 'ニュース', meaning: '新闻', type: 'noun' },
+  { lessonId: 'L21', word: 'スピーチ', reading: 'スピーチ', meaning: '演讲', type: 'noun' },
+  { lessonId: 'L21', word: '試合', reading: 'しあい', meaning: '比赛', type: 'noun' },
+  { lessonId: 'L21', word: 'アルバイト', reading: 'アルバイト', meaning: '打工/兼职', type: 'noun' },
+  { lessonId: 'L21', word: '意見', reading: 'いけん', meaning: '意见', type: 'noun' },
+  { lessonId: 'L21', word: '話', reading: 'はなし', meaning: '话/故事', type: 'noun' },
+  { lessonId: 'L21', word: 'ユーモア', reading: 'ユーモア', meaning: '幽默', type: 'noun' },
+  { lessonId: 'L21', word: 'デザイン', reading: 'デザイン', meaning: '设计', type: 'noun' },
+  { lessonId: 'L21', word: '交通', reading: 'こうつう', meaning: '交通', type: 'noun' },
+  { lessonId: 'L21', word: 'ラッシュ', reading: 'ラッシュ', meaning: '高峰期/拥挤', type: 'noun' },
+  { lessonId: 'L21', word: '仕方', reading: 'しかた', meaning: '方法/办法', type: 'noun' },
+  { lessonId: 'L21', word: '嘘', reading: 'うそ', meaning: '谎言', type: 'noun' },
+  { lessonId: 'L21', word: '放送', reading: 'ほうそう', meaning: '广播/播送', type: 'noun' },
+  { lessonId: 'L21', word: '夢', reading: 'ゆめ', meaning: '梦想', type: 'noun' },
+  // 副词与表达
+  { lessonId: 'L21', word: '最近', reading: 'さいきん', meaning: '最近', type: 'adverb' },
+  { lessonId: 'L21', word: '多分', reading: 'たぶん', meaning: '也许/大概', type: 'adverb' },
+  { lessonId: 'L21', word: 'きっと', reading: 'きっと', meaning: '一定/必定', type: 'adverb' },
+  { lessonId: 'L21', word: '本当に', reading: 'ほんとうに', meaning: '真的', type: 'adverb' },
+  { lessonId: 'L21', word: 'そんなに', reading: 'そんなに', meaning: '那么(程度)', type: 'adverb' },
+  { lessonId: 'L21', word: 'もちろん', reading: 'もちろん', meaning: '当然', type: 'adverb' },
+  { lessonId: 'L21', word: 'しばらく', reading: 'しばらく', meaning: '暂时/一段时间', type: 'adverb' },
+  // 惯用表达
+  { lessonId: 'L21', word: '～について', reading: '～について', meaning: '关于～', type: 'phrase' },
+  { lessonId: 'L21', word: '仕方がありません', reading: 'しかたがありません', meaning: '没办法', type: 'phrase' },
+  { lessonId: 'L21', word: 'しばらくですね', reading: 'しばらくですね', meaning: '好久不见', type: 'phrase' },
+  { lessonId: 'L21', word: '～でも飲みませんか', reading: '～でものみませんか', meaning: '要不要喝点～什么的', type: 'phrase' },
+  { lessonId: 'L21', word: '見ないと', reading: 'みないと', meaning: '不看不行', type: 'phrase' },
 ];
 
 export const GRAMMAR_RULES: GrammarRule[] = [
@@ -1376,6 +1477,106 @@ export const GRAMMAR_RULES: GrammarRule[] = [
     description: 'な形容词或名词表示变化时，加になります。',
     pattern: 'なAdj/N + に なります',
     example: '日本語が上手になりました。(日语变好了)'
+  },
+  // --- Lesson 20 ---
+  {
+    lessonId: 'L20',
+    title: '1. 动词普通形变形规则',
+    description: '将丁宁体(ます形)转换为普通形。现在肯定→辞书形，现在否定→ない形，过去肯定→た形，过去否定→なかった形。',
+    pattern: 'ます→辞书形 / ません→ない / ました→た / ませんでした→なかった',
+    example: '書きます→書く / 書きません→書かない / 書きました→書いた / 書きませんでした→書かなかった'
+  },
+  {
+    lessonId: 'L20',
+    title: '2. い形容词普通形',
+    description: '把「です」去掉。否定用「くない」，过去用「かった」，过去否定用「くなかった」。',
+    pattern: '高いです→高い / 高くないです→高くない / 高かったです→高かった / 高くなかったです→高くなかった',
+    example: '暑いです→暑い (热) / 暑くない (不热) / 暑かった (热了) / 暑くなかった (不热)'
+  },
+  {
+    lessonId: 'L20',
+    title: '3. な形容词・名词普通形',
+    description: 'な形容词和名词使用同一套句尾变化：だ・じゃない・だった・じゃなかった。',
+    pattern: '静かです→静かだ / 静かじゃない / 静かだった / 静かじゃなかった',
+    example: '雨です→雨だ (是雨) / 雨じゃない (不是雨) / 雨だった (是雨) / 雨じゃなかった (不是雨)'
+  },
+  {
+    lessonId: 'L20',
+    title: '4. 普通体疑问句 (省略「か」)',
+    description: '普通体疑问句常省略「か」，用语调上扬表示提问。',
+    pattern: 'V辞书形？ / Adj？ / N？',
+    example: '食べる？(吃吗？) / 明日、どこ行く？(明天去哪？)'
+  },
+  {
+    lessonId: 'L20',
+    title: '5. 助词省略 (口语)',
+    description: '普通体会话中「は・を・が・へ」等助词常被省略(语境清楚时)。',
+    pattern: '助词省略',
+    example: '明日どこへ行きますか→明日、どこ行く？'
+  },
+  {
+    lessonId: 'L20',
+    title: '6. 转折「けど」',
+    description: '「けど」用于转折(但是)或铺垫，常用来软化语气。接名词/な形容词后常用「だけど」。',
+    pattern: '普通形 + けど',
+    example: '忙しいけど、楽しい。(虽然忙，但很开心) / あしたは休みだけど。(明天休息，但是...)'
+  },
+  // --- Lesson 21 ---
+  {
+    lessonId: 'L21',
+    title: '1. ～と思います (推测)',
+    description: '用于表达说话人的推测、猜想。引用节内必须用普通形。',
+    pattern: '［普通形］＋と思います',
+    example: '明日は雨が降ると思います。(我觉得明天会下雨) / 彼は来ないと思います。(我觉得他不会来)'
+  },
+  {
+    lessonId: 'L21',
+    title: '2. ～と思います (意见)',
+    description: '用于表达个人主观的评价、看法。常用于回答「どう思いますか」。',
+    pattern: '［普通形］＋と思います',
+    example: '日本語は難しいと思います。(我认为日语很难) / この映画はおもしろいと思います。(我觉得这部电影很有意思)'
+  },
+  {
+    lessonId: 'L21',
+    title: '3. ～と言いました',
+    description: '用于转述别人说过的话。引用节用普通形，原话是丁宁体也要改成普通形。',
+    pattern: '［普通形/句子］＋と言いました',
+    example: '田中さんは明日来ると言いました。(田中说他明天会来) / 彼は忙しいと言いました。(他说他很忙)'
+  },
+  {
+    lessonId: 'L21',
+    title: '4. ～でしょう？ (确认/寻求同意)',
+    description: '用于向对方确认信息或寻求同意。句尾升调。な形容词和名词现在肯定形常省略「だ」。',
+    pattern: '［普通形］＋でしょう？',
+    example: '明日は休みでしょう？(明天休息，对吧？) / あなたも行くでしょう？(你也去吧？)'
+  },
+  {
+    lessonId: 'L21',
+    title: '5. ～で event があります',
+    description: '表示"在某地举办/发生某活动/事件"。「で」表示事件发生的场所。',
+    pattern: '［场所］＋で event があります',
+    example: '土曜日に大学で試合があります。(星期六大学有比赛) / 来週、町でお祭りがあります。(下周镇上有祭典)'
+  },
+  {
+    lessonId: 'L21',
+    title: '6. ～について',
+    description: '表示"关于……"，引出话题或讨论的对象。',
+    pattern: '［名词］＋について',
+    example: '日本の文化について勉強しています。(我在学习关于日本文化的内容) / この問題について話しましょう。(我们来谈谈这个问题吧)'
+  },
+  {
+    lessonId: 'L21',
+    title: '7. ～ないと (口语省略)',
+    description: '表示"不……的话不行"，即"必须……"。完整形式是「～ないといけません/だめです」。',
+    pattern: '［动词ない形］＋と',
+    example: 'もう帰らないと。(我得回去了) / 宿題をしないと。(我得做作业了)'
+  },
+  {
+    lessonId: 'L21',
+    title: '8. ～でも (例举/提议)',
+    description: '表示"……什么的"，用于举例或提议，语气比较柔和随意。不是"但是"的意思。',
+    pattern: '［名词］＋でも＋动词',
+    example: 'コーヒーでも飲みませんか。(要不要喝点咖啡什么的？) / 映画でも見に行きましょう。(我们去看个电影什么的吧)'
   }
 ];
 
@@ -1536,4 +1737,56 @@ export const EXERCISES: Exercise[] = [
   { id: '19-4-2', lessonId: 'L19', section: 4, prompt: '日本語が (  ) なりました。(上手)', answer: '日本語が上手になりました。', hint: '日语变好了 (な形容词)' },
   { id: '19-4-3', lessonId: 'L19', section: 4, prompt: '来年 20歳 (  ) なります。', answer: '来年20歳になります。', hint: '明年就20岁了 (名词)' },
   { id: '19-4-4', lessonId: 'L19', section: 4, prompt: '眠く (  )。', answer: '眠くなりました。', hint: '困了/想睡了' },
+
+  // --- Lesson 20 ---
+  // Section 1: 动词普通形变形
+  { id: '20-1-1', lessonId: 'L20', section: 1, prompt: '書きます -> (  ) [现在肯定]', answer: '書く', hint: '写 (辞书形)' },
+  { id: '20-1-2', lessonId: 'L20', section: 1, prompt: '食べます -> (  ) [现在否定]', answer: '食べない', hint: '吃 (ない形)' },
+  { id: '20-1-3', lessonId: 'L20', section: 1, prompt: '行きます -> (  ) [过去肯定]', answer: '行った', hint: '去 (た形)' },
+  { id: '20-1-4', lessonId: 'L20', section: 1, prompt: '飲みます -> (  ) [过去否定]', answer: '飲まなかった', hint: '喝 (なかった形)' },
+  { id: '20-1-5', lessonId: 'L20', section: 1, prompt: '来ます -> (  ) [现在肯定]', answer: 'くる', hint: '来 (III类: 辞书形)' },
+  { id: '20-1-6', lessonId: 'L20', section: 1, prompt: 'します -> (  ) [过去否定]', answer: 'しなかった', hint: '做 (III类: なかった形)' },
+
+  // Section 2: い形容词/な形容词/名词普通形
+  { id: '20-2-1', lessonId: 'L20', section: 2, prompt: '高いです -> (  ) [现在肯定]', answer: '高い', hint: '贵 (去です)' },
+  { id: '20-2-2', lessonId: 'L20', section: 2, prompt: 'おいしいです -> (  ) [过去肯定]', answer: 'おいしかった', hint: '好吃 (かった)' },
+  { id: '20-2-3', lessonId: 'L20', section: 2, prompt: '忙しいです -> (  ) [现在否定]', answer: '忙しくない', hint: '忙 (くない)' },
+  { id: '20-2-4', lessonId: 'L20', section: 2, prompt: '静かです -> (  ) [现在肯定]', answer: '静かだ', hint: '安静 (な形: だ)' },
+  { id: '20-2-5', lessonId: 'L20', section: 2, prompt: '元気です -> (  ) [过去否定]', answer: '元気じゃなかった', hint: '健康 (な形: じゃなかった)' },
+  { id: '20-2-6', lessonId: 'L20', section: 2, prompt: '雨です -> (  ) [现在否定]', answer: '雨じゃない', hint: '雨 (名词: じゃない)' },
+
+  // Section 3: 普通体疑问句与会话
+  { id: '20-3-1', lessonId: 'L20', section: 3, prompt: '明日、どこへ行きますか。-> (  )', answer: '明日、どこ行く？', hint: '省略助词へ和か，用语调提问' },
+  { id: '20-3-2', lessonId: 'L20', section: 3, prompt: 'もう食べましたか。-> (  )', answer: 'もう食べた？', hint: '用た形+语调上扬提问' },
+  { id: '20-3-3', lessonId: 'L20', section: 3, prompt: 'この本はおもしろいですか。-> (  )', answer: 'この本、おもしろい？', hint: '省略は和ですか' },
+
+  // Section 4: けど的用法
+  { id: '20-4-1', lessonId: 'L20', section: 4, prompt: '日本語は難しいです。(  )、おもしろいです。', answer: '日本語は難しいけど、おもしろい。', hint: '日语虽然难，但很有趣 (转折)' },
+  { id: '20-4-2', lessonId: 'L20', section: 4, prompt: '明日は休み (  )。どこか行く？', answer: '明日は休みだけど。どこか行く？', hint: '明天休息，(你)要去哪吗？(铺垫)' },
+  { id: '20-4-3', lessonId: 'L20', section: 4, prompt: '忙しい (  )、手伝ってくれない？', answer: '忙しいけど、手伝ってくれない？', hint: '虽然忙，能帮我吗？' },
+
+  // --- Lesson 21 ---
+  // Section 1: ～と思います (推测/意见)
+  { id: '21-1-1', lessonId: 'L21', section: 1, prompt: '明日は雨が (  ) と思います。(降ります)', answer: '明日は雨が降ると思います。', hint: '我觉得明天会下雨 (推测)' },
+  { id: '21-1-2', lessonId: 'L21', section: 1, prompt: '彼は (  ) と思います。(来ません)', answer: '彼は来ないと思います。', hint: '我觉得他不会来 (否定推测)' },
+  { id: '21-1-3', lessonId: 'L21', section: 1, prompt: '日本語は (  ) と思います。(難しいです)', answer: '日本語は難しいと思います。', hint: '我认为日语很难 (意见)' },
+  { id: '21-1-4', lessonId: 'L21', section: 1, prompt: 'この店は (  ) と思います。(高いです)', answer: 'この店は高いと思います。', hint: '我觉得这家店很贵' },
+  { id: '21-1-5', lessonId: 'L21', section: 1, prompt: '彼女は (  ) と思います。(親切です)', answer: '彼女は親切だと思います。', hint: '我认为她很亲切 (な形容词)' },
+
+  // Section 2: ～と言いました
+  { id: '21-2-1', lessonId: 'L21', section: 2, prompt: '田中さんは 明日 (  ) と言いました。(来ます)', answer: '田中さんは明日来ると言いました。', hint: '田中说他明天会来' },
+  { id: '21-2-2', lessonId: 'L21', section: 2, prompt: '先生は 宿題を (  ) と言いました。(出します)', answer: '先生は宿題を出すと言いました。', hint: '老师说要布置作业' },
+  { id: '21-2-3', lessonId: 'L21', section: 2, prompt: '彼は (  ) と言いました。(忙しいです)', answer: '彼は忙しいと言いました。', hint: '他说他很忙' },
+  { id: '21-2-4', lessonId: 'L21', section: 2, prompt: '山田さんは この映画は (  ) と言いました。(おもしろかったです)', answer: '山田さんはこの映画はおもしろかったと言いました。', hint: '山田说这部电影很有趣' },
+
+  // Section 3: ～でしょう？
+  { id: '21-3-1', lessonId: 'L21', section: 3, prompt: '明日は (  ) でしょう？(休みです)', answer: '明日は休みでしょう？', hint: '明天休息，对吧？' },
+  { id: '21-3-2', lessonId: 'L21', section: 3, prompt: 'あなたも (  ) でしょう？(行きます)', answer: 'あなたも行くでしょう？', hint: '你也去吧？' },
+  { id: '21-3-3', lessonId: 'L21', section: 3, prompt: 'この本は (  ) でしょう？(おもしろいです)', answer: 'この本はおもしろいでしょう？', hint: '这本书很有趣吧？' },
+
+  // Section 4: ～について / ～でeventがあります / ～でも
+  { id: '21-4-1', lessonId: 'L21', section: 4, prompt: '日本の文化 (  ) 勉強しています。', answer: '日本の文化について勉強しています。', hint: '我在学习关于日本文化的内容' },
+  { id: '21-4-2', lessonId: 'L21', section: 4, prompt: '土曜日に 大学 (  ) 試合があります。', answer: '土曜日に大学で試合があります。', hint: '星期六大学有比赛 (场所で)' },
+  { id: '21-4-3', lessonId: 'L21', section: 4, prompt: 'コーヒー (  ) 飲みませんか。', answer: 'コーヒーでも飲みませんか。', hint: '要不要喝点咖啡什么的？(提议)' },
+  { id: '21-4-4', lessonId: 'L21', section: 4, prompt: 'もう (  )。(帰ります・ないと)', answer: 'もう帰らないと。', hint: '我得回去了 (口语省略)' },
 ];
