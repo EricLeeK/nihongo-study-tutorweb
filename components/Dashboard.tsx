@@ -4,16 +4,16 @@ import { LESSONS, VOCABULARY_LIST, GRAMMAR_RULES } from '../constants';
 import { MillersDiary } from './MillersDiary';
 import { calculateLessonProgress, getTotalProgress } from '../utils/progress';
 import { SRSStatus } from '../types';
-import { PlayCircle, Lock, CheckCircle2, RotateCw, ArrowRight, Mic, Languages } from 'lucide-react';
+import { PlayCircle, Lock, CheckCircle2, RotateCw, ArrowRight, GraduationCap, Languages } from 'lucide-react';
 
 interface DashboardProps {
   onSelectLesson: (lessonId: string) => void;
   onStartReview: () => void;
-  onStartSpeakingPrep: () => void;
+  onStartTopicStudy: () => void;
   onOpenKanaChart: () => void;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartReview, onStartSpeakingPrep, onOpenKanaChart }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartReview, onStartTopicStudy, onOpenKanaChart }) => {
   const [progressData, setProgressData] = useState<Record<string, number>>({});
   const [totalProgress, setTotalProgress] = useState(0);
   const [dueCount, setDueCount] = useState(0);
@@ -79,9 +79,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartRev
           </div>
         </button>
 
-        {/* Hokudai Speaking Prep Card */}
+        {/* Topic Study Card */}
         <button
-          onClick={onStartSpeakingPrep}
+          onClick={onStartTopicStudy}
           className="w-full bg-[#8da399] p-6 rounded-[2rem] shadow-[6px_6px_0px_0px_rgba(107,140,122,0.4)] hover:shadow-[2px_2px_0px_0px_rgba(107,140,122,0.4)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-200 text-white relative overflow-hidden group text-left h-full border-2 border-[#9db3a9] border-b-[#6b8c7a] border-r-[#6b8c7a]"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-8 -mt-8 z-0 group-hover:scale-110 transition-transform"></div>
@@ -93,10 +93,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartRev
                 </span>
               </div>
               <h2 className="font-serif font-bold flex items-center gap-2 mb-2 text-white text-lg">
-                <Mic className="text-white/80" size={20} /> 口语特训
+                <GraduationCap className="text-white/80" size={20} /> 专题学习
               </h2>
               <p className="text-white/90 text-xs font-medium">
-                北大交换生必考话题
+                动词变形・形容词变形总结
               </p>
             </div>
             <div className="mt-2 text-white font-bold text-xs flex items-center gap-1 bg-white/20 w-fit px-3 py-1.5 rounded-full backdrop-blur-sm">

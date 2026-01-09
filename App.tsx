@@ -12,6 +12,7 @@ import { ApiKeyModal } from './components/ApiKeyModal';
 import { GlobalSearch } from './components/GlobalSearch';
 import { SpeakingExamPrep } from './components/SpeakingExamPrep';
 import { KanaChart } from './components/KanaChart';
+import { TopicStudy } from './components/TopicStudy';
 import { Book, PenTool, Layers, RotateCw, Mic, ArrowLeft, Home, FlaskConical } from 'lucide-react';
 import { VOCABULARY_LIST, GRAMMAR_RULES, EXERCISES, LESSONS } from './constants';
 import { GrammarLab } from './components/GrammarLab';
@@ -22,6 +23,7 @@ const App: React.FC = () => {
   const [isGlobalReviewMode, setIsGlobalReviewMode] = useState(false);
   const [isSpeakingPrepMode, setIsSpeakingPrepMode] = useState(false);
   const [isKanaChartMode, setIsKanaChartMode] = useState(false);
+  const [isTopicStudyMode, setIsTopicStudyMode] = useState(false);
 
   // Modals
   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
@@ -33,7 +35,7 @@ const App: React.FC = () => {
   // Scroll to top when lesson changes
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentLessonId, activeTab, isGlobalReviewMode, isSpeakingPrepMode, isKanaChartMode]);
+  }, [currentLessonId, activeTab, isGlobalReviewMode, isSpeakingPrepMode, isKanaChartMode, isTopicStudyMode]);
 
   // Filter data based on current lesson
   const currentLesson = LESSONS.find(l => l.id === currentLessonId);
@@ -61,6 +63,7 @@ const App: React.FC = () => {
     setIsGlobalReviewMode(false);
     setIsSpeakingPrepMode(false);
     setIsKanaChartMode(false);
+    setIsTopicStudyMode(false);
     setCurrentLessonId(lessonId);
     setActiveTab(tab as any);
   };
@@ -69,6 +72,7 @@ const App: React.FC = () => {
     setIsGlobalReviewMode(true);
     setIsSpeakingPrepMode(false);
     setIsKanaChartMode(false);
+    setIsTopicStudyMode(false);
     setCurrentLessonId(null);
   };
 
@@ -76,6 +80,7 @@ const App: React.FC = () => {
     setIsSpeakingPrepMode(true);
     setIsGlobalReviewMode(false);
     setIsKanaChartMode(false);
+    setIsTopicStudyMode(false);
     setCurrentLessonId(null);
   };
 
@@ -83,6 +88,15 @@ const App: React.FC = () => {
     setIsKanaChartMode(true);
     setIsGlobalReviewMode(false);
     setIsSpeakingPrepMode(false);
+    setIsTopicStudyMode(false);
+    setCurrentLessonId(null);
+  };
+
+  const handleStartTopicStudy = () => {
+    setIsTopicStudyMode(true);
+    setIsGlobalReviewMode(false);
+    setIsSpeakingPrepMode(false);
+    setIsKanaChartMode(false);
     setCurrentLessonId(null);
   };
 
@@ -91,6 +105,7 @@ const App: React.FC = () => {
     setIsGlobalReviewMode(false);
     setIsSpeakingPrepMode(false);
     setIsKanaChartMode(false);
+    setIsTopicStudyMode(false);
   };
 
   return (
@@ -146,8 +161,13 @@ const App: React.FC = () => {
             <KanaChart onBack={handleExitAll} />
           )}
 
+          {/* 3.5. Topic Study Mode */}
+          {isTopicStudyMode && (
+            <TopicStudy onBack={handleExitAll} />
+          )}
+
           {/* 4. Lesson View */}
-          {!isGlobalReviewMode && !isSpeakingPrepMode && !isKanaChartMode && currentLessonId && (
+          {!isGlobalReviewMode && !isSpeakingPrepMode && !isKanaChartMode && !isTopicStudyMode && currentLessonId && (
             <div className="animate-fade-in">
               {/* Active Lesson Navigation Bar */}
               <div className="flex items-center justify-between mb-6 bg-white p-4 rounded-xl border border-slate-100 shadow-sm sticky top-[4.5rem] z-20">
@@ -208,11 +228,11 @@ const App: React.FC = () => {
           )}
 
           {/* 5. Dashboard (Home) */}
-          {!isGlobalReviewMode && !isSpeakingPrepMode && !isKanaChartMode && !currentLessonId && (
+          {!isGlobalReviewMode && !isSpeakingPrepMode && !isKanaChartMode && !isTopicStudyMode && !currentLessonId && (
             <Dashboard
               onSelectLesson={setCurrentLessonId}
               onStartReview={handleStartReview}
-              onStartSpeakingPrep={handleStartSpeakingPrep}
+              onStartTopicStudy={handleStartTopicStudy}
               onOpenKanaChart={handleOpenKanaChart}
             />
           )}
@@ -221,7 +241,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Mobile Navigation (Sticky Bottom) - Only in Lesson Mode */}
-      {!isGlobalReviewMode && !isSpeakingPrepMode && !isKanaChartMode && currentLessonId && (
+      {!isGlobalReviewMode && !isSpeakingPrepMode && !isKanaChartMode && !isTopicStudyMode && currentLessonId && (
         <div className="md:hidden fixed bottom-0 left-0 right-0 bg-paper/95 backdrop-blur-md border-t border-sage/20 flex justify-around p-1 z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pb-safe">
           <button onClick={() => setActiveTab('vocab')} className={`flex flex-col items-center p-2 rounded-lg w-16 transition-transform active:scale-95 ${activeTab === 'vocab' ? 'text-sage-dark' : 'text-slate-400'}`}>
             <Book size={20} strokeWidth={activeTab === 'vocab' ? 2.5 : 2} />
