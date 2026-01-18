@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { ArrowLeft, X, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowLeft, X, BookOpen, Sparkles, ArrowRight, Book, Layers, GitMerge } from 'lucide-react';
 import { GRAMMAR_RULES } from '../constants';
+import { PARTICLE_TOPIC, CONJUNCTION_TOPIC, TopicData, TopicItem, TopicUsage } from '../constants/topicData';
 
 interface TopicStudyProps {
     onBack: () => void;
 }
 
-// Topic list for the main menu (expandable in the future)
+// Topic list for the main menu
 const TOPIC_LIST = [
     {
         id: 'conjugation',
@@ -14,12 +15,29 @@ const TOPIC_LIST = [
         description: '动词变形・形容词变形总结复习',
         icon: '🔤',
         color: 'teal',
+        type: 'legacy' // Identifies this as the old layout
     },
-    // Future topics can be added here:
-    // { id: 'particles', title: '助词专题', description: '各种助词用法对比', icon: '📍', color: 'amber' },
-    // { id: 'keigo', title: '敬语专题', description: '敬语表达方式', icon: '🎩', color: 'violet' },
+    {
+        id: 'particles',
+        title: '助词大作战',
+        description: '彻底搞懂日语的骨架 (に/で/を/が)',
+        icon: '📍',
+        color: 'amber',
+        type: 'new', // Identifies this as the new data-driven layout
+        data: PARTICLE_TOPIC
+    },
+    {
+        id: 'conjunctions',
+        title: '连接词指南',
+        description: '顺接、逆接、因果关系完全掌握',
+        icon: '🔗',
+        color: 'indigo',
+        type: 'new',
+        data: CONJUNCTION_TOPIC
+    }
 ];
 
+// ... (Legacy conjugation data: VERB_CONJUGATIONS, ADJECTIVE_CONJUGATIONS, colorMap kept as is) ...
 // Verb conjugation data
 const VERB_CONJUGATIONS = [
     {
@@ -30,21 +48,21 @@ const VERB_CONJUGATIONS = [
         tables: [
             {
                 title: 'I类动词 (五段动词)',
-                headers: ['词尾', '変形', '例'],
+                headers: ['ます形去ます后', '変形', '例'],
                 rows: [
-                    ['く', '→ いて', '書く → 書いて'],
-                    ['ぐ', '→ いで', '泳ぐ → 泳いで'],
-                    ['す', '→ して', '話す → 話して'],
-                    ['む・ぶ・ぬ', '→ んで', '読む → 読んで'],
-                    ['う・つ・る', '→ って', '買う → 買って'],
-                    ['行く (特例)', '→ 行って', '行く → 行って'],
+                    ['き', '→ いて', '書きます → 書いて'],
+                    ['ぎ', '→ いで', '泳ぎます → 泳いで'],
+                    ['し', '→ して', '話します → 話して'],
+                    ['い・ち・り', '→ って', '買います → 買って'],
+                    ['み・び・に', '→ んで', '読みます → 読んで'],
+                    ['行きます (特例)', '→ 行って', '行きます → 行って'],
                 ]
             },
             {
                 title: 'II类动词 (一段动词)',
                 headers: ['规则', '変形', '例'],
                 rows: [
-                    ['去ます+て', '→ て', '食べます → 食べて'],
+                    ['去ます', '→ +て', '食べます → 食べて'],
                 ]
             },
             {
@@ -65,12 +83,12 @@ const VERB_CONJUGATIONS = [
         tables: [
             {
                 title: 'I类动词 (五段动词)',
-                headers: ['词尾', '変形', '例'],
+                headers: ['ます形去ます后', '変形', '例'],
                 rows: [
-                    ['u段', '→ a段+ない', '書く → 書かない'],
-                    ['う', '→ わない', '買う → 買わない (特例)'],
-                    ['つ', '→ たない', '待つ → 待たない'],
-                    ['る', '→ らない', '取る → 取らない'],
+                    ['i段 (き/し/ち...)', '→ a段+ない', '書きます → 書かない'],
+                    ['い (特例)', '→ わない', '買います → 買わない'],
+                    ['ち', '→ たない', '待ちます → 待たない'],
+                    ['り', '→ らない', '取ります → 取らない'],
                 ]
             },
             {
@@ -93,13 +111,13 @@ const VERB_CONJUGATIONS = [
         tables: [
             {
                 title: '变形规则（与て形完全对应）',
-                headers: ['て形', 'た形', '例'],
+                headers: ['ます形去ます后', 'た形', '例'],
                 rows: [
-                    ['～いて', '→ ～いた', '書いて → 書いた'],
-                    ['～いで', '→ ～いだ', '泳いで → 泳いだ'],
-                    ['～して', '→ ～した', '話して → 話した'],
-                    ['～んで', '→ ～んだ', '読んで → 読んだ'],
-                    ['～って', '→ ～った', '買って → 買った'],
+                    ['き', '→ いた', '書きます → 書いた'],
+                    ['ぎ', '→ いだ', '泳ぎます → 泳いだ'],
+                    ['し', '→ した', '話します → 話した'],
+                    ['い・ち・り', '→ った', '買います → 買った'],
+                    ['み・び・に', '→ んだ', '読みます → 読んだ'],
                 ]
             },
             {
@@ -287,15 +305,24 @@ const colorMap: Record<string, any> = {
         text: 'text-violet-700',
         border: 'border-violet-200',
     },
+    indigo: {
+        bg: 'bg-indigo-500',
+        light: 'bg-indigo-50',
+        text: 'text-indigo-700',
+        border: 'border-indigo-200',
+    }
 };
 
 export const TopicStudy: React.FC<TopicStudyProps> = ({ onBack }) => {
-    const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-    const [activeTab, setActiveTab] = useState<'verb' | 'adj'>('verb');
+    const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
+    const [activeTab, setActiveTab] = useState<string>('verb'); // 'verb' | 'adj' for legacy, or categoryId for new
     const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
     const [grammarModal, setGrammarModal] = useState<{ title: string; content: any } | null>(null);
 
-    const currentData = activeTab === 'verb' ? VERB_CONJUGATIONS : ADJECTIVE_CONJUGATIONS;
+    const selectedTopic = TOPIC_LIST.find(t => t.id === selectedTopicId);
+    
+    // Legacy data selection
+    const legacyCurrentData = activeTab === 'verb' ? VERB_CONJUGATIONS : ADJECTIVE_CONJUGATIONS;
 
     // Find related grammar rules for a topic
     const findGrammarRules = (lessonRef: string) => {
@@ -321,7 +348,7 @@ export const TopicStudy: React.FC<TopicStudyProps> = ({ onBack }) => {
         });
     };
 
-    // Color themes for tabs
+    // Color themes for legacy tabs
     const verbColor = {
         tabActive: 'bg-teal-600 text-white',
         tabInactive: 'bg-teal-100 text-teal-600 hover:bg-teal-200',
@@ -340,10 +367,8 @@ export const TopicStudy: React.FC<TopicStudyProps> = ({ onBack }) => {
         border: 'border-rose-200',
     };
 
-    const colors = activeTab === 'verb' ? verbColor : adjColor;
-
     // ============ LEVEL 1: Topic Selection ============
-    if (!selectedTopic) {
+    if (!selectedTopicId) {
         return (
             <div className="animate-fade-in">
                 {/* Header */}
@@ -380,7 +405,16 @@ export const TopicStudy: React.FC<TopicStudyProps> = ({ onBack }) => {
                         return (
                             <button
                                 key={topic.id}
-                                onClick={() => setSelectedTopic(topic.id)}
+                                onClick={() => {
+                                    setSelectedTopicId(topic.id);
+                                    // Reset active tab based on topic type
+                                    if (topic.type === 'new' && topic.data) {
+                                        setActiveTab(topic.data.categories[0].id);
+                                    } else {
+                                        setActiveTab('verb');
+                                    }
+                                    setExpandedItems(new Set());
+                                }}
                                 className="group relative p-6 rounded-[2rem] border-2 text-left transition-all duration-200 bg-white/60 border-sage/10 border-b-sage/20 border-r-sage/20 shadow-[4px_4px_0px_0px_rgba(141,163,153,0.15)] hover:shadow-[2px_2px_0px_0px_rgba(141,163,153,0.15)] hover:translate-x-[1px] hover:translate-y-[1px] active:shadow-none active:translate-x-[3px] active:translate-y-[3px] hover:bg-white/80"
                             >
                                 {/* Color bar */}
@@ -412,14 +446,144 @@ export const TopicStudy: React.FC<TopicStudyProps> = ({ onBack }) => {
         );
     }
 
-    // ============ LEVEL 2: Conjugation Detail (词汇变形) ============
+    // ============ LEVEL 2: Topic Detail ============
+    
+    // NEW RENDERER (Generic)
+    if (selectedTopic?.type === 'new' && selectedTopic.data) {
+        const data = selectedTopic.data;
+        const colors = colorMap[selectedTopic.color];
+        
+        // Find current category data
+        const currentCategory = data.categories.find(c => c.id === activeTab) || data.categories[0];
+
+        return (
+            <div className="animate-fade-in pb-20">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-6 bg-white p-4 rounded-xl border border-slate-100 shadow-sm sticky top-[4.5rem] z-20">
+                    <div className="flex items-center gap-4">
+                        <button
+                            onClick={() => { setSelectedTopicId(null); setExpandedItems(new Set()); }}
+                            className="p-2 rounded-full hover:bg-slate-100 text-slate-500 transition-colors"
+                        >
+                            <ArrowLeft size={20} />
+                        </button>
+                        <div>
+                            <div className={`text-[10px] font-bold ${colors.text} uppercase tracking-wider ${colors.light} px-2 py-0.5 rounded inline-block mb-0.5`}>
+                                专题学习
+                            </div>
+                            <h2 className="text-lg font-bold text-slate-800 leading-tight">{data.title}</h2>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Scrollable Tab Switcher */}
+                <div className="flex gap-2 mb-6 overflow-x-auto no-scrollbar pb-1">
+                    {data.categories.map(cat => (
+                        <button
+                            key={cat.id}
+                            onClick={() => { setActiveTab(cat.id); setExpandedItems(new Set()); }}
+                            className={`whitespace-nowrap px-4 py-2 rounded-xl font-bold text-sm transition-all border-2 ${
+                                activeTab === cat.id 
+                                    ? `${colors.bg} text-white border-transparent` 
+                                    : `bg-white text-slate-600 border-slate-100 hover:border-${selectedTopic.color}-200`
+                            }`}
+                        >
+                            {cat.title}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Content List */}
+                <div className="space-y-4">
+                    {currentCategory.items.map((item) => (
+                        <div key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+                            {/* Card Header (Click to expand) */}
+                            <button
+                                onClick={() => toggleExpand(item.id)}
+                                className={`w-full p-5 flex justify-between items-start text-left transition-colors ${expandedItems.has(item.id) ? colors.light : 'hover:bg-slate-50'}`}
+                            >
+                                <div className="flex gap-4">
+                                    <div className={`w-12 h-12 rounded-xl ${colors.bg} flex items-center justify-center text-white shrink-0 shadow-sm`}>
+                                        <span className="text-xl font-bold">{data.icon}</span>
+                                    </div>
+                                    <div>
+                                        <div className="flex items-baseline gap-2 flex-wrap">
+                                            <h3 className={`font-bold text-lg ${expandedItems.has(item.id) ? colors.text : 'text-slate-800'}`}>
+                                                {item.title}
+                                            </h3>
+                                            {item.subTitle && (
+                                                <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
+                                                    {item.subTitle}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <p className="text-sm text-slate-500 mt-1 leading-relaxed">{item.description}</p>
+                                    </div>
+                                </div>
+                                <span className={`text-slate-400 transition-transform mt-2 ${expandedItems.has(item.id) ? 'rotate-180' : ''}`}>
+                                    ▼
+                                </span>
+                            </button>
+
+                            {/* Expanded Content */}
+                            {expandedItems.has(item.id) && (
+                                <div className="border-t border-slate-100 animate-slide-down">
+                                    {/* Usages */}
+                                    <div className="p-5 space-y-6">
+                                        {item.usages.map((usage, idx) => (
+                                            <div key={idx} className="relative pl-4 border-l-2 border-slate-100">
+                                                <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 border-white ${colors.bg} shadow-sm`}></div>
+                                                <h4 className="font-bold text-slate-800 mb-1">{usage.title}</h4>
+                                                <p className="text-sm text-slate-500 mb-3">{usage.description}</p>
+                                                
+                                                <div className="space-y-2 bg-slate-50/80 rounded-lg p-3">
+                                                    {usage.examples.map((ex, i) => (
+                                                        <div key={i} className="text-sm">
+                                                            <div className="font-medium text-slate-700">{ex.ja}</div>
+                                                            <div className="text-slate-400 text-xs">{ex.cn}</div>
+                                                            {ex.annotation && <div className="text-[10px] text-amber-600 mt-0.5">{ex.annotation}</div>}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+
+                                        {/* Comparison Section (VS) */}
+                                        {item.compare && item.compare.length > 0 && (
+                                            <div className="mt-6 pt-4 border-t border-dashed border-slate-200">
+                                                {item.compare.map((cmp, idx) => (
+                                                    <div key={idx} className="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-xl p-4">
+                                                        <div className="flex items-center gap-2 mb-2">
+                                                            <GitMerge className="text-rose-500" size={18} />
+                                                            <span className="font-bold text-slate-700 text-sm">{cmp.vsTitle}</span>
+                                                        </div>
+                                                        <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-line">
+                                                            {cmp.explanation}
+                                                        </p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+    // LEGACY RENDERER (Conjugation)
+    const colors = activeTab === 'verb' ? verbColor : adjColor;
+    
     return (
         <div className="animate-fade-in">
             {/* Header */}
             <div className="flex items-center justify-between mb-6 bg-white p-4 rounded-xl border border-slate-100 shadow-sm sticky top-[4.5rem] z-20">
                 <div className="flex items-center gap-4">
                     <button
-                        onClick={() => { setSelectedTopic(null); setExpandedItems(new Set()); }}
+                        onClick={() => { setSelectedTopicId(null); setExpandedItems(new Set()); }}
                         className="p-2 rounded-full hover:bg-slate-100 text-slate-500 transition-colors"
                     >
                         <ArrowLeft size={20} />
@@ -468,7 +632,7 @@ export const TopicStudy: React.FC<TopicStudyProps> = ({ onBack }) => {
 
             {/* Topic Cards */}
             <div className="space-y-4">
-                {currentData.map((item) => (
+                {legacyCurrentData.map((item) => (
                     <div key={item.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
                         {/* Item Header - Clickable */}
                         <button
@@ -584,3 +748,4 @@ export const TopicStudy: React.FC<TopicStudyProps> = ({ onBack }) => {
         </div>
     );
 };
+

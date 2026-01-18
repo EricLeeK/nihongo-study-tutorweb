@@ -128,6 +128,30 @@ export const LESSONS: LessonInfo[] = [
     title: '第21課：引用と意見',
     description: '引用节、表达意见和推测、转述他人的话',
     topics: ['~と思います(推测)', '~と思います(意见)', '~と言いました', '~でしょう？', '~について', '~でも']
+  },
+  {
+    id: 'L22',
+    title: '第22課：连体修饰',
+    description: '使用句子修饰名词：连体修饰、修饰句主语变化、时间/约定/用事',
+    topics: ['连体修饰', '修饰句主语が', '～する時間/約束/用事']
+  },
+  {
+    id: 'L23',
+    title: '第23課：時と条件',
+    description: '使用とき表达时间关系、辞书形/タ形的区别、と表示必然结果',
+    topics: ['V（辞書形/ナイ形）とき', 'V（タ形）とき', '形容詞/名詞+とき', 'V（辞書形）と']
+  },
+  {
+    id: 'L24',
+    title: '第24課：授受動詞',
+    description: '物品与行为的授受表达、くれます/あげます/もらいます的用法',
+    topics: ['～をくれます', '～てくれます', '～てもらいます', '～てあげます']
+  },
+  {
+    id: 'L25',
+    title: '第25課：条件表現',
+    description: '假定条件たら、确定条件たら、让步条件ても的用法',
+    topics: ['～たら（仮定）', '～たら（確定）', '～ても', '条件文の区別']
   }
 ];
 
@@ -981,6 +1005,118 @@ export const VOCABULARY_LIST: Vocabulary[] = [
   { lessonId: 'L21', word: 'フランクリン', reading: 'フランクリン', meaning: '本杰明·富兰克林(1706-1790)', type: 'noun' },
   { lessonId: 'L21', word: 'かぐや姫', reading: 'かぐやひめ', meaning: '辉夜姬(竹取物语)', type: 'noun' },
   { lessonId: 'L21', word: '天神祭', reading: 'てんじんまつり', meaning: '天神祭(大阪祭典)', type: 'noun' },
+
+  // --- Lesson 22 ---
+  { lessonId: 'L22', word: '着ます', reading: 'きます', meaning: '穿(衬衫等)', type: 'verb', group: 2 },
+  { lessonId: 'L22', word: 'はきます', reading: 'はきます', meaning: '穿(鞋/裤子)', type: 'verb', group: 1 },
+  { lessonId: 'L22', word: 'かぶります', reading: 'かぶります', meaning: '戴(帽子)', type: 'verb', group: 1 },
+  { lessonId: 'L22', word: 'かけます', reading: 'かけます', meaning: '戴(眼镜)', type: 'verb', group: 2 },
+  { lessonId: 'L22', word: 'します', reading: 'します', meaning: '系(领带)/戴(饰品)', type: 'verb', group: 3 },
+  { lessonId: 'L22', word: '生まれます', reading: 'うまれます', meaning: '出生', type: 'verb', group: 2 },
+  { lessonId: 'L22', word: 'コート', reading: 'コート', meaning: '大衣/外套', type: 'noun' },
+  { lessonId: 'L22', word: 'スーツ', reading: 'スーツ', meaning: '西装', type: 'noun' },
+  { lessonId: 'L22', word: 'セーター', reading: 'セーター', meaning: '毛衣', type: 'noun' },
+  { lessonId: 'L22', word: '帽子', reading: 'ぼうし', meaning: '帽子', type: 'noun' },
+  { lessonId: 'L22', word: '眼鏡', reading: 'めがね', meaning: '眼镜', type: 'noun' },
+  { lessonId: 'L22', word: 'よく', reading: 'よく', meaning: '经常', type: 'adverb' },
+  { lessonId: 'L22', word: 'おめでとうございます', reading: 'おめでとうございます', meaning: '恭喜', type: 'phrase' },
+  { lessonId: 'L22', word: '家賃', reading: 'やちん', meaning: '房租', type: 'noun' },
+  { lessonId: 'L22', word: 'ダイニングキッチン', reading: 'ダイニングキッチン', meaning: '带餐厅的厨房', type: 'noun' },
+  { lessonId: 'L22', word: '和室', reading: 'わしつ', meaning: '和室', type: 'noun' },
+  { lessonId: 'L22', word: '押し入れ', reading: 'おしいれ', meaning: '壁橱', type: 'noun' },
+  { lessonId: 'L22', word: '布団', reading: 'ふとん', meaning: '被褥', type: 'noun' },
+  { lessonId: 'L22', word: 'アパート', reading: 'アパート', meaning: '公寓', type: 'noun' },
+  { lessonId: 'L22', word: 'パリ', reading: 'パリ', meaning: '巴黎', type: 'noun' },
+  { lessonId: 'L22', word: '万里の長城', reading: 'ばんりのちょうじょう', meaning: '万里长城', type: 'noun' },
+  { lessonId: 'L22', word: '時間', reading: 'じかん', meaning: '时间', type: 'noun' },
+  { lessonId: 'L22', word: '約束', reading: 'やくそく', meaning: '约定', type: 'noun' },
+  { lessonId: 'L22', word: '用事', reading: 'ようじ', meaning: '事情/工作', type: 'noun' },
+  { lessonId: 'L22', word: 'ユーモア', reading: 'ユーモア', meaning: '幽默', type: 'noun' },
+  { lessonId: 'L22', word: '都合', reading: 'つごう', meaning: '方便/情况', type: 'noun' },
+  { lessonId: 'L22', word: 'ロボット', reading: 'ロボット', meaning: '机器人', type: 'noun' },
+  { lessonId: 'L22', word: 'お弁当', reading: 'おべんとう', meaning: '盒饭', type: 'noun' },
+  { lessonId: 'L22', word: 'ケーキ', reading: 'ケーキ', meaning: '蛋糕', type: 'noun' },
+
+  // --- Lesson 23 ---
+  // 动词
+  { lessonId: 'L23', word: '聞きます', reading: 'ききます', meaning: '询问', type: 'verb', group: 1 },
+  { lessonId: 'L23', word: '回します', reading: 'まわします', meaning: '转动', type: 'verb', group: 1 },
+  { lessonId: 'L23', word: '引きます', reading: 'ひきます', meaning: '拉', type: 'verb', group: 1 },
+  { lessonId: 'L23', word: '触ります', reading: 'さわります', meaning: '触摸', type: 'verb', group: 1 },
+  { lessonId: 'L23', word: '出ます', reading: 'でます', meaning: '出来(找零等)', type: 'verb', group: 2 },
+  { lessonId: 'L23', word: '歩きます', reading: 'あるきます', meaning: '步行', type: 'verb', group: 1 },
+  { lessonId: 'L23', word: '渡ります', reading: 'わたります', meaning: '渡/穿过', type: 'verb', group: 1 },
+  { lessonId: 'L23', word: '曲がります', reading: 'まがります', meaning: '转弯', type: 'verb', group: 1 },
+  { lessonId: 'L23', word: '変えます', reading: 'かえます', meaning: '改变', type: 'verb', group: 2 },
+  { lessonId: 'L23', word: '故障します', reading: 'こしょうします', meaning: '损坏/故障', type: 'verb', group: 3 },
+  // 形容词
+  { lessonId: 'L23', word: '寂しい', reading: 'さびしい', meaning: '寂寞', type: 'i-adj' },
+  // 名词
+  { lessonId: 'L23', word: '湯', reading: 'ゆ', meaning: '热水', type: 'noun' },
+  { lessonId: 'L23', word: 'お湯', reading: 'おゆ', meaning: '热水(敬语)', type: 'noun' },
+  { lessonId: 'L23', word: '音', reading: 'おと', meaning: '声音', type: 'noun' },
+  { lessonId: 'L23', word: 'サイズ', reading: 'サイズ', meaning: '尺寸', type: 'noun' },
+  { lessonId: 'L23', word: '故障', reading: 'こしょう', meaning: '故障', type: 'noun' },
+  { lessonId: 'L23', word: '道', reading: 'みち', meaning: '道路', type: 'noun' },
+  { lessonId: 'L23', word: '交差点', reading: 'こうさてん', meaning: '十字路口', type: 'noun' },
+  { lessonId: 'L23', word: '信号', reading: 'しんごう', meaning: '交通信号', type: 'noun' },
+  { lessonId: 'L23', word: '角', reading: 'かど', meaning: '角/转角', type: 'noun' },
+  { lessonId: 'L23', word: '橋', reading: 'はし', meaning: '桥', type: 'noun' },
+  { lessonId: 'L23', word: '駐車場', reading: 'ちゅうしゃじょう', meaning: '停车场', type: 'noun' },
+  { lessonId: 'L23', word: '建物', reading: 'たてもの', meaning: '建筑物', type: 'noun' },
+  { lessonId: 'L23', word: 'お正月', reading: 'おしょうがつ', meaning: '正月/新年', type: 'noun' },
+  // 副词・表达
+  { lessonId: 'L23', word: '何回も', reading: 'なんかいも', meaning: '许多次', type: 'adverb' },
+  { lessonId: 'L23', word: 'まっすぐ', reading: 'まっすぐ', meaning: '笔直地', type: 'adverb' },
+  { lessonId: 'L23', word: 'ごちそうさまでした', reading: 'ごちそうさまでした', meaning: '谢谢款待', type: 'phrase' },
+
+  // --- Lesson 24 ---
+  // 动词
+  { lessonId: 'L24', word: '直します', reading: 'なおします', meaning: '修理', type: 'verb', group: 1 },
+  { lessonId: 'L24', word: '送ります', reading: 'おくります', meaning: '送(人)', type: 'verb', group: 1 },
+  { lessonId: 'L24', word: '連れて行きます', reading: 'つれていきます', meaning: '带去', type: 'verb', group: 1 },
+  { lessonId: 'L24', word: '連れて来ます', reading: 'つれてきます', meaning: '带来', type: 'verb', group: 3 },
+  { lessonId: 'L24', word: '紹介します', reading: 'しょうかいします', meaning: '介绍', type: 'verb', group: 3 },
+  { lessonId: 'L24', word: '案内します', reading: 'あんないします', meaning: '带路/指引', type: 'verb', group: 3 },
+  { lessonId: 'L24', word: '説明します', reading: 'せつめいします', meaning: '说明', type: 'verb', group: 3 },
+  { lessonId: 'L24', word: '入れます', reading: 'いれます', meaning: '放入/倒入', type: 'verb', group: 2 },
+  { lessonId: 'L24', word: 'くれます', reading: 'くれます', meaning: '给(我)', type: 'verb', group: 2 },
+  // 名词
+  { lessonId: 'L24', word: 'おじいさん', reading: 'おじいさん', meaning: '爷爷', type: 'noun' },
+  { lessonId: 'L24', word: 'おばあさん', reading: 'おばあさん', meaning: '奶奶', type: 'noun' },
+  { lessonId: 'L24', word: 'おじいちゃん', reading: 'おじいちゃん', meaning: '爷爷(亲密)', type: 'noun' },
+  { lessonId: 'L24', word: 'おばあちゃん', reading: 'おばあちゃん', meaning: '奶奶(亲密)', type: 'noun' },
+  { lessonId: 'L24', word: '準備', reading: 'じゅんび', meaning: '准备', type: 'noun' },
+  { lessonId: 'L24', word: '意味', reading: 'いみ', meaning: '意思/含义', type: 'noun' },
+  { lessonId: 'L24', word: 'お菓子', reading: 'おかし', meaning: '点心/零食', type: 'noun' },
+  { lessonId: 'L24', word: 'お弁当', reading: 'おべんとう', meaning: '便当', type: 'noun' },
+  { lessonId: 'L24', word: 'ホームステイ', reading: 'ホームステイ', meaning: '寄宿家庭', type: 'noun' },
+  { lessonId: 'L24', word: 'ワゴン車', reading: 'ワゴンしゃ', meaning: '旅行车', type: 'noun' },
+  { lessonId: 'L24', word: '母の日', reading: 'ははのひ', meaning: '母亲节', type: 'noun' },
+  { lessonId: 'L24', word: '引っ越し', reading: 'ひっこし', meaning: '搬家', type: 'noun' },
+  // 副词
+  { lessonId: 'L24', word: '全部', reading: 'ぜんぶ', meaning: '全部', type: 'adverb' },
+  { lessonId: 'L24', word: '自分で', reading: 'じぶんで', meaning: '自己(亲自)', type: 'adverb' },
+  { lessonId: 'L24', word: 'ほかに', reading: 'ほかに', meaning: '其他/另外', type: 'adverb' },
+
+  // --- Lesson 25 ---
+  // 动词
+  { lessonId: 'L25', word: '着きます', reading: 'つきます', meaning: '到达', type: 'verb', group: 1 },
+  { lessonId: 'L25', word: '頑張ります', reading: 'がんばります', meaning: '努力/加油', type: 'verb', group: 1 },
+  { lessonId: 'L25', word: '考えます', reading: 'かんがえます', meaning: '思考/考虑', type: 'verb', group: 2 },
+  { lessonId: 'L25', word: '留学します', reading: 'りゅうがくします', meaning: '留学', type: 'verb', group: 3 },
+  { lessonId: 'L25', word: '足ります', reading: 'たります', meaning: '足够', type: 'verb', group: 2 },
+  { lessonId: 'L25', word: '取ります[年を]', reading: 'とります', meaning: '变老(年を取る)', type: 'verb', group: 1 },
+  // 名词
+  { lessonId: 'L25', word: '田舎', reading: 'いなか', meaning: '乡下', type: 'noun' },
+  { lessonId: 'L25', word: '転勤', reading: 'てんきん', meaning: '工作调动', type: 'noun' },
+  { lessonId: 'L25', word: '億', reading: 'おく', meaning: '1亿', type: 'noun' },
+  { lessonId: 'L25', word: 'チャンス', reading: 'チャンス', meaning: '机会', type: 'noun' },
+  { lessonId: 'L25', word: 'もし', reading: 'もし', meaning: '如果/假如', type: 'adverb' },
+  { lessonId: 'L25', word: 'もしもし', reading: 'もしもし', meaning: '喂(电话)', type: 'phrase' },
+  // 惯用表达
+  { lessonId: 'L25', word: 'いろいろお世話になりました', reading: 'いろいろおせわになりました', meaning: '承蒙关照', type: 'phrase' },
+  { lessonId: 'L25', word: 'どうぞお元気で', reading: 'どうぞおげんきで', meaning: '请多保重', type: 'phrase' },
 ];
 
 export const GRAMMAR_RULES: GrammarRule[] = [
@@ -1595,6 +1731,122 @@ export const GRAMMAR_RULES: GrammarRule[] = [
     description: '表示"……什么的"，用于举例或提议，语气比较柔和随意。不是"但是"的意思。',
     pattern: '［名词］＋でも＋动词',
     example: 'コーヒーでも飲みませんか。(要不要喝点咖啡什么的？) / 映画でも見に行きましょう。(我们去看个电影什么的吧)'
+  },
+  // --- Lesson 22 ---
+  {
+    lessonId: 'L22',
+    title: '1. 连体修饰 (修饰名词)',
+    description: '用句子修饰名词时，修饰句中的谓语必须用普通形。名词+名词用「の」，形容动词+名词用「な」。',
+    pattern: '［动词普通形］＋名词',
+    example: '食べる人 (吃的人) / 食べた人 (吃过的人) / 食べない人 (不吃的人) / 忙しい人 (忙碌的人) / 暇な人 (有空的人)'
+  },
+  {
+    lessonId: 'L22',
+    title: '2. 修饰句中的主语 (は→が)',
+    description: '在连体修饰句中，主语助词「は」必须变为「が」，以避免与主句的主语混淆。',
+    pattern: '［Sが V］＋名词',
+    example: 'これはミラーさんが作ったケーキです。(这是米勒先生做的蛋糕) / 私はカリナさんがかいた絵が好きです。(我喜欢卡里娜画的画)'
+  },
+  {
+    lessonId: 'L22',
+    title: '3. 修饰名词作各种成分',
+    description: '修饰后的名词短语可以作为主句的主语、宾语、地点等。',
+    pattern: '［修饰句+名词］は/を/へ',
+    example: '［ミラーさんが住んでいる］うちは古いです。(作主语) / ［京都で撮った］写真を見ました。(作宾语) / ［ミラーさんが住んでいる］うちへ行きました。(作地点)'
+  },
+  {
+    lessonId: 'L22',
+    title: '4. ～する時間/約束/用事',
+    description: '动词辞书形可以接续特定名词，表示"做某事的时间/约定/安排"。',
+    pattern: '［动词辞书形］＋時間/約束/用事 があります/ありません',
+    example: '朝ごはんを食べる時間がありません。(没有吃早饭的时间) / 友達と映画を見る約束があります。(有跟朋友看电影的约定) / 市役所へ行く用事があります。(有要去市政府办的事)'
+  },
+  // --- Lesson 23 ---
+  {
+    lessonId: 'L23',
+    title: '1. V（辞書形/ナイ形）とき、～',
+    description: '表示在某个状态或动作进行时发生的另一个动作或状态。',
+    pattern: '動詞辞書形 + とき、～ / 動詞ナイ形 + とき、～',
+    example: '寝る時、電気を消します。(睡觉时，我关灯) / 意味がわからない時、辞書を使います。(不懂意思时，我查字典)'
+  },
+  {
+    lessonId: 'L23',
+    title: '2. V（辞書形）とき vs V（タ形）とき',
+    description: '辞书形(事前): 后面的动作先发生；タ形(事后): 后面的动作后发生。这是第23课核心难点。',
+    pattern: '辞書形+とき=事前準備 / タ形+とき=完成後行為',
+    example: '友達の家に行く時、ケーキを買います。(去之前买) / 友達の家に着いた時、ケーキを渡します。(到了之后给)'
+  },
+  {
+    lessonId: 'L23',
+    title: '3. い形容詞/な形容詞/名詞 + とき',
+    description: '表示在某个特定状态或时期发生的事。い形直接+とき，な形+な+とき，名词+の+とき。',
+    pattern: 'い形容詞+とき / な形容詞+な+とき / 名詞+の+とき',
+    example: '眠い時、コーヒーを飲みます。(困倦时) / 暇な時、本を読みます。(有空时) / 子どもの時、よく遊びました。(小时候)'
+  },
+  {
+    lessonId: 'L23',
+    title: '4. V（辞書形）と、～',
+    description: '表示某个动作自然而然引起的必然结果。强调因果必然性，后面不能接意志、希望、命令等表达。',
+    pattern: '動詞辞書形 + と、～',
+    example: 'このボタンを押すと、お釣りが出ます。(按这个按钮，会吐出找零) / 春になると、桜が咲きます。(到了春天，樱花就开了)'
+  },
+  // --- Lesson 24 ---
+  {
+    lessonId: 'L24',
+    title: '1. ～をくれます',
+    description: '表示他人主动给我(或我的家人)某物。带有感谢之意。受取者通常省略「私に」。',
+    pattern: '(人)は(私に)(物)をくれます',
+    example: '佐藤さんはクリスマスカードをくれました。(佐藤小姐给了我圣诞卡) / この鞄は彼女がくれました。(这个包是女朋友送的)'
+  },
+  {
+    lessonId: 'L24',
+    title: '2. ～てもらいます',
+    description: '表示我请求别人为我做某事，并且别人做了。强调「说话者收到了恩惠」。',
+    pattern: '(人)は(人)に V-て形 + もらいます',
+    example: '私は友達に宿題を教えてもらいました。(我请朋友教我功课) / 美容院で髪を切ってもらいました。(在美容院让人剪了头发)'
+  },
+  {
+    lessonId: 'L24',
+    title: '3. ～てくれます',
+    description: '表示他人主动为我做某事。带有「对方主动为我做」的深层感谢之意。根据动词性质使用に/を/の。',
+    pattern: '(人)は V-て形 + くれます',
+    example: '母は私に料理を作ってくれました。(妈妈给我做了饭) / 兄は私を駅へ連れて行ってくれました。(哥哥带我去了车站)'
+  },
+  {
+    lessonId: 'L24',
+    title: '4. ～てあげます',
+    description: '表示我主动为他人做某事。与第7课学的「あげます」相对应。',
+    pattern: '(人)は(人)に V-て形 + あげます',
+    example: '私は妹に英語を教えてあげました。(我教妹妹英语) / 友達に本を貸してあげました。(我借书给朋友)'
+  },
+  // --- Lesson 25 ---
+  {
+    lessonId: 'L25',
+    title: '1. ～たら (仮定条件)',
+    description: '表示假定条件「如果……的话」。常与「もし」搭配使用。',
+    pattern: 'V-た形+ら / い形-かったら / な形-だったら / N-だったら',
+    example: 'お金があったら、大きい家を買います。(如果有钱的话) / 安かったら、パソコンを買います。(如果便宜的话)'
+  },
+  {
+    lessonId: 'L25',
+    title: '2. ～たら (確定条件)',
+    description: '表示时间顺序上的先后关系「……之后」。通常不与「もし」搭配。',
+    pattern: 'V-た形 + ら、～',
+    example: '勉強が終わったら、寝ます。(功课做完后，睡觉) / 田中さんが来たら、デパートへ行きます。(田中来了后，去百货商店)'
+  },
+  {
+    lessonId: 'L25',
+    title: '3. ～ても (譲歩条件)',
+    description: '表示「即使……也……」的让步。表达事物不受限制或条件影响。',
+    pattern: 'V-て形+も / い形-くても / な形-でも / N-でも',
+    example: '雨が降っても、旅行に行きます。(即使下雨也去旅游) / 寒くても、泳ぎたいです。(即使冷也想游泳)'
+  },
+  {
+    lessonId: 'L25',
+    title: '4. たら vs ても 区別',
+    description: '「たら」表示假设条件，条件未确定；「ても」表示让步，即使条件存在结果也不改变。',
+    pattern: 'たら=如果…… / ても=即使……也……',
+    example: '雨が降ったら、行きません。(如果下雨就不去) / 雨が降っても、行きます。(即使下雨也去)'
   }
 ];
 
@@ -1807,4 +2059,94 @@ export const EXERCISES: Exercise[] = [
   { id: '21-4-2', lessonId: 'L21', section: 4, prompt: '土曜日に 大学 (  ) 試合があります。', answer: '土曜日に大学で試合があります。', hint: '星期六大学有比赛 (场所で)' },
   { id: '21-4-3', lessonId: 'L21', section: 4, prompt: 'コーヒー (  ) 飲みませんか。', answer: 'コーヒーでも飲みませんか。', hint: '要不要喝点咖啡什么的？(提议)' },
   { id: '21-4-4', lessonId: 'L21', section: 4, prompt: 'もう (  )。(帰ります・ないと)', answer: 'もう帰らないと。', hint: '我得回去了 (口语省略)' },
+
+  // --- Lesson 22 ---
+  // Section 1: 连体修饰
+  { id: '22-1-1', lessonId: 'L22', section: 1, prompt: 'これは (  ) 本です。(買いました)', answer: 'これは買った本です。', hint: '这是买的书 (过去式)' },
+  { id: '22-1-2', lessonId: 'L22', section: 1, prompt: 'あれは (  ) 人です。(入院しています)', answer: 'あれは入院している人です。', hint: '那是正在住院的人' },
+  { id: '22-1-3', lessonId: 'L22', section: 1, prompt: '私は (  ) 人が好きです。(おもしろい)', answer: '私はおもしろい人が好きです。', hint: '我喜欢有趣的人 (形容词)' },
+  { id: '22-1-4', lessonId: 'L22', section: 1, prompt: '私は (  ) 人が好きです。(元気)', answer: '私は元気な人が好きです。', hint: '我喜欢精神的人 (な形容词+な)' },
+
+  // Section 2: 主语变换 (は -> が)
+  { id: '22-2-1', lessonId: 'L22', section: 2, prompt: 'これは (  ) 撮った写真です。(私)', answer: 'これは私が撮った写真です。', hint: '这是我拍的照片 (小句主语用が)' },
+  { id: '22-2-2', lessonId: 'L22', section: 2, prompt: 'あそこは (  ) 住んでいるうちです。(ミラーさん)', answer: 'あそこはミラーさんが住んでいるうちです。', hint: '那是米勒先生住的房子' },
+
+  // Section 3: 修饰名词作成分
+  { id: '22-3-1', lessonId: 'L22', section: 3, prompt: '(  ) うちへ行きました。(ミラーさんが・住んでいます)', answer: 'ミラーさんが住んでいるうちへ行きました。', hint: '去了米勒先生住的房子 (作地点)' },
+  { id: '22-3-2', lessonId: 'L22', section: 3, prompt: '(  ) 牛乳を飲みました。(昨日・買いました)', answer: '昨日買った牛乳を飲みました。', hint: '喝了昨天买的牛奶 (作宾语)' },
+
+  // Section 4: 時間/約束/用事
+  { id: '22-4-1', lessonId: 'L22', section: 4, prompt: '朝ごはんを (  ) 時間がありません。(食べます)', answer: '朝ごはんを食べる時間がありません。', hint: '没有吃早饭的时间 (辞书形)' },
+  { id: '22-4-2', lessonId: 'L22', section: 4, prompt: '友達と (  ) 約束があります。(会います)', answer: '友達と会う約束があります。', hint: '有跟朋友见面的约定' },
+  { id: '22-4-3', lessonId: 'L22', section: 4, prompt: '市役所へ (  ) 用事があります。(行きます)', answer: '市役所へ行く用事があります。', hint: '有要去市政府办的事' },
+
+  // --- Lesson 23 ---
+  // Section 1: V(辞書形/ナイ形)とき
+  { id: '23-1-1', lessonId: 'L23', section: 1, prompt: '寝る (  )、電気を消します。', answer: '寝る時、電気を消します。', hint: '睡觉时，关灯 (辞書形+とき)' },
+  { id: '23-1-2', lessonId: 'L23', section: 1, prompt: '外国へ (  ) 時、パスポートが要ります。(行きます)', answer: '外国へ行く時、パスポートが要ります。', hint: '去国外时，需要护照' },
+  { id: '23-1-3', lessonId: 'L23', section: 1, prompt: '意味がわから (  ) 時、辞書を使います。', answer: '意味がわからない時、辞書を使います。', hint: '不懂意思时，查字典 (ない形+とき)' },
+
+  // Section 2: 辞書形とき vs タ形とき
+  { id: '23-2-1', lessonId: 'L23', section: 2, prompt: '友達の家に (  ) 時、ケーキを買います。(行きます・事前)', answer: '友達の家に行く時、ケーキを買います。', hint: '去之前买蛋糕 (辞書形=事前)' },
+  { id: '23-2-2', lessonId: 'L23', section: 2, prompt: '友達の家に (  ) 時、ケーキを渡します。(着きます・事後)', answer: '友達の家に着いた時、ケーキを渡します。', hint: '到了之后给蛋糕 (た形=事後)' },
+  { id: '23-2-3', lessonId: 'L23', section: 2, prompt: 'ご飯を (  ) 時、「いただきます」と言います。(食べます・事前)', answer: 'ご飯を食べる時、「いただきます」と言います。', hint: '吃饭前说いただきます (辞書形)' },
+  { id: '23-2-4', lessonId: 'L23', section: 2, prompt: 'ご飯を (  ) 時、「ごちそうさま」と言います。(食べます・事後)', answer: 'ご飯を食べた時、「ごちそうさま」と言います。', hint: '吃完后说ごちそうさま (た形)' },
+
+  // Section 3: 形容詞/名詞+とき
+  { id: '23-3-1', lessonId: 'L23', section: 3, prompt: '眠い (  )、コーヒーを飲みます。', answer: '眠い時、コーヒーを飲みます。', hint: '困倦时喝咖啡 (い形+とき)' },
+  { id: '23-3-2', lessonId: 'L23', section: 3, prompt: '暇 (  ) 時、何をしますか。', answer: '暇な時、何をしますか。', hint: '有空时做什么？ (な形+な+とき)' },
+  { id: '23-3-3', lessonId: 'L23', section: 3, prompt: '子ども (  ) 時、よく遊びました。', answer: '子どもの時、よく遊びました。', hint: '小时候经常玩 (名詞+の+とき)' },
+  { id: '23-3-4', lessonId: 'L23', section: 3, prompt: '27歳 (  ) 時、結婚しました。', answer: '27歳の時、結婚しました。', hint: '27岁时结婚了 (名詞+の+とき)' },
+
+  // Section 4: V(辞書形)と (必然結果)
+  { id: '23-4-1', lessonId: 'L23', section: 4, prompt: 'このボタンを (  ) と、お釣りが出ます。(押します)', answer: 'このボタンを押すと、お釣りが出ます。', hint: '按这个按钮，会吐出找零 (必然結果)' },
+  { id: '23-4-2', lessonId: 'L23', section: 4, prompt: '春に (  ) と、桜が咲きます。(なります)', answer: '春になると、桜が咲きます。', hint: '到了春天，樱花就开了' },
+  { id: '23-4-3', lessonId: 'L23', section: 4, prompt: 'まっすぐ (  ) と、駅が見えます。(行きます)', answer: 'まっすぐ行くと、駅が見えます。', hint: '一直走的话，就能看到车站 (道順)' },
+  { id: '23-4-4', lessonId: 'L23', section: 4, prompt: 'お酒を (  ) と、顔が赤くなります。(飲みます)', answer: 'お酒を飲むと、顔が赤くなります。', hint: '喝酒的话，脸会变红' },
+
+  // --- Lesson 24 ---
+  // Section 1: ～をくれます (物の授受)
+  { id: '24-1-1', lessonId: 'L24', section: 1, prompt: '佐藤さんは (  ) クリスマスカードをくれました。', answer: '佐藤さんは私にクリスマスカードをくれました。', hint: '佐藤给了我圣诞卡 (に可省略)' },
+  { id: '24-1-2', lessonId: 'L24', section: 1, prompt: 'この鞄は (  ) くれました。(彼女)', answer: 'この鞄は彼女がくれました。', hint: '这个包是女朋友送的 (物は人が)' },
+  { id: '24-1-3', lessonId: 'L24', section: 1, prompt: '父は私に (  ) をくれました。(パソコン)', answer: '父は私にパソコンをくれました。', hint: '父亲给了我电脑' },
+
+  // Section 2: ～てもらいます
+  { id: '24-2-1', lessonId: 'L24', section: 2, prompt: '私は友達に 宿題を (  ) もらいました。(教えます)', answer: '私は友達に宿題を教えてもらいました。', hint: '我请朋友教我功课' },
+  { id: '24-2-2', lessonId: 'L24', section: 2, prompt: '私は父に 自転車を (  ) もらいました。(直します)', answer: '私は父に自転車を直してもらいました。', hint: '我请父亲帮我修自行车' },
+  { id: '24-2-3', lessonId: 'L24', section: 3, prompt: '美容院で 髪を (  ) もらいました。(切ります)', answer: '美容院で髪を切ってもらいました。', hint: '在美容院让人剪了头发' },
+
+  // Section 3: ～てくれます
+  { id: '24-3-1', lessonId: 'L24', section: 3, prompt: '母は 私に 料理を (  ) くれました。(作ります)', answer: '母は私に料理を作ってくれました。', hint: '妈妈给我做了饭 (に)' },
+  { id: '24-3-2', lessonId: 'L24', section: 3, prompt: '兄は 私を 駅へ (  ) くれました。(連れて行きます)', answer: '兄は私を駅へ連れて行ってくれました。', hint: '哥哥带我去了车站 (を)' },
+  { id: '24-3-3', lessonId: 'L24', section: 3, prompt: '友達は 私の自転車を (  ) くれました。(直します)', answer: '友達は私の自転車を直してくれました。', hint: '朋友帮我修了自行车 (の)' },
+
+  // Section 4: ～てあげます
+  { id: '24-4-1', lessonId: 'L24', section: 4, prompt: '私は 妹に 英語を (  ) あげました。(教えます)', answer: '私は妹に英語を教えてあげました。', hint: '我教妹妹英语' },
+  { id: '24-4-2', lessonId: 'L24', section: 4, prompt: '友達に 本を (  ) あげました。(貸します)', answer: '友達に本を貸してあげました。', hint: '我借书给朋友' },
+  { id: '24-4-3', lessonId: 'L24', section: 4, prompt: '私は おばあさんの 荷物を (  ) あげました。(持ちます)', answer: '私はおばあさんの荷物を持ってあげました。', hint: '我帮老奶奶拿行李' },
+
+  // --- Lesson 25 ---
+  // Section 1: ～たら (仮定条件)
+  { id: '25-1-1', lessonId: 'L25', section: 1, prompt: 'お金が (  ) たら、大きい家を買います。(あります)', answer: 'お金があったら、大きい家を買います。', hint: '如果有钱的话，买大房子' },
+  { id: '25-1-2', lessonId: 'L25', section: 1, prompt: '(もし) 安 (  ) たら、パソコンを買います。(安い)', answer: '(もし)安かったら、パソコンを買います。', hint: '如果便宜的话 (い形-かったら)' },
+  { id: '25-1-3', lessonId: 'L25', section: 1, prompt: '(もし) 暇 (  ) たら、電気屋へ行きます。', answer: '(もし)暇だったら、電気屋へ行きます。', hint: '如果有空的话 (な形-だったら)' },
+  { id: '25-1-4', lessonId: 'L25', section: 1, prompt: '(もし) 4万円 (  ) たら、欲しいです。', answer: '(もし)4万円だったら、欲しいです。', hint: '如果是4万日元的话 (名詞-だったら)' },
+
+  // Section 2: ～たら (確定条件/時間順序)
+  { id: '25-2-1', lessonId: 'L25', section: 2, prompt: '勉強が (  ) たら、寝ます。(終わります)', answer: '勉強が終わったら、寝ます。', hint: '功课做完后，睡觉' },
+  { id: '25-2-2', lessonId: 'L25', section: 2, prompt: '大学を (  ) たら、働きます。(卒業します)', answer: '大学を卒業したら、働きます。', hint: '大学毕业后，工作' },
+  { id: '25-2-3', lessonId: 'L25', section: 2, prompt: '田中さんが (  ) たら、デパートへ行きます。(来ます)', answer: '田中さんが来たら、デパートへ行きます。', hint: '田中来了后，去百货商店' },
+
+  // Section 3: ～ても (譲歩条件)
+  { id: '25-3-1', lessonId: 'L25', section: 3, prompt: '雨が (  ) ても、旅行に行きます。(降ります)', answer: '雨が降っても、旅行に行きます。', hint: '即使下雨也去旅游' },
+  { id: '25-3-2', lessonId: 'L25', section: 3, prompt: '疲れ (  ) ても、勉強します。(疲れます)', answer: '疲れても、勉強します。', hint: '再累也会读书' },
+  { id: '25-3-3', lessonId: 'L25', section: 3, prompt: '寒 (  ) ても、泳ぎたいです。(寒い)', answer: '寒くても、泳ぎたいです。', hint: '即使冷也想游泳 (い形-くても)' },
+  { id: '25-3-4', lessonId: 'L25', section: 3, prompt: '便利 (  ) ても、新幹線は使いません。', answer: '便利でも、新幹線は使いません。', hint: '即使方便也不用新干线 (な形-でも)' },
+  { id: '25-3-5', lessonId: 'L25', section: 3, prompt: '日曜日 (  ) ても、学校があります。', answer: '日曜日でも、学校があります。', hint: '即使周日也有学校 (名詞-でも)' },
+
+  // Section 4: たら vs ても 区別
+  { id: '25-4-1', lessonId: 'L25', section: 4, prompt: '熱が (  ) たら、学校を休みます。(あります)', answer: '熱があったら、学校を休みます。', hint: '如果发烧就休息 (假设)' },
+  { id: '25-4-2', lessonId: 'L25', section: 4, prompt: '熱が (  ) ても、学校を休みません。(あります)', answer: '熱があっても、学校を休みません。', hint: '即使发烧也不休息 (决心)' },
+  { id: '25-4-3', lessonId: 'L25', section: 4, prompt: '宿題がたくさん (  ) たら、行きません。(あります)', answer: '宿題がたくさんあったら、行きません。', hint: '如果有很多功课就不去 (假设)' },
+  { id: '25-4-4', lessonId: 'L25', section: 4, prompt: '宿題がたくさん (  ) ても、行きたいです。(あります)', answer: '宿題がたくさんあっても、行きたいです。', hint: '即使有很多功课也想去 (决心)' }
 ];

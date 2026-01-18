@@ -19,6 +19,7 @@ import { GrammarLab } from './components/GrammarLab';
 
 const App: React.FC = () => {
   const [currentLessonId, setCurrentLessonId] = useState<string | null>(null);
+  const [lastVisitedLessonId, setLastVisitedLessonId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'vocab' | 'grammar' | 'practice' | 'shadowing' | 'review' | 'lab'>('practice');
   const [isGlobalReviewMode, setIsGlobalReviewMode] = useState(false);
   const [isSpeakingPrepMode, setIsSpeakingPrepMode] = useState(false);
@@ -65,6 +66,7 @@ const App: React.FC = () => {
     setIsKanaChartMode(false);
     setIsTopicStudyMode(false);
     setCurrentLessonId(lessonId);
+    setLastVisitedLessonId(lessonId);
     setActiveTab(tab as any);
   };
 
@@ -230,10 +232,14 @@ const App: React.FC = () => {
           {/* 5. Dashboard (Home) */}
           {!isGlobalReviewMode && !isSpeakingPrepMode && !isKanaChartMode && !isTopicStudyMode && !currentLessonId && (
             <Dashboard
-              onSelectLesson={setCurrentLessonId}
+              onSelectLesson={(id) => {
+                setCurrentLessonId(id);
+                setLastVisitedLessonId(id);
+              }}
               onStartReview={handleStartReview}
               onStartTopicStudy={handleStartTopicStudy}
               onOpenKanaChart={handleOpenKanaChart}
+              initialScrollToLessonId={lastVisitedLessonId}
             />
           )}
 

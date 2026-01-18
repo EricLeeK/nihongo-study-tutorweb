@@ -11,12 +11,32 @@ interface DashboardProps {
   onStartReview: () => void;
   onStartTopicStudy: () => void;
   onOpenKanaChart: () => void;
+  initialScrollToLessonId?: string | null;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartReview, onStartTopicStudy, onOpenKanaChart }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ 
+  onSelectLesson, 
+  onStartReview, 
+  onStartTopicStudy, 
+  onOpenKanaChart,
+  initialScrollToLessonId 
+}) => {
   const [progressData, setProgressData] = useState<Record<string, number>>({});
   const [totalProgress, setTotalProgress] = useState(0);
   const [dueCount, setDueCount] = useState(0);
+
+  // Auto-scroll to last visited lesson
+  useEffect(() => {
+    if (initialScrollToLessonId) {
+      // Minimal timeout to ensure DOM is rendered, then jump instantly
+      setTimeout(() => {
+        const element = document.getElementById(`lesson-card-${initialScrollToLessonId}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'auto', block: 'center' });
+        }
+      }, 0);
+    }
+  }, [initialScrollToLessonId]);
 
   useEffect(() => {
     // Calculate progress on mount
@@ -168,6 +188,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectLesson, onStartRev
             return (
               <button
                 key={lesson.id}
+                id={`lesson-card-${lesson.id}`}
                 onClick={() => onSelectLesson(lesson.id)}
                 disabled={isLocked}
                 className={`group relative p-6 rounded-[2rem] border-2 text-left transition-all duration-200 ${isLocked
