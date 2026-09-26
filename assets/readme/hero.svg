@@ -1,33 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
-  <title id="title">Nihongo Tutor</title>
-  <desc id="desc">假名、词汇、语法、复习与 AI 辅导，集中在一个日语学习工作台。 The diagram is a conceptual illustration, not a benchmark or application screenshot.</desc>
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="610" viewBox="0 0 1200 610" role="img" aria-labelledby="title desc">
+  <title id="title">Nihongo 日语学习助手</title>
+  <desc id="desc">用假名书写格、仓库中的第一课助词填空和学生词汇卡，展示假名、语法与间隔复习。</desc>
   <defs>
-    <clipPath id="frame">
-      <rect width="1200" height="440" rx="24" />
+    <pattern id="kana-grid" width="66" height="66" patternUnits="userSpaceOnUse">
+      <path d="M66 0 H0 V66" fill="none" stroke="#D7DFD4" stroke-width="1" />
+    </pattern>
+    <clipPath id="canvas">
+      <rect width="1200" height="610" rx="26" />
     </clipPath>
   </defs>
-  <g clip-path="url(#frame)">
-    <rect x="0" y="0" width="1200" height="440" rx="24" fill="#fff3dc" />
-    <text x="60" y="72" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#a55f30" text-anchor="start">日本語 / STUDY WORKSPACE</text>
-    <text x="60" y="166" font-family="Georgia,'Songti SC',serif" font-size="80" font-weight="700" fill="#453931" text-anchor="start">Nihongo</text>
-    <text x="60" y="250" font-family="Georgia,'Songti SC',serif" font-size="80" font-weight="700" fill="#453931" text-anchor="start">Tutor</text>
-    <text x="60" y="304" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="26" font-weight="400" fill="#453931" text-anchor="start">假名 · 词汇 · 语法 · 复习</text>
-    <text x="60" y="400" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#a55f30" text-anchor="start">REACT  /  GEMINI + SILICONFLOW</text>
-    <g id="kana">
-      <rect x="687" y="62" width="198" height="244" rx="10" fill="#fffdf5" stroke="#d9b98e" stroke-width="2" />
-      <text x="715" y="104" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#a55f30" text-anchor="start">KANA</text>
-      <text x="785" y="216" font-family="Georgia,'Songti SC',serif" font-size="103" font-weight="500" fill="#a55f30" text-anchor="middle">あ</text>
-      <text x="785" y="274" font-family="Georgia,'Songti SC',serif" font-size="26" font-weight="500" fill="#766451" text-anchor="middle">a</text>
+  <g clip-path="url(#canvas)">
+    <rect x="0" y="0" width="1200" height="610" rx="0" fill="#F4F1E8" />
+    <text x="48" y="49" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="22" font-weight="600" fill="#6B8C7A" letter-spacing="2">日本語のある毎日。</text>
+    <text x="47" y="122" font-family="Georgia, Songti SC, serif" font-size="72" font-weight="500" fill="#394942" letter-spacing="-2">Nihongo</text>
+    <text x="51" y="169" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="31" font-weight="600" fill="#394942">日语学习助手</text>
+    <text x="51" y="207" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="25" font-weight="400" fill="#778577">一页假名，一句会话。</text>
+    <text x="1152" y="47" font-family="Menlo, Consolas, monospace" font-size="17" font-weight="500" fill="#6B8C7A" text-anchor="end">KANA / GRAMMAR / REVIEW</text>
+    <rect x="49" y="242" width="281" height="280" rx="3" fill="#FDFBF7" stroke="#BCCDBC" stroke-width="1.5" />
+    <rect x="50" y="243" width="279" height="278" rx="2" fill="url(#kana-grid)" />
+    <text x="71" y="274" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="19" font-weight="500" fill="#6B8C7A">ひらがな</text>
+    <text x="190" y="423" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="170" font-weight="400" fill="#394942" text-anchor="middle">あ</text>
+    <text x="190" y="500" font-family="Georgia, Songti SC, serif" font-size="34" font-weight="400" fill="#D47860" text-anchor="middle">a</text>
+    <g transform="rotate(-2 760 330)">
+      <rect x="371" y="133" width="775" height="390" rx="7" fill="#CBD7C8" />
     </g>
-    <g id="vocabulary">
-      <rect x="917" y="107" width="222" height="149" rx="10" fill="#e8e7c9" stroke="#d7d8b6" stroke-width="2" />
-      <text x="941" y="145" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#65764b" text-anchor="start">VOCABULARY</text>
-      <text x="941" y="206" font-family="Georgia,'Songti SC',serif" font-size="43" font-weight="500" fill="#4c5a3c" text-anchor="start">ことば</text>
+    <g transform="rotate(1.2 756 315)">
+      <rect x="382" y="119" width="768" height="410" rx="7" fill="#DCDACF" />
+      <rect x="374" y="111" width="768" height="410" rx="7" fill="#FDFBF7" stroke="#D7D5C8" stroke-width="1" />
+      <circle cx="395" cy="140" r="4" fill="#DBE0D3" />
+      <circle cx="395" cy="197" r="4" fill="#DBE0D3" />
+      <circle cx="395" cy="254" r="4" fill="#DBE0D3" />
+      <circle cx="395" cy="311" r="4" fill="#DBE0D3" />
+      <circle cx="395" cy="368" r="4" fill="#DBE0D3" />
+      <circle cx="395" cy="425" r="4" fill="#DBE0D3" />
+      <circle cx="395" cy="482" r="4" fill="#DBE0D3" />
+      <path d="M416 112 V520" fill="none" stroke="#E6C4B5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="441" y="159" font-family="Menlo, Consolas, monospace" font-size="17" font-weight="600" fill="#6B8C7A" letter-spacing="1.5">LESSON 01</text>
+      <text x="441" y="206" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="30" font-weight="600" fill="#394942">第1課：肯定与否定</text>
+      <path d="M440 228 H1109" fill="none" stroke="#D9DDD1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="440" y="300" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="49" font-weight="400" fill="#394942">私</text>
+      <rect x="507" y="254" width="61" height="61" rx="7" fill="#ECF0E5" stroke="#C2CDBD" stroke-width="1.3" />
+      <text x="584" y="300" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="43" font-weight="400" fill="#394942">マイク・ミラーです。</text>
+      <text x="442" y="355" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="23" font-weight="400" fill="#6C786C">我是麦克·米勒。</text>
+      <path d="M441 380 H1107" fill="none" stroke="#E4E5DB" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="441" y="424" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="31" font-weight="500" fill="#394942">N₁ は N₂ です</text>
+      <text x="442" y="474" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="23" font-weight="400" fill="#758473">提示主题 → 判断句</text>
+      <text x="1105" y="492" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="17" font-weight="500" fill="#9AA38F" text-anchor="end">文法ノート</text>
     </g>
-    <g id="grammar">
-      <rect x="801" y="292" width="328" height="100" rx="10" fill="#edd1b6" stroke="#edd1b6" stroke-width="2" />
-      <text x="826" y="325" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#894a2a" text-anchor="start">GRAMMAR + REVIEW</text>
-      <text x="826" y="367" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="27" font-weight="600" fill="#453931" text-anchor="start">学ぶ → 練習 → 復習</text>
+    <rect x="54" y="551" width="132" height="38" rx="3" fill="#E2E8D6" />
+    <text x="120" y="577" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="20" font-weight="500" fill="#394942" text-anchor="middle">五十音</text>
+    <rect x="203" y="551" width="132" height="38" rx="3" fill="#EDD4BF" />
+    <text x="269" y="577" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="20" font-weight="500" fill="#394942" text-anchor="middle">语法练习</text>
+    <rect x="352" y="551" width="132" height="38" rx="3" fill="#D1DFD5" />
+    <text x="418" y="577" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="20" font-weight="500" fill="#394942" text-anchor="middle">间隔复习</text>
+    <g id="grammar-answer" transform="rotate(1.2 756 315)">
+      <text x="536" y="299" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="48" font-weight="500" fill="#6B8C7A" text-anchor="middle">は</text>
+      <path d="M505 325 C526 329 548 329 568 325" fill="none" stroke="#D47860" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M518 435 H554" fill="none" stroke="#D47860" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <g id="vocabulary-note" transform="rotate(-4 950 490)">
+      <rect x="811" y="422" width="303" height="155" rx="5" fill="#ADBCAA" />
+      <rect x="803" y="414" width="303" height="155" rx="5" fill="#E4EBDD" stroke="#B6C6AE" stroke-width="1.2" />
+      <text x="826" y="447" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="17" font-weight="600" fill="#6B8C7A">ことば / 第1課</text>
+      <text x="826" y="502" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="48" font-weight="500" fill="#394942">学生</text>
+      <text x="945" y="502" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, PingFang SC, sans-serif" font-size="25" font-weight="500" fill="#6B8C7A">がくせい</text>
+      <path d="M826 517 H1081" fill="none" stroke="#B8C8AF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="826" y="549" font-family="-apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans, sans-serif" font-size="22" font-weight="400" fill="#607B64">名词  ·  学生</text>
     </g>
   </g>
 </svg>

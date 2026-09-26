@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/readme/hero.gif" width="100%" alt="假名、词汇、语法、复习与 AI 辅导，集中在一个日语学习工作台。 Conceptual overview.">
+  <img src="./assets/readme/hero.gif" width="100%" alt="用假名书写格、仓库中的第一课助词填空和学生词汇卡，展示假名、语法与间隔复习。">
 </p>
 
 # Nihongo Tutor · 日语学习工作台

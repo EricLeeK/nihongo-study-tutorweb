@@ -1,66 +1,48 @@
 {
   "width": 1200,
   "fps": 30,
-  "duration": 5.2,
+  "duration": 6.0,
   "colors": 256,
   "dither": "none",
+  "transparent_color": "#ff00ff",
   "clip_to_base_alpha": true,
-  "max_size_mb": 2.0,
+  "max_size_mb": 3.0,
   "layers": [
     {
-      "id": "kana",
+      "id": "grammar-answer",
       "enter": {
-        "start": 0.15,
-        "end": 1.1,
+        "start": 0.35,
+        "end": 1.35,
         "from": [
-          -22,
-          20
+          0,
+          0
         ]
       },
       "exit": {
-        "start": 4.35,
-        "end": 5.16,
+        "start": 5.0,
+        "end": 5.96,
         "to": [
           0,
-          -12
+          10
         ]
       }
     },
     {
-      "id": "vocabulary",
+      "id": "vocabulary-note",
       "enter": {
-        "start": 0.43,
-        "end": 1.38,
+        "start": 1.05,
+        "end": 2.1,
         "from": [
-          22,
-          20
+          12,
+          18
         ]
       },
       "exit": {
-        "start": 4.35,
-        "end": 5.16,
+        "start": 5.0,
+        "end": 5.96,
         "to": [
           0,
-          -12
-        ]
-      }
-    },
-    {
-      "id": "grammar",
-      "enter": {
-        "start": 0.71,
-        "end": 1.66,
-        "from": [
-          0,
-          20
-        ]
-      },
-      "exit": {
-        "start": 4.35,
-        "end": 5.16,
-        "to": [
-          0,
-          -12
+          10
         ]
       }
     }
