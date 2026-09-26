@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+  <title id="title">Nihongo Tutor</title>
+  <desc id="desc">假名、词汇、语法、复习与 AI 辅导，集中在一个日语学习工作台。 The diagram is a conceptual illustration, not a benchmark or application screenshot.</desc>
+  <defs>
+    <clipPath id="frame">
+      <rect width="1200" height="440" rx="24" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect x="0" y="0" width="1200" height="440" rx="24" fill="#fff3dc" />
+    <text x="60" y="72" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#a55f30" text-anchor="start">日本語 / STUDY WORKSPACE</text>
+    <text x="60" y="166" font-family="Georgia,'Songti SC',serif" font-size="80" font-weight="700" fill="#453931" text-anchor="start">Nihongo</text>
+    <text x="60" y="250" font-family="Georgia,'Songti SC',serif" font-size="80" font-weight="700" fill="#453931" text-anchor="start">Tutor</text>
+    <text x="60" y="304" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="26" font-weight="400" fill="#453931" text-anchor="start">假名 · 词汇 · 语法 · 复习</text>
+    <text x="60" y="400" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#a55f30" text-anchor="start">REACT  /  GEMINI + SILICONFLOW</text>
+    <g id="kana">
+      <rect x="687" y="62" width="198" height="244" rx="10" fill="#fffdf5" stroke="#d9b98e" stroke-width="2" />
+      <text x="715" y="104" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#a55f30" text-anchor="start">KANA</text>
+      <text x="785" y="216" font-family="Georgia,'Songti SC',serif" font-size="103" font-weight="500" fill="#a55f30" text-anchor="middle">あ</text>
+      <text x="785" y="274" font-family="Georgia,'Songti SC',serif" font-size="26" font-weight="500" fill="#766451" text-anchor="middle">a</text>
+    </g>
+    <g id="vocabulary">
+      <rect x="917" y="107" width="222" height="149" rx="10" fill="#e8e7c9" stroke="#d7d8b6" stroke-width="2" />
+      <text x="941" y="145" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#65764b" text-anchor="start">VOCABULARY</text>
+      <text x="941" y="206" font-family="Georgia,'Songti SC',serif" font-size="43" font-weight="500" fill="#4c5a3c" text-anchor="start">ことば</text>
+    </g>
+    <g id="grammar">
+      <rect x="801" y="292" width="328" height="100" rx="10" fill="#edd1b6" stroke="#edd1b6" stroke-width="2" />
+      <text x="826" y="325" font-family="'SFMono-Regular',Menlo,monospace" font-size="18" font-weight="600" fill="#894a2a" text-anchor="start">GRAMMAR + REVIEW</text>
+      <text x="826" y="367" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC',sans-serif" font-size="27" font-weight="600" fill="#453931" text-anchor="start">学ぶ → 練習 → 復習</text>
+    </g>
+  </g>
+</svg>
